@@ -17,6 +17,7 @@ typedef struct Stack{
 
 	int				value;
 	struct Stack	*next;
+	struct Stack	*previous;
 	// struct Stack	*previous;
 	// struct Stack	*current;
 } Stack;
