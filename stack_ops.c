@@ -14,7 +14,7 @@
 #include "ft_printf/ft_printf.h"
 #include <stdlib.h>
 
-void	sa(Stack **A)
+void	np_sa(Stack **A)
 {
 	Stack	*tmp;
 	
@@ -24,10 +24,15 @@ void	sa(Stack **A)
 	(*A)->next = tmp->next;
 	tmp->next = *A;
 	*A = tmp;
+}
+
+void	sa(Stack **A)
+{
+	np_sa(A);
 	ft_printf("sa\n");
 }
 
-void	sb(Stack **B)
+void	np_sb(Stack **B)
 {
 	Stack	*tmp;
 	
@@ -37,13 +42,18 @@ void	sb(Stack **B)
 	(*B)->next = tmp->next;
 	tmp->next = *B;
 	*B = tmp;
+}
+
+void	sb(Stack **B)
+{
+	np_sb(B);
 	ft_printf("sb\n");
 }
 
 void	ss(Stack **A, Stack **B)
 {
-	sa(A);
-	sb(B);
+	np_sa(A);
+	np_sb(B);
 	ft_printf("ss\n");
 }
 
@@ -64,16 +74,3 @@ void	pb(Stack **A, Stack **B)
 	push(B, popped);
 	ft_printf("pb\n");
 }
-
-/*
-
-> sa (swap a) = swap the first two elements at the top of stack a. do nothing if there is only one or no elements
-> sb (swap b) = swap the first two elements at the top of stack b. do nothing if there is only one or no elements
-> ss = sa and sb at the same time
-
-
-> pa (push a) = take the first element at the top of b and put it at the top of a. do nothing if b is empty
-> pb (push b) = take the first element at the top of a and put it at the top of b. do nothing if a is empty
-
-
-*/

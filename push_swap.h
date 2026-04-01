@@ -31,12 +31,13 @@ void	free_stack(Stack **target);
 int		stack_size(Stack *target);
 void	print_stack(Stack *target);
 
+void	np_sa(Stack **A);
+void	np_sb(Stack **B);
 void	sa(Stack **A);
-void	sb(Stack **A);
+void	sb(Stack **B);
 void	ss(Stack **A, Stack **B);
 void	pa(Stack **A, Stack **B);
 void	pb(Stack **A, Stack **B);
-
 
 void	np_ra(Stack **A);
 void	np_rb(Stack **B);

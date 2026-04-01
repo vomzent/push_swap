@@ -62,6 +62,15 @@ int	main(void)
 	ft_printf("Stack B:\n");
 	print_stack(targetB);
 	ft_printf("\n");
+	rr(&targetA, &targetB);
+	ft_printf("Stack A:\n");
+	print_stack(targetA);
+	ft_printf("\n");
+	ft_printf("Stack B:\n");
+	print_stack(targetB);
+	ft_printf("\n");
+	printf("Stack A disorder = %lf\n", compute_disorder(targetA));
+	printf("Stack B disorder = %lf\n", compute_disorder(targetB));
 	free_stack(&targetA);
 	free_stack(&targetB);
 	return (0);
