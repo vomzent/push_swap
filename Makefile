@@ -5,7 +5,8 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 SRC = \
 		stack_ops.c \
-		stack_ops_2.c \
+		reverse_rotate.c \
+		rotate.c \
 		stack_behavior.c \
 		algo_selection.c \
 		main_testing.c

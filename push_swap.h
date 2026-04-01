@@ -37,7 +37,18 @@ void	ss(Stack **A, Stack **B);
 void	pa(Stack **A, Stack **B);
 void	pb(Stack **A, Stack **B);
 
+
+void	np_ra(Stack **A);
+void	np_rb(Stack **B);
 void	ra(Stack **A);
+void	rb(Stack **B);
+void	rr(Stack **A, Stack **B);
+
+void	np_rra(Stack **A);
+void	np_rrb(Stack **B);
+void	rra(Stack **A);
+void	rrb(Stack **B);
+void	rrr(Stack **A, Stack **B);
 
 // Algorithm operations
 double	compute_disorder(Stack *A);

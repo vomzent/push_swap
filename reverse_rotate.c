@@ -11,24 +11,11 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf/ft_printf.h"
 #include <stddef.h> //use of null in ra
 #include <stdio.h>
 
-int	stack_size(Stack *target)
-{	
-	int	size;
-	
-	size = 0;
-	while (target->next != NULL)
-	{
-		target = target->next;
-		size++;
-	}
-	return (size);
-}
-
-
-void	rra(Stack **A)
+void	np_rra(Stack **A)
 {
 	Stack	*head;
 	Stack	*prev;
@@ -45,39 +32,39 @@ void	rra(Stack **A)
 	prev->next = NULL;
 }
 
-// void	rb(Stack **B)
-// {
+void	rra(Stack **A)
+{
+	np_rra(A);
+	ft_printf("rra\n");
+}
 
-// }
+void	np_rrb(Stack **B)
+{
+	Stack	*head;
+	Stack	*prev;
 
-// void	rr(Stack **A, Stack **B)
-// {
+	head = *B;
+	prev = NULL;
+	while (head->next != 0)
+	{
+		prev = head;
+		head = head->next;
+	}
+	head->next = *B;
+	*B = head;
+	prev->next = NULL;
+}
 
-// }
+void	rrb(Stack **B)
+{
+	np_rrb(B);
+	ft_printf("rrb\n");
+}
 
-// void	rra(Stack **A)
-// {
+void	rrr(Stack **A, Stack **B)
+{
+	np_rra(A);
+	np_rrb(B);
+	ft_printf("rrr\n");
 
-// }
-
-// void	rrb(Stack **B)
-// {
-
-// }
-
-// void	rrr(Stack **A, Stack **B)
-// {
-	
-// }
-
-/*
-
-> ra (rotate a) = shift up all elements of stack a by one. the first element becomes the last one
-> rb (rotate b) = shift up all elements of stack b by one. the first element becomes the last one.
-> rr = ra and rb at the same time
-
-> rra (reverse rotate a) = shift down all elements of stack a by one. the last element becomes the first one
-> rrb (reverse rotate b) = shift down all elements of stack b by one. the last element becomes the first one.
-> rrr = rra and rrb at the same time
-
-*/
+}

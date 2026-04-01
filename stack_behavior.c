@@ -78,3 +78,16 @@ void	free_stack(Stack **target)
 		*target = tmp;	
 	}
 }
+
+int	stack_size(Stack *target)
+{	
+	int	size;
+	
+	size = 0;
+	while (target->next != NULL)
+	{
+		target = target->next;
+		size++;
+	}
+	return (size);
+}

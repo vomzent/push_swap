@@ -58,6 +58,10 @@ int	main(void)
 	ft_printf("Stack A:\n");
 	print_stack(targetA);
 	ft_printf("\n");
+	rb(&targetB);
+	ft_printf("Stack B:\n");
+	print_stack(targetB);
+	ft_printf("\n");
 	free_stack(&targetA);
 	free_stack(&targetB);
 	return (0);
