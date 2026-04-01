@@ -17,9 +17,9 @@
 
 void	print_stack(Stack *target)
 {
-	while (target->next != NULL)
+	while (target != NULL)
 	{
-		ft_printf("%d ", peek(&target));
+		ft_printf("%d ", target->value);
 		target = (target)->next;
 	}
 }
@@ -27,15 +27,15 @@ void	print_stack(Stack *target)
 
 int	main(void)
 {
-	Stack	*targetA;
-	Stack	*targetB; 
+	Stack	*targetA = NULL;
+	Stack	*targetB = NULL;
 	
-	targetA = malloc(sizeof(Stack));
-	if (!targetA)
-		return (1);
-	targetB = malloc(sizeof(Stack));
-	if (!targetA)
-		return (1);
+	// targetA = malloc(sizeof(Stack));
+	// if (!targetA)
+	// 	return (1);
+	// targetB = malloc(sizeof(Stack));
+	// if (!targetA)
+	// 	return (1);
 	push(&targetA, 5);
 	push(&targetA, 7);
 	push(&targetA, 4);
@@ -53,6 +53,11 @@ int	main(void)
 	ft_printf("\n");
 	printf("Stack A disorder = %lf\n", compute_disorder(targetA));
 	printf("Stack B disorder = %lf\n", compute_disorder(targetB));
+	//
+	ra(&targetA);
+	ft_printf("Stack A:\n");
+	print_stack(targetA);
+	ft_printf("\n");
 	free_stack(&targetA);
 	free_stack(&targetB);
 	return (0);

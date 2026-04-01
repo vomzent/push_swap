@@ -29,15 +29,15 @@ double	compute_disorder(Stack *A)
 	return (ret);
 }
 
-void	selection_sort(Stack **A, Stack **B)
-{
+// void	selection_sort(Stack **A, Stack **B)
+// {
 
-}
+// }
 
-void	selection_base(Stack **A)
-{
-	
-}
+// void	selection_base(Stack **A)
+// {
+
+// }
 
 /*
 function compute_disorder(stack a):

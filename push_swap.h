@@ -17,7 +17,6 @@ typedef struct Stack{
 
 	int				value;
 	struct Stack	*next;
-	struct Stack	*previous;
 	// struct Stack	*previous;
 	// struct Stack	*current;
 } Stack;
@@ -29,12 +28,16 @@ void	push(Stack **target, int value);
 int		pop(Stack **target);
 int		peek(Stack **target);
 void	free_stack(Stack **target);
+int		stack_size(Stack *target);
+void	print_stack(Stack *target);
 
 void	sa(Stack **A);
 void	sb(Stack **A);
 void	ss(Stack **A, Stack **B);
 void	pa(Stack **A, Stack **B);
 void	pb(Stack **A, Stack **B);
+
+void	ra(Stack **A);
 
 // Algorithm operations
 double	compute_disorder(Stack *A);

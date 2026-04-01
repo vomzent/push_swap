@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+#include <stddef.h> //use of null in ra
+#include <stdio.h>
+
 int	stack_size(Stack *target)
 {	
 	int	size;
@@ -24,23 +28,21 @@ int	stack_size(Stack *target)
 }
 
 
-void	ra(Stack **A)
+void	rra(Stack **A)
 {
-	int	i;
-	int	n;
 	Stack	*head;
-	Stack	*tmp;
+	Stack	*prev;
 
-	i = 0;
-	n = stack_size(*A);
 	head = *A;
-	while (i < n)
+	prev = NULL;
+	while (head->next != 0)
 	{
-		tmp = *A;
-		*A = (*A)->next;
-		(*A)->next =
-		i++;
+		prev = head;
+		head = head->next;
 	}
+	head->next = *A;
+	*A = head;
+	prev->next = NULL;
 }
 
 // void	rb(Stack **B)
