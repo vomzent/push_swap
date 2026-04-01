@@ -1,8 +1,11 @@
 To do
 
-- typedef struct Stack
-- 
-
+- write function for ft_printf to print double (because benchmark will have to show the level of disorder)
+- learn more about the "-- simple / -- bench etc"
+- write out the algorithms based on the operations
+	- for O^n -> selection sort
+	- for 
+- write out function to select algorithm based on disorder value
 
 ### Stack operations
 
