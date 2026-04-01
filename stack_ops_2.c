@@ -33,12 +33,12 @@ void	ra(Stack **A)
 
 	i = 0;
 	n = stack_size(*A);
-	head = A*;
+	head = *A;
 	while (i < n)
 	{
-		tmp = A*;
-		A* = A*->next;
-		A*->next =
+		tmp = *A;
+		*A = (*A)->next;
+		(*A)->next =
 		i++;
 	}
 }
