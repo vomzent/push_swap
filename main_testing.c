@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 void	print_stack(Stack *target)
@@ -37,7 +38,12 @@ int	main(void)
 		return (1);
 	push(&targetA, 5);
 	push(&targetA, 7);
+	push(&targetA, 4);
+	push(&targetA, 3);
+	push(&targetA, 1);
 	push(&targetB, 10);
+	push(&targetB, 7);
+	push(&targetB, 5);
 	push(&targetB, 4);
 	ft_printf("Stack A:\n");
 	print_stack(targetA);
@@ -45,38 +51,8 @@ int	main(void)
 	ft_printf("Stack B:\n");
 	print_stack(targetB);
 	ft_printf("\n");
-	// sa/sb checks
-	sa(&targetA);
-	sb(&targetB);
-	ft_printf("Stack A:\n");
-	print_stack(targetA);
-	ft_printf("\n");
-	ft_printf("Stack B:\n");
-	print_stack(targetB);
-	ft_printf("\n");
-	// ss check
-	ss(&targetA, &targetB);
-	ft_printf("Stack A:\n");
-	print_stack(targetA);
-	ft_printf("\n");
-	ft_printf("Stack B:\n");
-	print_stack(targetB);
-	ft_printf("\n");
-	// pa/pb checks
-	pa(&targetA, &targetB);
-	ft_printf("Stack A:\n");
-	print_stack(targetA);
-	ft_printf("\n");
-	ft_printf("Stack B:\n");
-	print_stack(targetB);
-	ft_printf("\n");
-	pb(&targetA, &targetB);
-	ft_printf("Stack A:\n");
-	print_stack(targetA);
-	ft_printf("\n");
-	ft_printf("Stack B:\n");
-	print_stack(targetB);
-	ft_printf("\n");
+	printf("Stack A disorder = %lf\n", compute_disorder(targetA));
+	printf("Stack B disorder = %lf\n", compute_disorder(targetB));
 	free_stack(&targetA);
 	free_stack(&targetB);
 	return (0);

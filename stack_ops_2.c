@@ -43,30 +43,30 @@ void	ra(Stack **A)
 	}
 }
 
-void	rb(Stack **B)
-{
+// void	rb(Stack **B)
+// {
 
-}
+// }
 
-void	rr(Stack **A, Stack **B)
-{
+// void	rr(Stack **A, Stack **B)
+// {
 
-}
+// }
 
-void	rra(Stack **A)
-{
+// void	rra(Stack **A)
+// {
 
-}
+// }
 
-void	rrb(Stack **B)
-{
+// void	rrb(Stack **B)
+// {
 
-}
+// }
 
-void	rrr(Stack **A, Stack **B)
-{
+// void	rrr(Stack **A, Stack **B)
+// {
 	
-}
+// }
 
 /*
 

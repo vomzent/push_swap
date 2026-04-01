@@ -31,7 +31,7 @@ void	push(Stack **target, int value)
 	}
 	node->value = value;
 	node->next = *target;
-	target->previous = node;
+	(*target)->previous = node;
 	*target = node;
 }
 // assuming that * target == pointing to the first node in the stack atm
@@ -48,7 +48,7 @@ int	pop(Stack **target)
 		tmp = (*target)->next;
 		free(*target);
 		*target = tmp;
-		target->previous = NULL;
+		(*target)->previous = NULL;
 	}
 	return (popped);
 }

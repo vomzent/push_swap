@@ -6,6 +6,7 @@ CFLAGS = -Wall -Werror -Wextra
 SRC = \
 		stack_ops.c \
 		stack_behavior.c \
+		algo_selection.c \
 		main_testing.c
 OBJ = $(SRC:.c=.o)
 AR = ar rcs

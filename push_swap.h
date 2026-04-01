@@ -36,6 +36,9 @@ void	ss(Stack **A, Stack **B);
 void	pa(Stack **A, Stack **B);
 void	pb(Stack **A, Stack **B);
 
+// Algorithm operations
+double	compute_disorder(Stack *A);
+
 /*
 --simple
 --medium
