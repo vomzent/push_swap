@@ -2,6 +2,7 @@
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
+#include <stddef.h>
 
 double	compute_disorder(Stack *A)
 {
@@ -29,24 +30,43 @@ double	compute_disorder(Stack *A)
 	return (ret);
 }
 
-// void	selection_sort(Stack **A, Stack **B)
-// {
+void	extract_max(Stack **A, Stack **B)
+{
+	int	max;
+	int	size;
 
-// }
+	if (!*A)	
+	{
+		ft_printf("Error\n");
+		return ;
+	}
+	max = find_max(*A);
+	size = stack_size(*A);
+	while (size + 1 > 0)
+	{
+		if ((*A)->value != max)
+		{
+			pb(A, B);
+		}
+		else
+			*A = (*A)->next;
+		size--;
+	}
+	push(A, max);
+}
 
-// void	selection_base(Stack **A)
-// {
+int	find_max(Stack *A)
+{
+	int		max;
+	Stack	*marker;
 
-// }
-
-/*
-function compute_disorder(stack a):
-	mistakes = 0
-	total_pairs = 0
-	for i from 0 to size(a)-1:
-		for j from i+1 to size(a)-1:
-			total_pairs += 1
-			if a[i] > a[j]:
-				mistakes += 1
-	return mistakes / total_pairs
-*/
+	max = A->value;
+	marker = A;
+	while (marker)
+	{
+		if (marker->value > max)
+			max = marker->value;
+		marker = marker->next;
+	}
+	return (max);
+}

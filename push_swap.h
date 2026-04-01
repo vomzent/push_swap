@@ -53,6 +53,8 @@ void	rrr(Stack **A, Stack **B);
 
 // Algorithm operations
 double	compute_disorder(Stack *A);
+int		find_max(Stack *A);
+void	extract_max(Stack **A, Stack **B);
 
 /*
 --simple
