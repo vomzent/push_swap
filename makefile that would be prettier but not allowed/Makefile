@@ -17,7 +17,7 @@ SRC = \
 		chunk_sort.c \
 		main_testing_chunk.c
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(addprefix obj/, $(SRC:.c=.o))
 AR = ar rcs
 
 all: $(NAME)
@@ -29,8 +29,9 @@ printf:
 	$(MAKE) -C ft_printf
 	cp ft_printf/libftprintf.a $(LIB)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+obj/%.o: src/%.c
+	mkdir -p obj
+	$(CC) $(CFLAGS) -I includes -c $< -o $@
 
 clean:
 	rm -f $(OBJ)

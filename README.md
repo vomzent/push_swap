@@ -3,8 +3,8 @@ To do
 - write function for ft_printf to print double (because benchmark will have to show the level of disorder)
 - learn more about the "-- simple / -- bench etc"
 - write out the algorithms based on the operations
-	- for O^n -> selection sort
-	- for 
+	- chunk based sorting
+	- quick sort?
 - write out function to select algorithm based on disorder value
 
 ### Stack operations
