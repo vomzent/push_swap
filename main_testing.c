@@ -70,8 +70,7 @@ int	main(void)
 	ft_printf("Stack B:\n");
 	print_stack(targetB);
 	ft_printf("\n");
-	printf("Stack A find max = %d\n", find_max(targetA));
-	extract_max(&targetA, &targetC);
+	selection_sort(&targetA, &targetC);
 	ft_printf("Stack A:\n");
 	print_stack(targetA);
 	ft_printf("\n");

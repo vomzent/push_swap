@@ -59,3 +59,5 @@ function compute_disorder(stack a):
 	return mistakes / total_pairs
 
 ```
+
+https://leetcode.fandom.com/wiki/Sort_with_two_stacks

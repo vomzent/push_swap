@@ -3,6 +3,7 @@
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 #include <stddef.h>
+#include <stdlib.h>
 
 double	compute_disorder(Stack *A)
 {
@@ -30,43 +31,52 @@ double	compute_disorder(Stack *A)
 	return (ret);
 }
 
-void	extract_max(Stack **A, Stack **B)
+void	selection_sort(Stack **A, Stack **B)
 {
-	int	max;
-	int	size;
-
-	if (!*A)	
+	int	*arr;
+	
+	while (*A)
 	{
-		ft_printf("Error\n");
-		return ;
-	}
-	max = find_max(*A);
-	size = stack_size(*A);
-	while (size + 1 > 0)
-	{
-		if ((*A)->value != max)
+		arr = find_min(*A);
+		while (arr[0] != (*A)->value)
 		{
-			pb(A, B);
+			if (arr[1] > stack_size(*A) / 2)
+				rra(A);
+			else
+				ra(A);
 		}
-		else
-			*A = (*A)->next;
-		size--;
+		pb(A, B);
+		// *A = (*A)->next;
 	}
-	push(A, max);
+	while (*B)
+		pa(A, B);
+	free(arr);
 }
 
-int	find_max(Stack *A)
+int	*find_min(Stack *A)
 {
-	int		max;
+	int		*arr;
+	int		min;
+	int		pos;
+	int		counter;
 	Stack	*marker;
 
-	max = A->value;
+	min = A->value;
+	pos = 0;
 	marker = A;
+	arr = malloc(sizeof(int) * 2);
+	counter = 0;
 	while (marker)
 	{
-		if (marker->value > max)
-			max = marker->value;
+		if (marker->value < min)
+		{
+			min = marker->value;
+			pos = counter;			
+		}
+		counter++;
 		marker = marker->next;
 	}
-	return (max);
+	arr[0] = min;
+	arr[1] = pos;
+	return (arr);
 }
