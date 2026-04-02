@@ -3,55 +3,66 @@
 
 #include "push_swap.h"
 #include <stdlib.h>
+#include "ft_printf/ft_printf.h"
 
-void	chunk_sort(Stack **A, Stack **B)
-{
-	int	max;
-	int	min;
-	int	**chunks;
+// void	chunk_sort(Stack **A, Stack **B)
+// {
+// 	int	max;
+// 	int	min;
+// 	int	**chunks;
 
-	chunks = create_chunk(A);
-	min = chunks[0][0];
-	max = chunks[i][1];
-	while (*A)
+// 	chunks = create_chunk(A);
+// 	min = chunks[0][0];
+// 	max = chunks[i][1];
+// 	while (*A)
 
-	while (*B)
-		retrieve_max(B);
-}
+// 	while (*B)
+// 		retrieve_max(B);
+// }
 
-int	*scan_stack(Stack **A, int *range)
+int	*scan_stack(Stack *A, int *range)
 {
 	int		*pos;
 	int		counter;
+	Stack	*last;
 
 	pos = malloc(sizeof(int) * 2);
 	counter = 0;
-	while (*A)
+	while (A)
 	{
-		if ((*A)->value >= range[0] && (*A)->value <= range[1])
+		if (A->value >= range[0] && A->value <= range[1])
 		{
+			ft_printf("value of top hold %d\n", A->value);
 			pos[0] = counter;
-			break;
-		}
-		counter++;
-		*A = (*A)->next;
-	}
-	while ((*A)->previous)
-	{
-		if ((*A)->value >= range[0] && (*A)->value <= range[1])
-		{
-			pos[1] = stack_size(*A) - counter;
 			break ;
 		}
-		counter--;
-		*A = (*A)->previous;
+		counter++;
+		A = A->next;
 	}
-	return (pos)
+	while (A)
+	{
+		last = A;
+		A = A->next;
+	}
+	A = last;
+	counter = 0;
+	while (A)
+	{
+		if (A->value >= range[0] && A->value <= range[1])
+		{
+			ft_printf("value of bottom hold %d\n", A->value);
+			pos[1] = counter;
+			break ;
+		}
+		counter++;
+		A = A->previous;
+	}
+	return (pos);
 }
-// still too fucking long ffs
+// too fucking long ffs
 // also with this approach we need a previous pointer so we can go from bottom to top
 
-void	retrieve_max(Stack **B)
+void	retrieve_max(Stack **A, Stack **B)
 {
 	int	max;
 	int	pos;
@@ -94,7 +105,7 @@ int	retrieve_pos(Stack *B, int	found)
 	return (pos);
 }
 
-void	find_max(Stack *A)
+int	find_max(Stack *A)
 {
 	int		max;
 	Stack	*marker;
@@ -103,8 +114,8 @@ void	find_max(Stack *A)
 	marker = A;
 	while (marker)
 	{
-		if (marker->value < min)
-			min = marker->value;
+		if (marker->value > max)
+			max = marker->value;
 		marker = marker->next;
 	}
 	return (max);

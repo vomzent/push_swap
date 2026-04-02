@@ -17,7 +17,7 @@ typedef struct Stack{
 
 	int				value;
 	struct Stack	*next;
-	// struct Stack	*previous;
+	struct Stack	*previous;
 	// struct Stack	*current;
 } Stack;
 
@@ -56,8 +56,12 @@ double	compute_disorder(Stack *A);
 int		*find_min(Stack *A);
 void	selection_sort(Stack **A, Stack **B);
 
-int	**create_chunk(Stack **A);
-int	*find_range(Stack **A);
+int		**create_chunk(Stack **A);
+int		*find_range(Stack **A);
+int		*scan_stack(Stack *A, int *range);
+void	retrieve_max(Stack **A, Stack **B);
+int		retrieve_pos(Stack *B, int	found);
+int	find_max(Stack *A);
 
 /*
 --simple

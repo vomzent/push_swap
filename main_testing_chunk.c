@@ -33,6 +33,14 @@ int	main(void)
 
 	//
 
+	ft_printf("Stack A:\n");
+	print_stack(targetA);
+	ft_printf("\n");
+
+	int	range[2] = {-10, -5};
+	int	*position = scan_stack(targetA, range);
+	ft_printf("first value in range from top at pos %d\n, first value in range from bot at pos %d\n", position[0], position[1]);
+
 	chunks = create_chunk(&targetA);
 
 	ft_printf("Stack A:\n");
