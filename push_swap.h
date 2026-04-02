@@ -56,6 +56,9 @@ double	compute_disorder(Stack *A);
 int		*find_min(Stack *A);
 void	selection_sort(Stack **A, Stack **B);
 
+int	**create_chunk(Stack **A);
+int	*find_range(Stack **A);
+
 /*
 --simple
 --medium

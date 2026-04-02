@@ -9,7 +9,9 @@ SRC = \
 		rotate.c \
 		stack_behavior.c \
 		algo_selection.c \
-		main_testing.c
+		selection_sort.c \
+		chunk_sort.c \
+		main_testing_chunk.c
 OBJ = $(SRC:.c=.o)
 AR = ar rcs
 NAME = push_swap

@@ -70,6 +70,7 @@ int	main(void)
 	ft_printf("Stack B:\n");
 	print_stack(targetB);
 	ft_printf("\n");
+	ft_printf("Selection sort \n")
 	selection_sort(&targetA, &targetC);
 	ft_printf("Stack A:\n");
 	print_stack(targetA);

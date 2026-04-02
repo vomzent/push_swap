@@ -74,3 +74,12 @@ void	pb(Stack **A, Stack **B)
 	push(B, popped);
 	ft_printf("pb\n");
 }
+
+void	print_stack(Stack *target)
+{
+	while (target != NULL)
+	{
+		ft_printf("%d ", target->value);
+		target = (target)->next;
+	}
+}
