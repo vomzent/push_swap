@@ -49,6 +49,7 @@ int	*scan_stack(Stack **A, int *range)
 	return (pos)
 }
 // still too fucking long ffs
+// also with this approach we need a previous pointer so we can go from bottom to top
 
 void	retrieve_max(Stack **B)
 {
