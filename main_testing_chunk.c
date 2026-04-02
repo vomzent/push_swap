@@ -1,5 +1,6 @@
 #include "ft_printf/ft_printf.h"
 #include "push_swap.h"
+#include <math.h>
 #include <stddef.h>
 
 int	main(void)
@@ -41,14 +42,22 @@ int	main(void)
 	int	*position = scan_stack(targetA, range);
 	ft_printf("first value in range from top at pos %d\n, first value in range from bot at pos %d\n", position[0], position[1]);
 
-	chunks = create_chunk(&targetA);
-
+	int amount_of_chunks = (int)sqrt(stack_size(targetA));
+	chunks = create_chunk(&targetA, amount_of_chunks);
+	while (i < amount_of_chunks)
+	{
+		ft_printf("[%d, %d], ", chunks[i][0], chunks[i][1]);
+		i++;
+	}
+	ft_printf("\n");
+	chunk_sort(&targetA, &targetB);
 	ft_printf("Stack A:\n");
 	print_stack(targetA);
 	ft_printf("\n");
 	ft_printf("Stack B:\n");
 	print_stack(targetB);
 	ft_printf("\n");
+
 
 	while (i < 5)
 	{

@@ -47,14 +47,13 @@ int	pop(Stack **target)
 	Stack	*tmp;
 
 	popped = 0;
-	if ((*target)->value != 0)
-	{
-		popped = (*target)->value;
-		tmp = (*target)->next;
-		free(*target);
-		*target = tmp;
-		(*target)->previous = NULL;
-	}
+	if (!(*target))
+		return (popped);
+	popped = (*target)->value;
+	tmp = (*target)->next;
+	free(*target);
+	*target = tmp;
+	(*target)->previous = NULL;
 	return (popped);
 }
 

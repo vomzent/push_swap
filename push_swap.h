@@ -56,14 +56,15 @@ double	compute_disorder(Stack *A);
 int		*find_min(Stack *A);
 void	selection_sort(Stack **A, Stack **B);
 
-int		**create_chunk(Stack **A);
+void	chunk_sort(Stack **A, Stack **B);
+int		**create_chunk(Stack **A, int amount);
 int		*find_range(Stack **A);
 int		*scan_stack(Stack *A, int *range);
 void	retrieve_max(Stack **A, Stack **B);
 int		retrieve_pos(Stack *B, int	found);
 int		find_max(Stack *A);
 int		count_chunk(Stack *A, int *range);
-void	retrieve_chunk(Stack **A, Stack **B, int *range, int pos);
+void	retrieve_chunk(Stack **A, Stack **B, int *range);
 
 /*
 --simple

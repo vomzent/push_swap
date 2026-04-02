@@ -4,42 +4,58 @@
 #include "push_swap.h"
 #include <stdlib.h>
 #include "ft_printf/ft_printf.h"
+#include <math.h>
 
 void	chunk_sort(Stack **A, Stack **B)
 {
 	int	i;
 	int	**chunks;
-	int	*pos;
+	int	amount_of_chunks;
 
-	chunks = create_chunk(A);
+	amount_of_chunks = (int)sqrt(stack_size(*A));
+	chunks = create_chunk(A, amount_of_chunks);
 	i = 0;
-	while (i < chunk_num)
+	while (i < amount_of_chunks)
 	{
-		pos = scan_stack(A, chunks[i]);
-
+		retrieve_chunk(A, B, chunks[i]);
 		i++;
 	}
-
+	ft_printf("Stack A:\n");
+	print_stack(*A);
+	ft_printf("\n");
+	ft_printf("Stack B:\n");
+	print_stack(*B);
+	ft_printf("\n");
 	while (*B)
-		retrieve_max(B);
+		retrieve_max(A, B);
 }
-// this still needs so much work omfg
 
-void	retrieve_chunk(Stack **A, Stack **B, int *range, int pos)
+void	retrieve_chunk(Stack **A, Stack **B, int *range)
 {
 	int	count;
+	int	*pos;
 
 	count = count_chunk(*A, range);
+	ft_printf("chunk counts %d elements\n", count);
 	while (count > 0)
 	{
-		while (!((*A)->value >= range[0] && (*A)->value <= range[1]))
-			if (pos > stack_size(*A) / 2)
-				rra(A);
-			else
-				ra(A);
+		ft_printf("chunk counts %d elements\n", count);
+		pos = scan_stack(*A, range);
+		if (!pos)
+			return ;
+		if (pos[0] != pos[1])
+		{
+			while ((!((*A)->value >= range[0] && (*A)->value <= range[1])))
+				if (pos[0] > pos[1])
+					ra(A);
+				else if (pos[0] < pos[1])
+					rra(A);
+			pos = scan_stack(*A, range);
+		}
 		pb(A, B);
 		count--;
 	}
+	free(pos);
 }
 
 int	count_chunk(Stack *A, int *range)
@@ -96,6 +112,7 @@ int	*scan_stack(Stack *A, int *range)
 	return (pos);
 }
 // too fucking long ffs
+// need to fix this code too because it is a hot mess
 
 void	retrieve_max(Stack **A, Stack **B)
 {
@@ -104,16 +121,21 @@ void	retrieve_max(Stack **A, Stack **B)
 
 	max = 0;
 	pos = 0;
+	ft_printf("enter retrievemax, B size: %d\n", stack_size(*B));
 	while (*B)
 	{
-		max = find_max(*B);
+		if (*B)
+			max = find_max(*B);
+		ft_printf("new max to be found: %d\n", max);
 		pos = retrieve_pos(*B, max);
-		while ((*B)->value != max)
+		while (*B && (*B)->value != max)
 		{
+			ft_printf("inner loop, B size: %d, top: %d, looking for: %d, pos: %d\n", stack_size(*B), (*B)->value, max, pos);
 			if (pos > stack_size(*B) / 2)
 				rrb(B);
 			else
 				rb(B);
+			pos = retrieve_pos(*B, max);
 		}
 		pa(A, B);
 	}
@@ -156,29 +178,27 @@ int	find_max(Stack *A)
 	return (max);
 }
 
-int	**create_chunk(Stack **A)
+int	**create_chunk(Stack **A, int amount)
 {
 	int	*range;
 	int	**chunks;
 	int	size;
 	int	chunk_size;
 	int	i;
-	int	chunk_num;
 
 	range = find_range(A);
 	size = range[1] - range[0];
-	chunk_num = 5;
-	chunk_size = size / 5;
-	chunks = malloc(sizeof(int *) * chunk_num);
+	chunk_size = size / amount;
+	chunks = malloc(sizeof(int *) * amount);
 	i = 0;
-	while (i < chunk_num)
+	while (i < amount)
 	{
 		chunks[i] = malloc(sizeof(int) * 2);
 		if (i == 0)
 			chunks[i][0] = range[0];
 		else
 			chunks[i][0] = range[0] + (chunk_size * i) + 1;
-		if (i == chunk_num - 1)
+		if (i == amount - 1)
 			chunks[i][1] = range[1];
 		else
 			chunks[i][1] = range[0] + chunk_size + (chunk_size * i);

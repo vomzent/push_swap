@@ -61,6 +61,8 @@ void	pa(Stack **A, Stack **B)
 {
 	int	popped;
 
+	if (!*B)
+		return ;
 	popped = pop(B);
 	push(A, popped);
 	ft_printf("pa\n");
@@ -70,6 +72,8 @@ void	pb(Stack **A, Stack **B)
 {
 	int	popped;
 
+	if (!*A)
+		return ;
 	popped = pop(A);
 	push(B, popped);
 	ft_printf("pb\n");

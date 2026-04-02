@@ -23,7 +23,7 @@ AR = ar rcs
 all: $(NAME)
 
 $(NAME): printf $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -L. -lftprintf -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -L. -lftprintf -lm -o $(NAME)
 
 printf: 
 	$(MAKE) -C ft_printf
