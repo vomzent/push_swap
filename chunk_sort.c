@@ -19,7 +19,38 @@ void	chunk_sort(Stack **A, Stack **B)
 		retrieve_max(B);
 }
 
-void	retrieve_max(Stack **B, int **chunks, int chunk_size)
+int	*scan_stack(Stack **A, int *range)
+{
+	int		*pos;
+	int		counter;
+
+	pos = malloc(sizeof(int) * 2);
+	counter = 0;
+	while (*A)
+	{
+		if ((*A)->value >= range[0] && (*A)->value <= range[1])
+		{
+			pos[0] = counter;
+			break;
+		}
+		counter++;
+		*A = (*A)->next;
+	}
+	while ((*A)->previous)
+	{
+		if ((*A)->value >= range[0] && (*A)->value <= range[1])
+		{
+			pos[1] = stack_size(*A) - counter;
+			break ;
+		}
+		counter--;
+		*A = (*A)->previous;
+	}
+	return (pos)
+}
+// still too fucking long ffs
+
+void	retrieve_max(Stack **B)
 {
 	int	max;
 	int	pos;
@@ -29,7 +60,7 @@ void	retrieve_max(Stack **B, int **chunks, int chunk_size)
 	while (*B)
 	{
 		max = find_max(*B);
-		pos = retrieve_pos(*B);
+		pos = retrieve_pos(*B, max);
 		while ((*B)->value != max)
 		{
 			if (pos > stack_size(*B) / 2)
@@ -76,7 +107,6 @@ void	find_max(Stack *A)
 		marker = marker->next;
 	}
 	return (max);
-}
 }
 
 int	**create_chunk(Stack **A)

@@ -6,6 +6,7 @@ To do
 	- chunk based sorting
 	- quick sort?
 - write out function to select algorithm based on disorder value
+- should probably standardize all functions outside of stack operations to use just a "target" stack name rather than using A and B interchangably, because these functions can be used on both stacks
 
 ### Stack operations
 
