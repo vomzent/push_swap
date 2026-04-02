@@ -61,7 +61,9 @@ int		*find_range(Stack **A);
 int		*scan_stack(Stack *A, int *range);
 void	retrieve_max(Stack **A, Stack **B);
 int		retrieve_pos(Stack *B, int	found);
-int	find_max(Stack *A);
+int		find_max(Stack *A);
+int		count_chunk(Stack *A, int *range);
+void	retrieve_chunk(Stack **A, Stack **B, int *range, int pos);
 
 /*
 --simple

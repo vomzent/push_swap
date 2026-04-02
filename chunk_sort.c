@@ -5,20 +5,56 @@
 #include <stdlib.h>
 #include "ft_printf/ft_printf.h"
 
-// void	chunk_sort(Stack **A, Stack **B)
-// {
-// 	int	max;
-// 	int	min;
-// 	int	**chunks;
+void	chunk_sort(Stack **A, Stack **B)
+{
+	int	i;
+	int	**chunks;
+	int	*pos;
 
-// 	chunks = create_chunk(A);
-// 	min = chunks[0][0];
-// 	max = chunks[i][1];
-// 	while (*A)
+	chunks = create_chunk(A);
+	i = 0;
+	while (i < chunk_num)
+	{
+		pos = scan_stack(A, chunks[i]);
 
-// 	while (*B)
-// 		retrieve_max(B);
-// }
+		i++;
+	}
+
+	while (*B)
+		retrieve_max(B);
+}
+// this still needs so much work omfg
+
+void	retrieve_chunk(Stack **A, Stack **B, int *range, int pos)
+{
+	int	count;
+
+	count = count_chunk(*A, range);
+	while (count > 0)
+	{
+		while (!((*A)->value >= range[0] && (*A)->value <= range[1]))
+			if (pos > stack_size(*A) / 2)
+				rra(A);
+			else
+				ra(A);
+		pb(A, B);
+		count--;
+	}
+}
+
+int	count_chunk(Stack *A, int *range)
+{
+	int	count;
+
+	count = 0;
+	while (A)
+	{
+		if (A->value >= range[0] && A->value <= range[1])
+			count++;
+		A = A->next;
+	}
+	return (count);
+}
 
 int	*scan_stack(Stack *A, int *range)
 {
@@ -60,7 +96,6 @@ int	*scan_stack(Stack *A, int *range)
 	return (pos);
 }
 // too fucking long ffs
-// also with this approach we need a previous pointer so we can go from bottom to top
 
 void	retrieve_max(Stack **A, Stack **B)
 {
