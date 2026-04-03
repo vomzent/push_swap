@@ -37,25 +37,30 @@ void	retrieve_chunk(Stack **A, Stack **B, int *range)
 
 	count = count_chunk(*A, range);
 	ft_printf("chunk counts %d elements\n", count);
-	while (count > 0)
+	while (count > 0 && *A)
 	{
 		ft_printf("chunk counts %d elements\n", count);
-		pos = scan_stack(*A, range);
-		if (!pos)
-			return ;
-		if (pos[0] != pos[1])
+		while (*A && (!((*A)->value >= range[0] && (*A)->value <= range[1])))
 		{
-			while ((!((*A)->value >= range[0] && (*A)->value <= range[1])))
-				if (pos[0] > pos[1])
-					ra(A);
-				else if (pos[0] < pos[1])
-					rra(A);
 			pos = scan_stack(*A, range);
+			check_pos(A, pos);
+			if (!pos)
+				return ;
+			free(pos);
 		}
 		pb(A, B);
 		count--;
 	}
-	free(pos);
+}
+
+void	check_pos(Stack **A, int *pos)
+{
+	if (pos[0] == -1 && pos[1] == -1)
+		return (free(pos));
+	if ((pos[0] != -1 || pos[1] != -1) && (pos[0] < pos[1]))
+		ra(A);
+	else
+		rra(A);
 }
 
 int	count_chunk(Stack *A, int *range)
@@ -75,41 +80,55 @@ int	count_chunk(Stack *A, int *range)
 int	*scan_stack(Stack *A, int *range)
 {
 	int		*pos;
-	int		counter;
-	Stack	*last;
 
 	pos = malloc(sizeof(int) * 2);
+	if (!A)
+		return (NULL);
+	pos[0] = find_from_top(A, range);
+	pos[1] = find_from_bottom(A, range);
+	return (pos);
+}
+
+int	find_from_bottom(Stack *A, int *range)
+{
+	int	counter;
+	
+	counter = 0;
+	while (A->next)
+		A = A->next;
+	while (A)
+	{
+		if (A->value >= range[0] && A->value <= range[1])
+		{
+			ft_printf("value of bottom hold %d\n", A->value);
+			ft_printf("bottom hold pos %d\n", counter);
+			return (counter);
+		}
+		counter++;
+		if (!A->previous)
+			break ;
+		A = A->previous;
+	}
+	return (-1);
+}
+
+int	find_from_top(Stack *A, int *range)
+{
+	int	counter;
+	
 	counter = 0;
 	while (A)
 	{
 		if (A->value >= range[0] && A->value <= range[1])
 		{
 			ft_printf("value of top hold %d\n", A->value);
-			pos[0] = counter;
-			break ;
+			ft_printf("top hold pos %d\n", counter);
+			return (counter);
 		}
 		counter++;
 		A = A->next;
 	}
-	while (A)
-	{
-		last = A;
-		A = A->next;
-	}
-	A = last;
-	counter = 0;
-	while (A)
-	{
-		if (A->value >= range[0] && A->value <= range[1])
-		{
-			ft_printf("value of bottom hold %d\n", A->value);
-			pos[1] = counter;
-			break ;
-		}
-		counter++;
-		A = A->previous;
-	}
-	return (pos);
+	return (-1);
 }
 // too fucking long ffs
 // need to fix this code too because it is a hot mess
