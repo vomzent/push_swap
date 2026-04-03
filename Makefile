@@ -1,4 +1,4 @@
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re printf
 .DEFAULT_GOAL: all
 
 CC = cc
@@ -22,10 +22,11 @@ AR = ar rcs
 
 all: $(NAME)
 
-$(NAME): printf $(OBJ)
+$(NAME): $(LIB) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -L. -lftprintf -lm -o $(NAME)
 
-printf: 
+printf: $(LIB)
+$(LIB): 
 	$(MAKE) -C ft_printf
 	cp ft_printf/libftprintf.a $(LIB)
 
