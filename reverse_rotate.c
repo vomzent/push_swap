@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_ops_2.c                                      :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 11:32:53 by odschreu          #+#    #+#             */
-/*   Updated: 2026/03/31 11:34:13 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 09:59:23 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	np_rra(Stack **A)
 void	rra(Stack **A)
 {
 	np_rra(A);
-	ft_printf("rra\n");
+	ft_printf(1, "rra\n");
 }
 
 void	np_rrb(Stack **B)
@@ -58,13 +58,13 @@ void	np_rrb(Stack **B)
 void	rrb(Stack **B)
 {
 	np_rrb(B);
-	ft_printf("rrb\n");
+	ft_printf(1, "rrb\n");
 }
 
 void	rrr(Stack **A, Stack **B)
 {
 	np_rra(A);
 	np_rrb(B);
-	ft_printf("rrr\n");
+	ft_printf(1, "rrr\n");
 
 }

@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/30 09:04:12 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 09:46:45 by odschreu         ###   ########.fr       */
+/*   Created: 2026/03/10 09:22:23 by odschreu          #+#    #+#             */
+/*   Updated: 2026/03/19 12:55:01 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <unistd.h>
+#include "libft.h"
 
-int	ft_putstr(int fd, char *s)
+int	ft_isdigit(int c)
 {
-	int	len;
-
-	len = 0;
-	if (s == NULL)
-		len += ft_putstr(fd, "(null)");
-	else
-	{
-		while (*s)
-		{
-			write(fd, s++, 1);
-			len++;
-		}
-	}
-	return (len);
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

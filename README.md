@@ -63,3 +63,8 @@ function compute_disorder(stack a):
 
 https://leetcode.fandom.com/wiki/Sort_with_two_stacks
 https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
+
+
+### Our program
+
+- default strategy (int = 0) is adaptive, simple = 1, medium = 2, complex = 3

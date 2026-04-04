@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   benchmark.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/30 09:04:12 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 09:46:45 by odschreu         ###   ########.fr       */
+/*   Created: 2026/04/04 09:48:42 by odschreu          #+#    #+#             */
+/*   Updated: 2026/04/04 09:49:10 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <unistd.h>
+#include "push_swap.h"
+#include "ft_printf/ft_printf.h"
 
-int	ft_putstr(int fd, char *s)
-{
-	int	len;
-
-	len = 0;
-	if (s == NULL)
-		len += ft_putstr(fd, "(null)");
-	else
-	{
-		while (*s)
-		{
-			write(fd, s++, 1);
-			len++;
-		}
-	}
-	return (len);
-}
+void	benchmark_mode()

@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/30 09:04:12 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 09:46:45 by odschreu         ###   ########.fr       */
+/*   Created: 2026/03/10 09:24:38 by odschreu          #+#    #+#             */
+/*   Updated: 2026/03/19 12:59:25 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <unistd.h>
+#include "libft.h"
 
-int	ft_putstr(int fd, char *s)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	len;
-
-	len = 0;
-	if (s == NULL)
-		len += ft_putstr(fd, "(null)");
-	else
+	if (n == 0)
+		return (0);
+	while (*s1 && *s2 && n > 1 && *s1 == *s2)
 	{
-		while (*s)
-		{
-			write(fd, s++, 1);
-			len++;
-		}
+		s1++;
+		s2++;
+		n--;
 	}
-	return (len);
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }

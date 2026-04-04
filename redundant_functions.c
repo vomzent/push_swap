@@ -1,4 +1,16 @@
-// the functions that did not make it...
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redundant_functions.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/04 08:50:59 by odschreu          #+#    #+#             */
+/*   Updated: 2026/04/04 09:58:05 by odschreu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 
 void	extract_max(Stack **A, Stack **B)
 {
@@ -7,7 +19,7 @@ void	extract_max(Stack **A, Stack **B)
 
 	if (!*A)	
 	{
-		ft_printf("Error\n");
+		ft_printf(1, "Error\n");
 		return ;
 	}
 	max = find_max(*A);
