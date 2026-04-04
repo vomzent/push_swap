@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:50:39 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 10:03:19 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 10:30:48 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	selection_sort(Stack **A, Stack **B)
 				ra(A);
 		}
 		pb(A, B);
-		// *A = (*A)->next;
 	}
 	while (*B)
 		pa(A, B);

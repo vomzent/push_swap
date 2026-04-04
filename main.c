@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:51:22 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 09:52:15 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 11:18:42 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,22 @@
 
 int	main(int argc, char** argv)
 {
-	Stack	**A;
-	Stack	**B;
+	Data	data;
 	int		strategy;
 	
 	if (argc < 2)
 		return (-1);
+	ft_bzero(&data, sizeof(data));
 	strategy = extract_arg(argc, argv, A);
 	if (strategy == -1)
 		return (-1);
 	sort_stack(A, B, strategy);
-	benchmark_mode();
+	benchmark_mode(&data);
+	free(data);
 	return (0);
 }
-// check for errors: args that are not int, integers outside of valid range, duplicates
 
+// check for errors: args that are not int, integers outside of valid range, duplicates
 
 int	extract_arg(int argc, char **argv, Stack **A)
 {
