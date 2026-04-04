@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:24:54 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 09:47:57 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:19:28 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		ft_putnbr(int fd, int n);
 int		ft_puthex(int fd, uintptr_t hex_nbr, int base);
 int		ft_putptr(int fd, void *p);
 int		convert_arg(int fd, const char *string, va_list *args);
+int		ft_putdouble(int fd, double n);
 int		ft_printf(int fd, const char *user_input, ...);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 09:48:42 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 11:37:03 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:15:35 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	benchmark_mode(Data *data)
 	char	*strategy;
 
 	strategy = set_strategy(data->strategy, data->disorder);
-	ft_printf(2, "disorder: %.2f%%\n", data->disorder);
+	ft_printf(2, "disorder: %.%%\n", data->disorder);
 	ft_printf(2, "%s\n", strategy);
 	ft_printf(2, "total_ops: %d\n", data->total_ops);
 	ft_printf(2, "sa: %d ", data->ops[0]);

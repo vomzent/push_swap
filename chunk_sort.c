@@ -20,12 +20,12 @@ void	chunk_sort(Stack **A, Stack **B)
 		retrieve_chunk(A, B, chunks[i]);
 		i++;
 	}
-	ft_printf("Stack A:\n");
+	ft_printf(1, "Stack A:\n");
 	print_stack(*A);
-	ft_printf("\n");
-	ft_printf("Stack B:\n");
+	ft_printf(1, "\n");
+	ft_printf(1, "Stack B:\n");
 	print_stack(*B);
-	ft_printf("\n");
+	ft_printf(1, "\n");
 	while (*B)
 		retrieve_max(A, B);
 }
@@ -36,10 +36,10 @@ void	retrieve_chunk(Stack **A, Stack **B, int *range)
 	int	*pos;
 
 	count = count_chunk(*A, range);
-	ft_printf("chunk counts %d elements\n", count);
+	ft_printf(1, "chunk counts %d elements\n", count);
 	while (count > 0 && *A)
 	{
-		ft_printf("chunk counts %d elements\n", count);
+		ft_printf(1, "chunk counts %d elements\n", count);
 		while (*A && (!((*A)->value >= range[0] && (*A)->value <= range[1])))
 		{
 			pos = scan_stack(*A, range);
@@ -100,8 +100,8 @@ int	find_from_bottom(Stack *A, int *range)
 	{
 		if (A->value >= range[0] && A->value <= range[1])
 		{
-			ft_printf("value of bottom hold %d\n", A->value);
-			ft_printf("bottom hold pos %d\n", counter);
+			ft_printf(1, "value of bottom hold %d\n", A->value);
+			ft_printf(1, "bottom hold pos %d\n", counter);
 			return (counter);
 		}
 		counter++;
@@ -121,8 +121,8 @@ int	find_from_top(Stack *A, int *range)
 	{
 		if (A->value >= range[0] && A->value <= range[1])
 		{
-			ft_printf("value of top hold %d\n", A->value);
-			ft_printf("top hold pos %d\n", counter);
+			ft_printf(1, "value of top hold %d\n", A->value);
+			ft_printf(1, "top hold pos %d\n", counter);
 			return (counter);
 		}
 		counter++;
@@ -140,16 +140,16 @@ void	retrieve_max(Stack **A, Stack **B)
 
 	max = 0;
 	pos = 0;
-	ft_printf("enter retrievemax, B size: %d\n", stack_size(*B));
+	ft_printf(1, "enter retrievemax, B size: %d\n", stack_size(*B));
 	while (*B)
 	{
 		if (*B)
 			max = find_max(*B);
-		ft_printf("new max to be found: %d\n", max);
+		ft_printf(1, "new max to be found: %d\n", max);
 		pos = retrieve_pos(*B, max);
 		while (*B && (*B)->value != max)
 		{
-			ft_printf("inner loop, B size: %d, top: %d, looking for: %d, pos: %d\n", stack_size(*B), (*B)->value, max, pos);
+			ft_printf(1, "inner loop, B size: %d, top: %d, looking for: %d, pos: %d\n", stack_size(*B), (*B)->value, max, pos);
 			if (pos > stack_size(*B) / 2)
 				rrb(B);
 			else

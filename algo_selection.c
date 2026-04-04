@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:51:11 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 08:51:18 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:21:07 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ double	compute_disorder(Stack *A)
 		i = i->next;
 		j = j->next;
 	}
-	ft_printf("total_pairs = %d\n", total_pairs);
-	ft_printf("mistakes = %d\n", mistakes);
+	ft_printf(1, "total_pairs = %d\n", total_pairs);
+	ft_printf(1, "mistakes = %d\n", mistakes);
 	ret = (double)mistakes / (double)total_pairs;
 	return (ret);
 }

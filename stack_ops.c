@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 09:45:03 by odschreu          #+#    #+#             */
-/*   Updated: 2026/03/31 11:31:34 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:20:41 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	np_sa(Stack **A)
 void	sa(Stack **A)
 {
 	np_sa(A);
-	ft_printf("sa\n");
+	ft_printf(1, "sa\n");
 }
 
 void	np_sb(Stack **B)
@@ -47,14 +47,14 @@ void	np_sb(Stack **B)
 void	sb(Stack **B)
 {
 	np_sb(B);
-	ft_printf("sb\n");
+	ft_printf(1, "sb\n");
 }
 
 void	ss(Stack **A, Stack **B)
 {
 	np_sa(A);
 	np_sb(B);
-	ft_printf("ss\n");
+	ft_printf(1, "ss\n");
 }
 
 void	pa(Stack **A, Stack **B)
@@ -65,7 +65,7 @@ void	pa(Stack **A, Stack **B)
 		return ;
 	popped = pop(B);
 	push(A, popped);
-	ft_printf("pa\n");
+	ft_printf(1, "pa\n");
 }
 
 void	pb(Stack **A, Stack **B)
@@ -76,14 +76,14 @@ void	pb(Stack **A, Stack **B)
 		return ;
 	popped = pop(A);
 	push(B, popped);
-	ft_printf("pb\n");
+	ft_printf(1, "pb\n");
 }
 
 void	print_stack(Stack *target)
 {
 	while (target != NULL)
 	{
-		ft_printf("%d ", target->value);
+		ft_printf(1, "%d ", target->value);
 		target = (target)->next;
 	}
 }

@@ -12,6 +12,7 @@ SRC = \
 		ft_putnbr.c \
 		ft_putptr.c \
 		ft_putstr.c \
+		ft_putdouble.c \
 		ft_printf.c
 OBJ = $(SRC:.c=.o)
 AR = ar rcs

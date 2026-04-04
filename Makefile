@@ -1,11 +1,12 @@
 .PHONY: all clean fclean re printf
-.DEFAULT_GOAL: all
+.DEFAULT_GOAL: re
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 NAME = push_swap
 LIB = libftprintf.a
+LIB2 = libft.a
 
 SRC = \
 		stack_ops.c \
@@ -15,18 +16,24 @@ SRC = \
 		algo_selection.c \
 		selection_sort.c \
 		chunk_sort.c \
-		main_testing_chunk.c
+		doubletest.c
 
 OBJ = $(SRC:.c=.o)
 AR = ar rcs
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -L. -lftprintf -lm -o $(NAME)
+$(NAME): $(LIB) $(LIB2) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -L. -lftprintf -lft -lm -o $(NAME)
+
+
+libft: $(LIB2)
+$(LIB2):
+	$(MAKE) -C libft
+	cp libft/libft.a $(LIB2)
 
 printf: $(LIB)
-$(LIB): 
+$(LIB):
 	$(MAKE) -C ft_printf
 	cp ft_printf/libftprintf.a $(LIB)
 
@@ -40,5 +47,6 @@ fclean: clean
 	rm -f $(NAME)
 	rm -f $(LIB)
 	$(MAKE) fclean -C ft_printf
+	$(MAKE) fclean -C libft
 
 re: fclean all

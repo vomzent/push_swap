@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 11:08:35 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 11:42:25 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct	Data{
 	int				total_ops;
 	int				ops[11];			
 }	Data;
-
 
 // Stack operations
 void	push(Stack **target, int value);

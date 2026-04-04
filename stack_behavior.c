@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 08:22:07 by odschreu          #+#    #+#             */
-/*   Updated: 2026/03/31 11:13:27 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:20:54 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	push(Stack **target, int value)
 	{
 		*target = malloc(sizeof(Stack));
 		if (!*target)
-			ft_printf("Error\n");
+			ft_printf(1, "Error\n");
 		(*target)->value = value;
 		(*target)->next = NULL;
 		return ;
@@ -30,7 +30,7 @@ void	push(Stack **target, int value)
 	node = malloc(sizeof(Stack));
 	if (!node)
 	{
-		ft_printf("Error\n");
+		ft_printf(1, "Error\n");
 		return ;
 	}
 	node->previous = NULL;
@@ -63,7 +63,7 @@ int	peek(Stack **target)
 
 	peek = 0;
 	if ((*target)->value == 0)
-		ft_printf("Error\n");
+		ft_printf(1, "Error\n");
 	else
 		peek = (*target)->value;
 	return (peek);

@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 09:03:23 by odschreu          #+#    #+#             */
-/*   Updated: 2026/03/30 09:08:55 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 11:46:49 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	check_percent(const char *string)
 		|| *(string + 1) == 'u'
 		|| *(string + 1) == 'x'
 		|| *(string + 1) == 'X'
-		|| *(string + 1) == '%')
+		|| *(string + 1) == '%'
+		|| *(string + 1) == '.')
 		return (1);
 	return (0);
 }

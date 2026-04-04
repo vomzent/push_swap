@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 09:03:17 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 09:48:12 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:19:19 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int	convert_arg(int fd, const char *string, va_list *args)
 		write(fd, "%", 1);
 		return (1);
 	}
+	else if (*(string + 1) == '.')
+		return (ft_putdouble(fd, va_arg(*args, double)));
 	return (0);
 }
