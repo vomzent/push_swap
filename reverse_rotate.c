@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 11:32:53 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 09:59:23 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:27:22 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include <stddef.h> //use of null in ra
 #include <stdio.h>
 
-void	np_rra(Stack **A)
+void	np_rra(t_stack **A)
 {
-	Stack	*head;
-	Stack	*prev;
+	t_stack	*head;
+	t_stack	*prev;
 
 	head = *A;
 	prev = NULL;
@@ -32,16 +32,16 @@ void	np_rra(Stack **A)
 	prev->next = NULL;
 }
 
-void	rra(Stack **A)
+void	rra(t_stack **A)
 {
 	np_rra(A);
 	ft_printf(1, "rra\n");
 }
 
-void	np_rrb(Stack **B)
+void	np_rrb(t_stack **B)
 {
-	Stack	*head;
-	Stack	*prev;
+	t_stack	*head;
+	t_stack	*prev;
 
 	head = *B;
 	prev = NULL;
@@ -55,13 +55,13 @@ void	np_rrb(Stack **B)
 	prev->next = NULL;
 }
 
-void	rrb(Stack **B)
+void	rrb(t_stack **B)
 {
 	np_rrb(B);
 	ft_printf(1, "rrb\n");
 }
 
-void	rrr(Stack **A, Stack **B)
+void	rrr(t_stack **A, t_stack **B)
 {
 	np_rra(A);
 	np_rrb(B);

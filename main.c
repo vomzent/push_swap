@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:51:22 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 09:31:37 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:23:05 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int	main(int argc, char** argv)
 {
 	Data	data;
 	char	**args;
-	int		strat_bench[2];
 	
-	strat_bench = {0, 0};
 	if (argc < 2)
 		return (-1);
 	ft_bzero(&data, sizeof(data));
@@ -29,10 +27,22 @@ int	main(int argc, char** argv)
 		ft_printf("Error\n");
 		return (0);
 	}
-	sort_stack(A, B, strategy);
+	sort_stack(&data->A, &data->B, data->strategy);
 	benchmark_mode(&data);
 	free(data);
 	return (0);
+}
+
+char	**parse_flags(char **argv, int *strategy, int *benchmark)
+{
+	char	**no_flags;
+
+	no_flags = (char **)malloc(sizeof(*noflags) * array_size(argv) + 1);
+	ft_bzero(no_flags);
+	while (argv[i])
+	{
+		if  
+	}
 }
 
 /*
@@ -47,20 +57,6 @@ int	main(int argc, char** argv)
 
 // check for errors: args that are not int, integers outside of valid range, duplicates
 
-int	check_args(char **args)
-{
-	int	check;
-	
-	while (*argv)
-	{
-		while (argv)
-		{			
-			argv++;
-		}
-		*argv++;
-	}
-	return (0);
-}
 
 char	**extract_arg(int argc, char **argv)
 {

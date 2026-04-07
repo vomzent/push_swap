@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_ops.c                                        :+:      :+:    :+:   */
+/*   t_stack_ops.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,9 +14,9 @@
 #include "ft_printf/ft_printf.h"
 #include <stdlib.h>
 
-void	np_sa(Stack **A)
+void	np_sa(t_stack **A)
 {
-	Stack	*tmp;
+	t_stack	*tmp;
 	
 	if ((*A)->next == NULL)
 		return ;
@@ -26,15 +26,15 @@ void	np_sa(Stack **A)
 	*A = tmp;
 }
 
-void	sa(Stack **A)
+void	sa(t_stack **A)
 {
 	np_sa(A);
 	ft_printf(1, "sa\n");
 }
 
-void	np_sb(Stack **B)
+void	np_sb(t_stack **B)
 {
-	Stack	*tmp;
+	t_stack	*tmp;
 	
 	if ((*B)->next == NULL)
 		return ;
@@ -44,20 +44,20 @@ void	np_sb(Stack **B)
 	*B = tmp;
 }
 
-void	sb(Stack **B)
+void	sb(t_stack **B)
 {
 	np_sb(B);
 	ft_printf(1, "sb\n");
 }
 
-void	ss(Stack **A, Stack **B)
+void	ss(t_stack **A, t_stack **B)
 {
 	np_sa(A);
 	np_sb(B);
 	ft_printf(1, "ss\n");
 }
 
-void	pa(Stack **A, Stack **B)
+void	pa(t_stack **A, t_stack **B)
 {
 	int	popped;
 
@@ -68,7 +68,7 @@ void	pa(Stack **A, Stack **B)
 	ft_printf(1, "pa\n");
 }
 
-void	pb(Stack **A, Stack **B)
+void	pb(t_stack **A, t_stack **B)
 {
 	int	popped;
 
@@ -79,7 +79,7 @@ void	pb(Stack **A, Stack **B)
 	ft_printf(1, "pb\n");
 }
 
-void	print_stack(Stack *target)
+void	print_t_stack(t_stack *target)
 {
 	while (target != NULL)
 	{

@@ -6,30 +6,32 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 09:23:55 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:21:06 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-typedef struct Stack{
+typedef struct s_stack{
 
 	int				value;
-	struct Stack	*next;
-	struct Stack	*previous;
+	struct s_stack	*next;
+	struct s_stack	*previous;
 	// struct Stack	*current;
-} Stack;
+} t_stack;
 
-typedef struct	Data{
+typedef struct	s_data{
 
-	struct Stack	*A;
-	struct Stack	*B;
+	struct s_stack	*A;
+	struct s_stack	*B;
+	int				**args;
 	double			disorder;
 	int				strategy;
 	int				total_ops;
+	int				benchmark;
 	int				ops[11];			
-}	Data;
+}	t_data;
 
 // Stack operations
 void	push(Stack **target, int value);

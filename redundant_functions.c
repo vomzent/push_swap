@@ -6,13 +6,13 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:50:59 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 09:58:05 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:27:24 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 
-void	extract_max(Stack **A, Stack **B)
+void	extract_max(t_stack **A, t_stack **B)
 {
 	int	max;
 	int	size;
@@ -23,7 +23,7 @@ void	extract_max(Stack **A, Stack **B)
 		return ;
 	}
 	max = find_max(*A);
-	size = stack_size(*A);
+	size = t_stack_size(*A);
 	while (size + 1 > 0)
 	{
 		if ((*A)->value != max)

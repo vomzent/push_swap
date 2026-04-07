@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_behavior.c                                   :+:      :+:    :+:   */
+/*   t_stack_behavior.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,20 +14,20 @@
 #include "ft_printf/ft_printf.h"
 #include <stdlib.h>
 
-void	push(Stack **target, int value)
+void	push(t_stack **target, int value)
 {
-	Stack	*node;
+	t_stack	*node;
 	
 	if (*target == NULL)
 	{
-		*target = malloc(sizeof(Stack));
+		*target = malloc(sizeof(t_stack));
 		if (!*target)
 			ft_printf(1, "Error\n");
 		(*target)->value = value;
 		(*target)->next = NULL;
 		return ;
 	}
-	node = malloc(sizeof(Stack));
+	node = malloc(sizeof(t_stack));
 	if (!node)
 	{
 		ft_printf(1, "Error\n");
@@ -39,12 +39,12 @@ void	push(Stack **target, int value)
 	(*target)->previous = node;
 	*target = node;
 }
-// assuming that * target == pointing to the first node in the stack atm
+// assuming that * target == pointing to the first node in the t_stack atm
 
-int	pop(Stack **target)
+int	pop(t_stack **target)
 {
 	int		popped;
-	Stack	*tmp;
+	t_stack	*tmp;
 
 	popped = 0;
 	if (!(*target))
@@ -57,7 +57,7 @@ int	pop(Stack **target)
 	return (popped);
 }
 
-int	peek(Stack **target)
+int	peek(t_stack **target)
 {
 	int	peek;
 
@@ -69,9 +69,9 @@ int	peek(Stack **target)
 	return (peek);
 }
 
-void	free_stack(Stack **target)
+void	free_t_stack(t_stack **target)
 {
-	Stack	*tmp;
+	t_stack	*tmp;
 	
 	while (*target != NULL)
 	{
@@ -81,7 +81,7 @@ void	free_stack(Stack **target)
 	}
 }
 
-int	stack_size(Stack *target)
+int	t_stack_size(t_stack *target)
 {	
 	int	size;
 	

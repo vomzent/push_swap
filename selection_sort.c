@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:50:39 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 10:30:48 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:27:15 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	selection_sort(Stack **A, Stack **B)
+void	selection_sort(t_t_stack **A, t_t_stack **B)
 {
 	int	*arr;
 	
@@ -24,7 +24,7 @@ void	selection_sort(Stack **A, Stack **B)
 		arr = find_min(*A);
 		while (arr[0] != (*A)->value)
 		{
-			if (arr[1] > stack_size(*A) / 2)
+			if (arr[1] > t_stack_size(*A) / 2)
 				rra(A);
 			else
 				ra(A);
@@ -36,13 +36,13 @@ void	selection_sort(Stack **A, Stack **B)
 	free(arr);
 }
 
-int	*find_min(Stack *A)
+int	*find_min(t_t_stack *A)
 {
 	int		*arr;
 	int		min;
 	int		pos;
 	int		counter;
-	Stack	*marker;
+	t_t_stack	*marker;
 
 	min = A->value;
 	pos = 0;

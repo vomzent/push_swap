@@ -6,20 +6,20 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:51:11 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 12:21:07 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:27:36 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "push_swap.h"
 
-double	compute_disorder(Stack *A)
+double	compute_disorder(t_stack *A)
 {
 	int	mistakes;
 	int	total_pairs;
 	float	ret;
-	Stack	*i;
-	Stack	*j;
+	t_stack	*i;
+	t_stack	*j;
 
 	mistakes = 0;
 	total_pairs = 0;

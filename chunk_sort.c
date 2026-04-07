@@ -6,13 +6,13 @@
 #include "ft_printf/ft_printf.h"
 #include <math.h>
 
-void	chunk_sort(Stack **A, Stack **B)
+void	chunk_sort(t_stack **A, t_stack **B)
 {
 	int	i;
 	int	**chunks;
 	int	amount_of_chunks;
 
-	amount_of_chunks = (int)sqrt(stack_size(*A));
+	amount_of_chunks = (int)sqrt(t_stack_size(*A));
 	chunks = create_chunk(A, amount_of_chunks);
 	i = 0;
 	while (i < amount_of_chunks)
@@ -20,17 +20,17 @@ void	chunk_sort(Stack **A, Stack **B)
 		retrieve_chunk(A, B, chunks[i]);
 		i++;
 	}
-	ft_printf(1, "Stack A:\n");
-	print_stack(*A);
+	ft_printf(1, "t_stack A:\n");
+	print_t_stack(*A);
 	ft_printf(1, "\n");
-	ft_printf(1, "Stack B:\n");
-	print_stack(*B);
+	ft_printf(1, "t_stack B:\n");
+	print_t_stack(*B);
 	ft_printf(1, "\n");
 	while (*B)
 		retrieve_max(A, B);
 }
 
-void	retrieve_chunk(Stack **A, Stack **B, int *range)
+void	retrieve_chunk(t_stack **A, t_stack **B, int *range)
 {
 	int	count;
 	int	*pos;
@@ -42,7 +42,7 @@ void	retrieve_chunk(Stack **A, Stack **B, int *range)
 		ft_printf(1, "chunk counts %d elements\n", count);
 		while (*A && (!((*A)->value >= range[0] && (*A)->value <= range[1])))
 		{
-			pos = scan_stack(*A, range);
+			pos = scan_t_stack(*A, range);
 			check_pos(A, pos);
 			if (!pos)
 				return ;
@@ -53,7 +53,7 @@ void	retrieve_chunk(Stack **A, Stack **B, int *range)
 	}
 }
 
-void	check_pos(Stack **A, int *pos)
+void	check_pos(t_stack **A, int *pos)
 {
 	if (pos[0] == -1 && pos[1] == -1)
 		return (free(pos));
@@ -63,7 +63,7 @@ void	check_pos(Stack **A, int *pos)
 		rra(A);
 }
 
-int	count_chunk(Stack *A, int *range)
+int	count_chunk(t_stack *A, int *range)
 {
 	int	count;
 
@@ -77,7 +77,7 @@ int	count_chunk(Stack *A, int *range)
 	return (count);
 }
 
-int	*scan_stack(Stack *A, int *range)
+int	*scan_t_stack(t_stack *A, int *range)
 {
 	int		*pos;
 
@@ -89,7 +89,7 @@ int	*scan_stack(Stack *A, int *range)
 	return (pos);
 }
 
-int	find_from_bottom(Stack *A, int *range)
+int	find_from_bottom(t_stack *A, int *range)
 {
 	int	counter;
 	
@@ -112,7 +112,7 @@ int	find_from_bottom(Stack *A, int *range)
 	return (-1);
 }
 
-int	find_from_top(Stack *A, int *range)
+int	find_from_top(t_stack *A, int *range)
 {
 	int	counter;
 	
@@ -133,14 +133,14 @@ int	find_from_top(Stack *A, int *range)
 // too fucking long ffs
 // need to fix this code too because it is a hot mess
 
-void	retrieve_max(Stack **A, Stack **B)
+void	retrieve_max(t_stack **A, t_stack **B)
 {
 	int	max;
 	int	pos;
 
 	max = 0;
 	pos = 0;
-	ft_printf(1, "enter retrievemax, B size: %d\n", stack_size(*B));
+	ft_printf(1, "enter retrievemax, B size: %d\n", t_stack_size(*B));
 	while (*B)
 	{
 		if (*B)
@@ -149,8 +149,8 @@ void	retrieve_max(Stack **A, Stack **B)
 		pos = retrieve_pos(*B, max);
 		while (*B && (*B)->value != max)
 		{
-			ft_printf(1, "inner loop, B size: %d, top: %d, looking for: %d, pos: %d\n", stack_size(*B), (*B)->value, max, pos);
-			if (pos > stack_size(*B) / 2)
+			ft_printf(1, "inner loop, B size: %d, top: %d, looking for: %d, pos: %d\n", t_stack_size(*B), (*B)->value, max, pos);
+			if (pos > t_stack_size(*B) / 2)
 				rrb(B);
 			else
 				rb(B);
@@ -161,7 +161,7 @@ void	retrieve_max(Stack **A, Stack **B)
 }
 
 
-int	retrieve_pos(Stack *B, int	found)
+int	retrieve_pos(t_stack *B, int	found)
 {
 	int	pos;
 	int	counter;
@@ -181,10 +181,10 @@ int	retrieve_pos(Stack *B, int	found)
 	return (pos);
 }
 
-int	find_max(Stack *A)
+int	find_max(t_stack *A)
 {
 	int		max;
-	Stack	*marker;
+	t_stack	*marker;
 
 	max = A->value;
 	marker = A;
@@ -197,7 +197,7 @@ int	find_max(Stack *A)
 	return (max);
 }
 
-int	**create_chunk(Stack **A, int amount)
+int	**create_chunk(t_stack **A, int amount)
 {
 	int	*range;
 	int	**chunks;
@@ -228,15 +228,15 @@ int	**create_chunk(Stack **A, int amount)
 }
 // need to rewrite this function because it's too long but cba at the moment
 // also not sure if mathlib is allowed (use of sqrt -> or use ft_sqrt from piscine)
-// so need to change chunk_num to represent the squared value of stack_size(*A)
+// so need to change chunk_num to represent the squared value of t_stack_size(*A)
 
 
-int	*find_range(Stack **A)
+int	*find_range(t_stack **A)
 {
 	int		*arr;
 	int		min;
 	int		max;
-	Stack	*marker;
+	t_stack	*marker;
 
 	arr = malloc(sizeof(int) * 2);
 	marker = *A;
