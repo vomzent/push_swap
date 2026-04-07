@@ -69,7 +69,7 @@ int	peek(t_stack **target)
 	return (peek);
 }
 
-void	free_t_stack(t_stack **target)
+void	free_stack(t_stack **target)
 {
 	t_stack	*tmp;
 	
