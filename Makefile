@@ -12,11 +12,11 @@ SRC = \
 		stack_ops.c \
 		reverse_rotate.c \
 		rotate.c \
-		stack_behavior.c \
-		algo_selection.c \
-		selection_sort.c \
-		chunk_sort.c \
-		doubletest.c
+		stack_behavior.c 
+		# algo_selection.c \
+		# selection_sort.c \
+		# chunk_sort.c
+		# doubletest.c
 
 OBJ = $(SRC:.c=.o)
 AR = ar rcs
@@ -50,3 +50,6 @@ fclean: clean
 	$(MAKE) fclean -C libft
 
 re: fclean all
+
+vincenttest: $(LIB) $(LIB2) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -g -L. -lftprintf -lft -lm vincent_basic_stackopstest.c
