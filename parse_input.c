@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 11:19:22 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 12:03:55 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,38 +26,86 @@
 int	main(int argc, char** argv)
 {
 	t_data	data;
-	char	**args;
 	
 	if (argc < 2)
 		return (-1);
 	ft_bzero(&data, sizeof(data));
 	if (check_args)
 		return(error(), 1);
-	
+	load_data()
 	sort_stack(&data->A, &data->B, data->strategy);
-	benchmark_mode(&data);
+	benchmark_mode(data);
 	free(data);
 	return (0);
 }
 
-int	conversion
-
-int	check_args(char **argv, *data)
+int	check_args(char **argv, t_data *data)
 {
 	char	**no_flags;
+	char	**tmp;
+	int		*arguments;
 
 	no_flags = parse_flags(argv);
 	if (!no_flags)
-		return (error(), 1);
-	if (validate_strings(no_flags))
+		return (1);
+	if (no_flags[1] == NULL)
 	{
-		error();
-		return (free(no_flags), 1);
+		tmp = no_flags;
+		no_flags = ft_split(no_flags[0], " ");
+		free(tmp);
 	}
-	
+	if (validate_strings(no_flags))
+		return (free(no_flags), 1);
+	if (convert_arg(no_flags, data))
+		return (free(no_flags), 1);
+	if (assign_flags(argv, data))
+		return (free(no_flags), 1);
 	return (free(no_flags), 0);
-	
 }
+
+int	assign_flags(char **argv, t_data *data)
+{
+	int	i;
+
+	i = 2;
+	while (i > 0)
+	{
+		// protect against the case that there is no flag or 1 flag
+		if (ft_strncmp(argv[i], "--bench"))
+		{
+			data->strategy = check_strategy(argv[i]);
+			if (data->strategy == -1)
+				return (1);
+		}
+		else
+			data->benchmark = 1;
+		i--;
+	}
+	return (0);
+}
+// need to check if i am actually changing data->strategy and data->benchmark this way
+
+int	convert_arg(char **array, t_data *data)
+{
+	long	n;
+	int		*ret;
+	
+	n = 0;
+	i = 0;
+	ret = (int *)malloc(sizeof(int) * array_size(array) - 1);
+	while (array[i])
+	{
+		n = ft_atol(array[i]);
+		if (n > INT_MAX || n < INT_MIN)
+			return (free(ret), 1);
+		ret[i] = (int)n;
+		i++;
+	}
+	// check duplicates in int array function!
+	data->args = ret;
+	free(ret);
+}
+// need to check whether this &data->args thing is correct way of writing it
 
 int	validate_strings(char **array)
 {
@@ -66,14 +114,14 @@ int	validate_strings(char **array)
 	i = 0;
 	while (array[i])
 	{
-		if (invalid_input(array[i]))
+		if (invalid_string(array[i]))
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	invalid_input(char *string)
+int	invalid_string(char *string)
 {
 	int	i;
 
@@ -95,12 +143,13 @@ char	**parse_flags(char **argv, int *strategy, int *benchmark)
 	int		i;
 	int		j;
 
-	no_flags = (char **)malloc(sizeof(*noflags) * count_args(argv) + 1);
+	no_flags = (char **)malloc(sizeof(char *) * count_args(argv) + 1);
 	ft_bzero(no_flags);
 	i = 0;
 	j = 0;
 	while (argv[i])
 	{
+		// make sure to check no segfault for 1 variable
 		if (argv[i][1] == "-")
 			continue ;
 		else
@@ -113,7 +162,7 @@ char	**parse_flags(char **argv, int *strategy, int *benchmark)
 	if (i - j > 2)
 	{
 		free(no_flags);
-		return ((error(), NULL));
+		return (NULL);
 	}
 	return (no_flags);
 }
@@ -140,4 +189,61 @@ void	error(void)
 	return ;
 }
 
+int	check_strategy(char *argv)
+{
+	int	i;
+	int	strategy;
 
+	i = 1;
+	strategy = -1;
+	while (argv)
+	{
+		if (ft_strcmp(argv, "--adaptive") == 0)
+			return (0);
+		if (ft_strcmp(argv, "--simple") == 0)
+			return (1);
+		if (ft_strcmp(argv, "--medium") == 0)
+			return (2);
+		if (ft_strcmp(argv, "--complex") == 0)
+			return (3);
+		i++;
+	}
+	return (strategy);
+}
+
+
+int	array_size(char	**arg)
+{
+	int	i;
+	
+	i = 0;
+	while (arg[i] != NULL)
+		i++;
+	return (i);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+}
+
+void	sort_stack(t_stack **A, t_stack **B, int strategy)
+{
+	double	disorder;
+
+	disorder = compute_disorder(*A);
+	if (strategy == 1)
+		selection_sort(A, B);
+	else if (strategy == 2)
+		chunk_sort(A, B);
+	else if (strategy == 3)
+		quick_sort(A, B);
+	else
+		adaptive_sort(A, B, disorder);
+}
