@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:51:22 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 11:18:42 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 09:31:37 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,160 @@
 int	main(int argc, char** argv)
 {
 	Data	data;
-	int		strategy;
+	char	**args;
+	int		strat_bench[2];
 	
+	strat_bench = {0, 0};
 	if (argc < 2)
 		return (-1);
 	ft_bzero(&data, sizeof(data));
-	strategy = extract_arg(argc, argv, A);
-	if (strategy == -1)
-		return (-1);
+	args = extract_arg(argc, argv);
+	if (!check_args)
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
 	sort_stack(A, B, strategy);
 	benchmark_mode(&data);
 	free(data);
 	return (0);
 }
 
+/*
+1. parse flags (-- bench -- adaptive), strip them from argv -> create/malloc new array
+2. validate strings
+3. convert to long check range
+4. check duplicates (in int array)
+5. load into stack
+6. run sorting algo based on data->stratey
+7. run benchmark mode always, print benchmark mode if data->benchmark == 1
+*/
+
 // check for errors: args that are not int, integers outside of valid range, duplicates
+
+int	check_args(char **args)
+{
+	int	check;
+	
+	while (*argv)
+	{
+		while (argv)
+		{			
+			argv++;
+		}
+		*argv++;
+	}
+	return (0);
+}
+
+char	**extract_arg(int argc, char **argv)
+{
+	int		i;
+	int		j;
+	char	**args;
+	char	**arg;
+	
+	i = 1;
+	while (argv[i])
+	{
+		arg = ft_split(argv[i]);
+		if (!arg)
+			return (NULL);
+		if (!arg[1])
+		{
+			if (!args)
+				args = arg;
+			else
+				args = append_arg(arg, args);
+			if (!args)
+				return (NULL);
+		}
+		free(arg);
+		i++;
+	}
+	return (args);
+}
+
+int	array_size(char	**arg)
+{
+	int	i;
+	
+	i = 0;
+	while (arg[i] != NULL)
+		i++;
+	return (i);
+}
+
+void	append_arg(char **arg, char **args)
+{
+	char	**updated_arr;
+
+	updated_arr = (char **)malloc(array_size(args) + array_size(arg) + 1) * sizeof(*updated_arr);
+	while (args[i])
+	{
+		updated_arr[i] = ft_strdup(args[i]);
+		i++;
+	}
+	while (arg[j])
+	{
+		updated_arr[i] = ft_strdup(arg[j]);
+		j++;
+	}
+	free(args);
+	return (updated_arr);
+}
+
+int	*convert_args(char **args)
+{
+	int		i;
+	int		*array;
+	long	n;
+	
+	i = 0;
+	array = (int *)malloc(sizeof(int) * int_array_size(args));
+	while (args[i])
+	{
+		if (args[i][1] == "-" && i < 2)
+			i++;
+		if (!ft_isdigit(args[i][1] - 30))
+		{
+			free(array);
+			return (error(), 0);
+		}
+		n = ft_atol(args[i])
+		if (n > INT_MAX || n < INT_MIN)
+		{
+			return (error(), 0);
+			free(array);
+		}
+		array[i] = (int)n; 
+		i++;
+	}
+	return (array);
+}
+
+void	error(void)
+{
+	ft_printf("Error\n");
+	return ;
+}
+
+int	int_array_size(char **args)
+{
+	int	count;
+
+	count = 0;
+	while (args[i])
+	{
+		if (args[i][0] == "-")
+			i++;
+		count++;
+		i++;
+	}
+	return (count);
+}
+
+// ptr_array = (char **)malloc((token_count + 1) * sizeof(*ptr_array));
 
 int	extract_arg(int argc, char **argv, Stack **A)
 {
@@ -59,17 +198,18 @@ int	extract_arg(int argc, char **argv, Stack **A)
 		if (argv[i][j] == ' ')
 		{
 			arg = ft_split(argv[i]);
+			check_arg(arg);
 			while(arg[i])
-				convert_push(A, arg[i++]);
+				convert_arg(arg[i++]);
 		}
-		else
+		if 
 			convert_push(A, argv);
 		i++;
 	}
 	return (strategy);
 }
 
-void	convert_push(Stack **A, char	*arg)
+void	convert_arg(char *arg)
 {
 	int	number;
 
@@ -78,20 +218,20 @@ void	convert_push(Stack **A, char	*arg)
 }
 
 
-int	check_strategy(int argc, char **argv)
+int	check_strategy(char *argv)
 {
 	int	i;
 	int	strategy;
 
 	i = 1;
 	strategy = 0;
-	while (argv[i])
+	while (argv)
 	{
-		if (ft_strcmp(argv[i], "--simple") == 0)
+		if (ft_strcmp(argv, "--simple") == 0)
 			return (1);
-		if (ft_strcmp(argv[i], "--medium") == 0)
+		if (ft_strcmp(argv, "--medium") == 0)
 			return (2);
-		if (ft_strcmp(argv[i], "--complex") == 0)
+		if (ft_strcmp(argv, "--complex") == 0)
 			return (3);
 		i++;
 	}

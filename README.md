@@ -28,6 +28,14 @@ To do
 > int[10] rrr = rra and rrb at the same time
 
 
+#### Data struct
+
+to pass 'Stack *A' data->A
+to pass 'Stack **A' &data->A
+	(data->&A) would point to a local variable on the stack frame
+
+### sorting strategies
+
 4 distinct sorting strategies:
 1. simple algorithm O^n
 2. medium algorithm n * n^0.5

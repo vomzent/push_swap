@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 11:42:25 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 09:23:55 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	retrieve_chunk(Stack **A, Stack **B, int *range);
 int		find_from_bottom(Stack *A, int *range);
 int		find_from_top(Stack *A, int *range);
 void	check_pos(Stack **A, int *pos);
+
+long	ft_atol(const char *string);
 
 /*
 --simple
