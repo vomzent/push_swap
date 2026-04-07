@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_ops.c                                        :+:      :+:    :+:   */
+/*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 10:50:07 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:19:22 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 #include "ft_printf/ft_printf.h"
 
 /*
-1. parse flags (-- bench -- adaptive), strip them from argv -> create/malloc new array
-2. validate strings
-3. convert to long check range
-4. check duplicates (in int array)
-5. load into stack
+1. parse flags (-- bench -- adaptive), strip them from argv -> create/malloc new array (parse_flags)
+2. validate strings (validatestrings)
+3. convert to long check range 
+4. check duplicates (in int array) (check_duplicates)
+5. load into stack (load_data -> both to push int array AND define strategy/benchmark)
 6. run sorting algo based on data->stratey
 7. run benchmark mode always, print benchmark mode if data->benchmark == 1
 */
-
 
 int	main(int argc, char** argv)
 {
@@ -32,17 +31,16 @@ int	main(int argc, char** argv)
 	if (argc < 2)
 		return (-1);
 	ft_bzero(&data, sizeof(data));
-	args = extract_arg(argc, argv);
-	if (!check_args)
-	{
-		ft_printf(1, "Error\n");
-		return (0);
-	}
+	if (check_args)
+		return(error(), 1);
+	
 	sort_stack(&data->A, &data->B, data->strategy);
 	benchmark_mode(&data);
 	free(data);
 	return (0);
 }
+
+int	conversion
 
 int	check_args(char **argv, *data)
 {
@@ -51,7 +49,7 @@ int	check_args(char **argv, *data)
 	no_flags = parse_flags(argv);
 	if (!no_flags)
 		return (error(), 1);
-	if (!validate_strings(no_flags))
+	if (validate_strings(no_flags))
 	{
 		error();
 		return (free(no_flags), 1);
@@ -68,18 +66,19 @@ int	validate_strings(char **array)
 	i = 0;
 	while (array[i])
 	{
-		if (check_string(array[i]))
+		if (invalid_input(array[i]))
 			return (1);
+		i++;
 	}
 	return (0);
 }
 
-int	check_string(char *string)
+int	invalid_input(char *string)
 {
 	int	i;
 
 	i = 0;
-	if (string[i] == "-")
+	if (string[0] == "-")
 		i++;
 	while (string[i])
 	{
