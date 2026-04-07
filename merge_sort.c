@@ -6,7 +6,7 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/05 16:43:39 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/07 21:26:36 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/07 21:34:40 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	merge_sort(t_stack **a, t_stack **b, size_t len)
 	t_stack *end;
 	size_t	rotate;
 
-	if (len > 2)
+	if (len > 1)
 	{
 		merge_sort(a, b, len / 2);
 		rotate = len / 2;
