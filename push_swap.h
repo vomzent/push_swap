@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 10:48:21 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:57:53 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct	s_data{
 
 	struct s_stack	*A;
 	struct s_stack	*B;
-	int				**args;
+	int				*args;
 	double			disorder;
 	int				strategy;
 	int				total_ops;
