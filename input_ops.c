@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 10:44:26 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:50:07 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char** argv)
 	args = extract_arg(argc, argv);
 	if (!check_args)
 	{
-		ft_printf("Error\n");
+		ft_printf(1, "Error\n");
 		return (0);
 	}
 	sort_stack(&data->A, &data->B, data->strategy);
@@ -137,7 +137,7 @@ int	count_args(char **argv)
 
 void	error(void)
 {
-	ft_printf("Error\n");
+	ft_printf(1, "Error\n");
 	return ;
 }
 

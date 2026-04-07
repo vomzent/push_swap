@@ -81,7 +81,7 @@ void	free_t_stack(t_stack **target)
 	}
 }
 
-int	t_stack_size(t_stack *target)
+int stack_size(t_stack *target)
 {	
 	int	size;
 	

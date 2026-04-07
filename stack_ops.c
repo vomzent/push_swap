@@ -79,7 +79,7 @@ void	pb(t_stack **A, t_stack **B)
 	ft_printf(1, "pb\n");
 }
 
-void	print_t_stack(t_stack *target)
+void	print_stack(t_stack *target)
 {
 	while (target != NULL)
 	{

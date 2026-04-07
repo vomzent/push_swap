@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:50:39 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 10:27:15 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:49:30 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	selection_sort(t_t_stack **A, t_t_stack **B)
 		arr = find_min(*A);
 		while (arr[0] != (*A)->value)
 		{
-			if (arr[1] > t_stack_size(*A) / 2)
+			if (arr[1] > stack_size(*A) / 2)
 				rra(A);
 			else
 				ra(A);
