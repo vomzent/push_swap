@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	selection_sort(t_t_stack **A, t_t_stack **B)
+void	selection_sort(t_stack **A, t_stack **B)
 {
 	int	*arr;
 	
@@ -36,13 +36,13 @@ void	selection_sort(t_t_stack **A, t_t_stack **B)
 	free(arr);
 }
 
-int	*find_min(t_t_stack *A)
+int	*find_min(t_stack *A)
 {
 	int		*arr;
 	int		min;
 	int		pos;
 	int		counter;
-	t_t_stack	*marker;
+	t_stack	*marker;
 
 	min = A->value;
 	pos = 0;

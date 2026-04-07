@@ -19,7 +19,7 @@ typedef struct s_stack{
 	struct s_stack	*next;
 	struct s_stack	*previous;
 	// struct t_stack	*current;
-} t_t_stack;
+}	t_stack;
 
 typedef struct	s_data{
 
@@ -69,7 +69,7 @@ void	selection_sort(t_stack **A, t_stack **B);
 void	chunk_sort(t_stack **A, t_stack **B);
 int		**create_chunk(t_stack **A, int amount);
 int		*find_range(t_stack **A);
-int		*scan_t_stack(t_stack *A, int *range);
+int		*scan_stack(t_stack *A, int *range);
 void	retrieve_max(t_stack **A, t_stack **B);
 int		retrieve_pos(t_stack *B, int	found);
 int		find_max(t_stack *A);

@@ -13,6 +13,7 @@
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void	np_sa(t_stack **A)
 {
