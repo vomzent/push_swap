@@ -46,14 +46,14 @@ int	pop(t_stack **target)
 	int		popped;
 	t_stack	*tmp;
 
-	popped = 0;
 	if (!(*target))
-		return (popped);
+		return (0);
 	popped = (*target)->value;
 	tmp = (*target)->next;
 	free(*target);
 	*target = tmp;
-	(*target)->previous = NULL;
+	if (*target)
+		(*target)->previous = NULL;
 	return (popped);
 }
 
@@ -81,12 +81,12 @@ void	free_stack(t_stack **target)
 	}
 }
 
-int stack_size(t_stack *target)
+size_t stack_size(t_stack *target)
 {	
-	int	size;
+	size_t	size;
 	
 	size = 0;
-	while (target->next != NULL)
+	while (target)
 	{
 		target = target->next;
 		size++;

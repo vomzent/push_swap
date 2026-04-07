@@ -12,19 +12,20 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# include <stddef.h>
 
-typedef struct s_stack{
-
+typedef struct s_stack
+{
 	int				value;
 	struct s_stack	*next;
 	struct s_stack	*previous;
 	// struct t_stack	*current;
 }	t_stack;
 
-typedef struct	s_data{
-
-	struct s_stack	*A;
-	struct s_stack	*B;
+typedef struct	s_data
+{
+	struct s_stack	*a;
+	struct s_stack	*b;
 	int				**args;
 	double			disorder;
 	int				strategy;
@@ -38,7 +39,7 @@ void	push(t_stack **target, int value);
 int		pop(t_stack **target);
 int		peek(t_stack **target);
 void	free_stack(t_stack **target);
-int		stack_size(t_stack *target);
+size_t	stack_size(t_stack *target);
 void	print_stack(t_stack *target);
 
 void	np_sa(t_stack **A);
