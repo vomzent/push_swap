@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       ::::::::             */
-/*   vincent_basic_stackopstest.c                      :+:    :+:             */
+/*   merge_sort.c                                      :+:    :+:             */
 /*                                                    +:+                     */
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/05 16:43:39 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/07 20:19:10 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/07 21:26:36 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,29 @@ t_stack	*stack_get(t_stack *s, size_t index)
 		s = s->next;
 	return (s);
 }
-void	sort_stack(t_stack **a, t_stack **b)
+
+void	merge_sort(t_stack **a, t_stack **b, size_t len)
 {
-	size_t	len;
 	t_stack	*ptr;
 	t_stack	*mptr;
+	t_stack *end;
+	size_t	rotate;
 
-	len = stack_size(*a);
+	if (len > 2)
+	{
+		merge_sort(a, b, len / 2);
+		rotate = len / 2;
+		while (rotate--)
+			ra(a);
+		merge_sort(a, b, len - len / 2);
+		rotate = len / 2;
+		while (rotate--)
+			rra(a);
+	}
 	ptr = stack_get(*a, 0);
 	mptr = stack_get(*a, len / 2);
-	while (len && ptr && mptr && ptr != mptr)
+	end = stack_get(*a, len);
+	while (mptr != end && ptr != mptr)
 	{
 		if (ptr->value < mptr->value)
 		{
@@ -45,14 +58,11 @@ void	sort_stack(t_stack **a, t_stack **b)
 			mptr = mptr->next;
 			pb(a, b);
 		}
-		--len;
 		print_stack(*a);
 		ft_printf(1, "\n");
 		print_stack(*b);
 		ft_printf(1, "\n");
 	}
-	while (len--)
-		pb(a, b);
 	while (*b)
 		pa(a, b);
 }
@@ -73,7 +83,7 @@ int	main(int argc, char **argv)
 	print_stack(a);
 	ft_printf(1, "\n");
 	// ft_printf(1, "%d", stack_size(a));
-	sort_stack(&a, &b);
+	merge_sort(&a, &b, stack_size(a));
 	//pb(&a, &b);
 	print_stack(a);
 	ft_printf(1, "\n");
