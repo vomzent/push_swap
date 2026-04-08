@@ -6,12 +6,14 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/05 16:43:39 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/07 21:34:40 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/08 10:41:53 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
+#include <time.h>
+#include <stdlib.h>
 
 t_stack	*stack_get(t_stack *s, size_t index)
 {
@@ -58,16 +60,18 @@ void	merge_sort(t_stack **a, t_stack **b, size_t len)
 			mptr = mptr->next;
 			pb(a, b);
 		}
-		print_stack(*a);
-		ft_printf(1, "\n");
-		print_stack(*b);
-		ft_printf(1, "\n");
+		// print_stack(*a);
+		// ft_printf(1, "\n");
+		// print_stack(*b);
+		// ft_printf(1, "\n");
 	}
+	while (*a != ptr)
+		rra(a);
 	while (*b)
 		pa(a, b);
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -75,18 +79,19 @@ int	main(int argc, char **argv)
 
 	a = 0;
 	b = 0;
-	if (argc < 2)
-		return (0);
-	i = 1;
-	while (++i <= argc)
-		push(&a, argv[i - 1][0] - '0');
-	print_stack(a);
-	ft_printf(1, "\n");
+	// srand(time(NULL));
+	// if (argc < 2)
+	// 	return (0);
+	i = 500;
+	while (i--)
+		push(&a, rand() % 101);
+	// print_stack(a);
+	// ft_printf(1, "\n");
 	// ft_printf(1, "%d", stack_size(a));
 	merge_sort(&a, &b, stack_size(a));
 	//pb(&a, &b);
-	print_stack(a);
-	ft_printf(1, "\n");
+	// print_stack(a);
+	// ft_printf(1, "\n");
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
