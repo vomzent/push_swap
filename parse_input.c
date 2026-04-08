@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 13:27:08 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/08 14:12:22 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ int	check_args(char **argv, t_data *data)
 	char	**no_flags;
 	char	**tmp;
 
+	ft_printf(1, "\n entering assign flags\n");
 	if (assign_flags(argv, data))
 		return (1);
+	ft_printf(1, "\n entering parse flags\n");
 	no_flags = parse_flags(argv);
 	if (!no_flags)
 		return (1);
@@ -58,8 +60,10 @@ int	check_args(char **argv, t_data *data)
 		no_flags = ft_split(no_flags[0], ' ');
 		free(tmp);
 	}
+	ft_printf(1, "\n entering valid strings\n");
 	if (validate_strings(no_flags))
 		return (free(no_flags), 1);
+	ft_printf(1, "\n entering convert strings\n");
 	if (convert_str(no_flags, data))
 		return (free(no_flags), 1);
 	return (free(no_flags), 0);
@@ -69,13 +73,13 @@ int	load_data(t_data *data)
 {
 	int	i;
 
-	i = 0;
-	while (i < data->length)
+	i = data->length - 1;
+	while (i >= 0)
 	{
 		push(&data->A, data->args[i]);
 		if (!data->A)
 			return (1);
-		i++;
+		i--;
 	}
 	return (0);
 }
@@ -209,16 +213,14 @@ char	**parse_flags(char **argv)
 	while (argv[i])
 	{
 		// make sure to check no segfault for 1 variable
-		if (argv[i][0] == '-')
-			continue ;
-		else
+		if (argv[i][0] != '-')
 		{
 			no_flags[j] = ft_strdup(argv[i]);
 			j++;
 		}
 		i++;
 	}
-	if (i - j > 2)
+	if (i - j > 3)
 	{
 		free(no_flags);
 		return (NULL);

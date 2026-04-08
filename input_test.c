@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 11:50:50 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 13:25:10 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/08 14:13:22 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_data(t_data *data)
 	ft_printf(1, "args: ");
 	while (i < data->length)
 	{
-		printf("%d ", data->args[i]);
+		ft_printf(1, "%d ", data->args[i]);
 		i++;
 	}
 	ft_printf(1, "\n\n==================\n");
