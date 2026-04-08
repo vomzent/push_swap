@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 10:59:11 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/08 11:16:05 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,22 @@ void	check_pos(t_stack **A, int *pos);
 
 long	ft_atol(const char *string);
 
+/// Parse input
+int		check_args(char **argv, t_data *data);
+int		load_data(t_data *data);
+int		assign_flags(char **argv, t_data *data);
+int		count_flags(char **argv);
+int		convert_arg(char **array, t_data *data);
+int		check_duplicates(int *array, int array_len);
+int		validate_strings(char **array);
+int		invalid_string(char *string);
+char	**parse_flags(char **argv);
+int		count_args(char **argv);
+void	error(void);
+int		check_strategy(char *argv);
+void	sort_stack(t_data *data, int strategy);
+int		array_size(char	**arg);
+int		ft_strcmp(const char *s1, const char *s2);
 /*
 --simple
 --medium

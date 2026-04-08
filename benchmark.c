@@ -6,14 +6,14 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 09:48:42 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 12:15:35 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/08 11:11:36 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 
-void	benchmark_mode(Data *data)
+void	benchmark_mode(t_data *data)
 {
 	char	*strategy;
 

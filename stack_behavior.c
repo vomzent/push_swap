@@ -22,17 +22,14 @@ void	push(t_stack **target, int value)
 	{
 		*target = malloc(sizeof(t_stack));
 		if (!*target)
-			ft_printf(1, "Error\n");
+			return ;
 		(*target)->value = value;
 		(*target)->next = NULL;
 		return ;
 	}
 	node = malloc(sizeof(t_stack));
 	if (!node)
-	{
-		ft_printf(1, "Error\n");
 		return ;
-	}
 	node->previous = NULL;
 	node->value = value;
 	node->next = *target;

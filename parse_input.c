@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 11:00:35 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/08 11:15:59 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char** argv)
 	if (load_data(&data))
 		return(error(), 1);
 	sort_stack(&data->A, &data->B, data->strategy);
-	benchmark_mode(data);
+	benchmark_mode(&data);
 	free(data);
 	return (0);
 }
@@ -72,6 +72,8 @@ int	load_data(t_data *data)
 	while (i < data->length)
 	{
 		push(&data->A, data->args[i]);
+		if (!&data->A)
+			return (1);
 		i++;
 	}
 	return (0);
@@ -190,7 +192,7 @@ int	invalid_string(char *string)
 	return (0);
 }
 
-char	**parse_flags(char **argv, int *strategy, int *benchmark)
+char	**parse_flags(char **argv)
 {
 	char	**no_flags;
 	int		i;
@@ -286,17 +288,18 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
-void	sort_stack(t_stack **A, t_stack **B, int strategy)
+void	sort_stack(t_data *data, int strategy)
 {
 	double	disorder;
 
-	disorder = compute_disorder(*A);
+	disorder = compute_disorder(data->A);
+	data->disorder = disorder;
 	if (strategy == 1)
-		selection_sort(A, B);
+		selection_sort(&data->A, &data->B);
 	else if (strategy == 2)
-		chunk_sort(A, B);
+		chunk_sort(&data->A, &data->B);
 	else if (strategy == 3)
-		quick_sort(A, B);
+		quick_sort(&data->A, &data->B);
 	else
-		adaptive_sort(A, B, disorder);
+		adaptive_sort(&data->A, &data->B, disorder);
 }
