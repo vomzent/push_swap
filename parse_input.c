@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 12:03:55 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/08 11:00:35 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 2. validate strings (validatestrings)
 3. convert to long check range 
 4. check duplicates (in int array) (check_duplicates)
-5. load into stack (load_data -> both to push int array AND define strategy/benchmark)
+5. load into stack (load_data -> both to push int array)
 6. run sorting algo based on data->stratey
 7. run benchmark mode always, print benchmark mode if data->benchmark == 1
 */
@@ -32,7 +32,8 @@ int	main(int argc, char** argv)
 	ft_bzero(&data, sizeof(data));
 	if (check_args)
 		return(error(), 1);
-	load_data()
+	if (load_data(&data))
+		return(error(), 1);
 	sort_stack(&data->A, &data->B, data->strategy);
 	benchmark_mode(data);
 	free(data);
@@ -63,14 +64,28 @@ int	check_args(char **argv, t_data *data)
 	return (free(no_flags), 0);
 }
 
+int	load_data(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->length)
+	{
+		push(&data->A, data->args[i]);
+		i++;
+	}
+	return (0);
+}
+
 int	assign_flags(char **argv, t_data *data)
 {
 	int	i;
 
-	i = 2;
+	i = count_flags(argv);
+	if (i == -1)
+		return (1);
 	while (i > 0)
 	{
-		// protect against the case that there is no flag or 1 flag
 		if (ft_strncmp(argv[i], "--bench"))
 		{
 			data->strategy = check_strategy(argv[i]);
@@ -83,16 +98,33 @@ int	assign_flags(char **argv, t_data *data)
 	}
 	return (0);
 }
-// need to check if i am actually changing data->strategy and data->benchmark this way
+
+int	count_flags(char **argv)
+{
+	int	count;
+
+	count = 0;
+	while (argv[i])
+	{
+		if (argv[i][1] == "-")
+			count++;
+		i++;
+	}
+	if (count > 2)
+		return (-1);
+	return (count);
+}
 
 int	convert_arg(char **array, t_data *data)
 {
 	long	n;
 	int		*ret;
+	int		array_len;
 	
 	n = 0;
 	i = 0;
-	ret = (int *)malloc(sizeof(int) * array_size(array) - 1);
+	array_len = array_size(array);
+	ret = (int *)malloc(sizeof(int) * array_len - 1);
 	while (array[i])
 	{
 		n = ft_atol(array[i]);
@@ -101,11 +133,32 @@ int	convert_arg(char **array, t_data *data)
 		ret[i] = (int)n;
 		i++;
 	}
-	// check duplicates in int array function!
+	if (check_duplicates(ret, array_len));
+		return (1);
+	data->length = array_len;
 	data->args = ret;
-	free(ret);
+	return (free(ret), 0);
 }
-// need to check whether this &data->args thing is correct way of writing it
+
+int	check_duplicates(int *array, int array_len)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (i + 1 < array_len)
+	{
+		j = i + 1;
+		while (j < array_len)
+		{
+			if (array[i] == array[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
 
 int	validate_strings(char **array)
 {
