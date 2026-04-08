@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:50:39 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 10:49:30 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/08 12:11:16 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	selection_sort(t_stack **A, t_stack **B)
+void	selection_sort(t_stack **A, t_stack **B, t_data *data)
 {
 	int	*arr;
 	
@@ -24,15 +24,15 @@ void	selection_sort(t_stack **A, t_stack **B)
 		arr = find_min(*A);
 		while (arr[0] != (*A)->value)
 		{
-			if (arr[1] > stack_size(*A) / 2)
-				rra(A);
+			if (arr[1] > (int)stack_size(*A) / 2)
+				rra(A, data);
 			else
-				ra(A);
+				ra(A, data);
 		}
-		pb(A, B);
+		pb(A, B, data);
 	}
 	while (*B)
-		pa(A, B);
+		pa(A, B, data);
 	free(arr);
 }
 

@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 09:22:00 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/07 09:23:35 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/08 12:10:54 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ long	ft_atol(const char *string)
 	i = 0;
 	sign = 1;
 	ret = 0;
-	while (isaspace(nptr[i]))
+	while (isaspace(string[i]))
 		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
+	if (string[i] == '+' || string[i] == '-')
 	{
-		if (nptr[i] == '-')
+		if (string[i] == '-')
 			sign *= -1;
 		i++;
 	}
-	if (nptr[i] == '+' || nptr[i] == '-')
+	if (string[i] == '+' || string[i] == '-')
 		return (ret * sign);
-	while (isnumber(nptr[i]))
+	while (isnumber(string[i]))
 	{
-		ret = (ret * 10) + (nptr[i] - '0');
+		ret = (ret * 10) + (string[i] - '0');
 		i++;
 	}
 	ret *= sign;

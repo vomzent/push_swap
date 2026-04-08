@@ -9,6 +9,8 @@ SRC = \
 	ft_bzero.c \
 	ft_strncmp.c \
 	ft_itoa.c \
+	ft_strdup.c \
+	ft_strlen.c \
 	ft_split.c
 OBJ = $(SRC:.c=.o)
 AR = ar rcs

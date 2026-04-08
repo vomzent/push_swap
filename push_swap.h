@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 11:16:05 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/08 12:03:41 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_stack
 
 typedef struct	s_data
 {
-	struct s_stack	*a;
-	struct s_stack	*b;
+	struct s_stack	*A;
+	struct s_stack	*B;
 	int				*args;
 	double			disorder;
 	int				strategy;
@@ -46,35 +46,35 @@ void	print_stack(t_stack *target);
 
 void	np_sa(t_stack **A);
 void	np_sb(t_stack **B);
-void	sa(t_stack **A);
-void	sb(t_stack **B);
-void	ss(t_stack **A, t_stack **B);
-void	pa(t_stack **A, t_stack **B);
-void	pb(t_stack **A, t_stack **B);
+void	sa(t_stack **A, t_data *data);
+void	sb(t_stack **B, t_data *data);
+void	ss(t_stack **A, t_stack **B, t_data *data);
+void	pa(t_stack **A, t_stack **B, t_data *data);
+void	pb(t_stack **A, t_stack **B, t_data *data);
 
 void	np_ra(t_stack **A);
 void	np_rb(t_stack **B);
-void	ra(t_stack **A);
-void	rb(t_stack **B);
-void	rr(t_stack **A, t_stack **B);
+void	ra(t_stack **A, t_data *data);
+void	rb(t_stack **B, t_data *data);
+void	rr(t_stack **A, t_stack **B, t_data *data);
 
 void	np_rra(t_stack **A);
 void	np_rrb(t_stack **B);
-void	rra(t_stack **A);
-void	rrb(t_stack **B);
-void	rrr(t_stack **A, t_stack **B);
+void	rra(t_stack **A, t_data *data);
+void	rrb(t_stack **B, t_data *data);
+void	rrr(t_stack **A, t_stack **B, t_data *data);
 
 // Algorithm operations
 double	compute_disorder(t_stack *A);
 int		*find_min(t_stack *A);
-void	selection_sort(t_stack **A, t_stack **B);
+void	selection_sort(t_stack **A, t_stack **B, t_data *data);
 
-void	chunk_sort(t_stack **A, t_stack **B);
+void	chunk_sort(t_stack **A, t_stack **B, t_data *data);
 int		**create_chunk(t_stack **A, int amount);
 int		*find_range(t_stack **A);
 int		*scan_stack(t_stack *A, int *range);
 void	retrieve_max(t_stack **A, t_stack **B);
-int		retrieve_pos(t_stack *B, int	found);
+int		retrieve_pos(t_stack *B, int found);
 int		find_max(t_stack *A);
 int		count_chunk(t_stack *A, int *range);
 void	retrieve_chunk(t_stack **A, t_stack **B, int *range);
@@ -83,13 +83,15 @@ int		find_from_top(t_stack *A, int *range);
 void	check_pos(t_stack **A, int *pos);
 
 long	ft_atol(const char *string);
+int		isaspace(const char p);
+int		isnumber(const char p);
 
 /// Parse input
 int		check_args(char **argv, t_data *data);
 int		load_data(t_data *data);
 int		assign_flags(char **argv, t_data *data);
 int		count_flags(char **argv);
-int		convert_arg(char **array, t_data *data);
+int		convert_str(char **array, t_data *data);
 int		check_duplicates(int *array, int array_len);
 int		validate_strings(char **array);
 int		invalid_string(char *string);
