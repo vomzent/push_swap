@@ -6,13 +6,13 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 15:14:50 by odschreu          #+#    #+#             */
-/*   Updated: 2026/03/19 17:19:54 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/09 11:09:39 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_token(const char *s, int c)
+static int	count_token(const char *s, int c)
 {
 	int	j;
 	int	token;
@@ -30,7 +30,7 @@ int	count_token(const char *s, int c)
 	return (token);
 }
 
-char	*copy_string(const char *token, char c)
+static char	*copy_string(const char *token, char c)
 {
 	char	*dup;
 	char	*start;
@@ -55,7 +55,7 @@ char	*copy_string(const char *token, char c)
 	return (start);
 }
 
-void	free_array(char **ptr_array, int pointer_count)
+static void	free_array(char **ptr_array, int pointer_count)
 {
 	int	i;
 
@@ -64,7 +64,7 @@ void	free_array(char **ptr_array, int pointer_count)
 		free(ptr_array[i++]);
 }
 
-int	fill_array(char **ptr_array, char const *s, char c, int tokens)
+static int	fill_array(char **ptr_array, char const *s, char c, int tokens)
 {
 	int	pointer_count;
 	int	string_index;

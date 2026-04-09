@@ -6,18 +6,18 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 09:25:24 by odschreu          #+#    #+#             */
-/*   Updated: 2026/03/20 12:38:24 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/09 11:10:05 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	isnumber(const char p)
+static int	isnumber(const char p)
 {
 	return (p >= '0' && p <= '9');
 }
 
-int	isaspace(const char p)
+static int	isaspace(const char p)
 {
 	return ((p >= 9 && p <= 13) || p == ' ');
 }

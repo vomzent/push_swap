@@ -12,10 +12,15 @@ SRC = \
 		stack_ops.c \
 		reverse_rotate.c \
 		rotate.c \
-		stack_behavior.c 
-		# algo_selection.c \
-		# selection_sort.c \
-		# chunk_sort.c
+		stack_behavior.c \
+		parse_input.c \
+		ft_atol.c \
+		algo_selection.c \
+		selection_sort.c \
+		benchmark.c \
+		free.c \
+		chunk_sort_2.c
+		# input_test.c
 		# doubletest.c
 
 OBJ = $(SRC:.c=.o)
@@ -33,7 +38,7 @@ $(LIB2):
 	cp libft/libft.a $(LIB2)
 
 printf: $(LIB)
-$(LIB):
+$(LIB): $(LIB2)
 	$(MAKE) -C ft_printf
 	cp ft_printf/libftprintf.a $(LIB)
 
@@ -42,10 +47,13 @@ $(LIB):
 
 clean:
 	rm -f $(OBJ)
+	$(MAKE) clean -C ft_printf
+	$(MAKE) clean -C libft
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(LIB)
+	rm -f $(LIB2)
 	$(MAKE) fclean -C ft_printf
 	$(MAKE) fclean -C libft
 

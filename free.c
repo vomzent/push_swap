@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_selection.c                                   :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/04 08:51:11 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/09 08:28:28 by odschreu         ###   ########.fr       */
+/*   Created: 2026/04/09 10:47:14 by odschreu          #+#    #+#             */
+/*   Updated: 2026/04/09 11:09:21 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
 #include "push_swap.h"
+#include "ft_printf/ft_printf.h"
+#include <stdlib.h>
 
-double	compute_disorder(t_stack *A)
+void	free_data(t_data *data)
 {
-	int	mistakes;
-	int	total_pairs;
-	float	ret;
-	t_stack	*i;
-	t_stack	*j;
+	if (!data)
+		return ;
+	free_stack(&data->a);
+	free_stack(&data->b);
+	if (data->args)
+		free(data->args);
+	free(data);
+}
 
-	mistakes = 0;
-	total_pairs = 0;
-	i = A;
-	j = A->next;
-	while (j)
-	{
-		total_pairs++;
-		if (i->value > j->value)
-			mistakes++;
-		i = i->next;
-		j = j->next;
-	}
-	ret = (double)mistakes / (double)total_pairs;
-	return (ret);
+void	error(void)
+{
+	ft_printf(1, "Error\n");
+	return ;
+}
+
+void	free_arrays(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		free(array[i++]);
+	free(array);
 }

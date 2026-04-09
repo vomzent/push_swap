@@ -71,6 +71,7 @@ function compute_disorder(stack a):
 
 https://leetcode.fandom.com/wiki/Sort_with_two_stacks
 https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
+https://medium.com/@ulysse.gks/push-swap-in-less-than-4200-operations-c292f034f6c0
 
 
 ### Our program
