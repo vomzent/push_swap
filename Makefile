@@ -18,7 +18,9 @@ SRC = \
 		algo_selection.c \
 		selection_sort.c \
 		benchmark.c \
-		input_test.c
+		free.c \
+		chunk_sort_2.c
+		# input_test.c
 		# doubletest.c
 
 OBJ = $(SRC:.c=.o)

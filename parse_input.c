@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 14:12:22 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/09 11:25:49 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	check_args(char **argv, t_data *data)
 	char	**no_flags;
 	char	**tmp;
 
+	no_flags = NULL;
 	ft_printf(1, "\n entering assign flags\n");
 	if (assign_flags(argv, data))
 		return (1);
@@ -62,11 +63,11 @@ int	check_args(char **argv, t_data *data)
 	}
 	ft_printf(1, "\n entering valid strings\n");
 	if (validate_strings(no_flags))
-		return (free(no_flags), 1);
+		return (free_data(data), free_array(no_flags), 1);
 	ft_printf(1, "\n entering convert strings\n");
 	if (convert_str(no_flags, data))
-		return (free(no_flags), 1);
-	return (free(no_flags), 0);
+		return (free_data(data), free_array(no_flags), 1);
+	return (0);
 }
 
 int	load_data(t_data *data)
@@ -76,8 +77,8 @@ int	load_data(t_data *data)
 	i = data->length - 1;
 	while (i >= 0)
 	{
-		push(&data->A, data->args[i]);
-		if (!data->A)
+		push(&data->a, data->args[i]);
+		if (!data->a)
 			return (1);
 		i--;
 	}
@@ -144,7 +145,7 @@ int	convert_str(char **array, t_data *data)
 		i++;
 	}
 	if (check_duplicates(ret, array_len))
-		return (1);
+		return (free(ret), 1);
 	data->length = array_len;
 	data->args = ret;
 	return (0);
@@ -206,14 +207,14 @@ char	**parse_flags(char **argv)
 	int		i;
 	int		j;
 
-	no_flags = (char **)malloc(sizeof(char *) * count_args(argv) + 1);
-	ft_bzero(no_flags, sizeof(char *) * count_args(argv) + 1);
+	no_flags = (char **)malloc(sizeof(char *) * (count_args(argv) + 1));
+	ft_bzero(no_flags, sizeof(char *) * (count_args(argv) + 1));
 	i = 1;
 	j = 0;
 	while (argv[i])
 	{
 		// make sure to check no segfault for 1 variable
-		if (argv[i][0] != '-')
+		if (argv[i][0] == ' ' || ft_isdigit(argv[i][0]))
 		{
 			no_flags[j] = ft_strdup(argv[i]);
 			j++;
@@ -222,7 +223,7 @@ char	**parse_flags(char **argv)
 	}
 	if (i - j > 3)
 	{
-		free(no_flags);
+		free_array(no_flags);
 		return (NULL);
 	}
 	return (no_flags);
@@ -243,12 +244,6 @@ int	count_args(char **argv)
 		i++;
 	}
 	return (count);
-}
-
-void	error(void)
-{
-	ft_printf(1, "Error\n");
-	return ;
 }
 
 int	check_strategy(char *argv)
@@ -292,10 +287,10 @@ void	sort_stack(t_data *data, int strategy)
 {
 	double	disorder;
 
-	disorder = compute_disorder(data->A);
+	disorder = compute_disorder(data->a);
 	data->disorder = disorder;
 	if (strategy == 1)
-		selection_sort(&data->A, &data->B, data);
+		selection_sort(&data->a, &data->b, data);
 	// else if (strategy == 2)
 	// 	chunk_sort(&data->A, &data->B, data);
 	// else if (strategy == 3)
@@ -303,3 +298,4 @@ void	sort_stack(t_data *data, int strategy)
 	// else
 	// 	adaptive_sort(&data->A, &data->B, disorder);
 }
+

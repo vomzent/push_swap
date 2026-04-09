@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
+#include "libft/libft.h"
 #include <stdlib.h>
 
 void	push(t_stack **target, int value)
@@ -23,14 +24,16 @@ void	push(t_stack **target, int value)
 		*target = malloc(sizeof(t_stack));
 		if (!*target)
 			return ;
+		ft_bzero(*target, sizeof(t_stack));
 		(*target)->value = value;
-		(*target)->next = NULL;
+		(*target)->rank = -1;
 		return ;
 	}
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return ;
-	node->previous = NULL;
+	ft_bzero(node, sizeof(t_stack));
+	node->rank = -1;
 	node->value = value;
 	node->next = *target;
 	(*target)->previous = node;

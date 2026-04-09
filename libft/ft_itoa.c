@@ -6,20 +6,20 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 14:11:08 by odschreu          #+#    #+#             */
-/*   Updated: 2026/03/20 12:35:48 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/09 11:09:54 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	digits(long num)
+static int	digits(long num)
 {
 	if (num < 10)
 		return (1);
 	return (1 + digits(num / 10));
 }
 
-void	append_numbers(char *string, long num, int n, int char_amount)
+static void	append_numbers(char *string, long num, int n, int char_amount)
 {
 	long	num2;
 	int		i;
@@ -42,7 +42,7 @@ void	append_numbers(char *string, long num, int n, int char_amount)
 	}
 }
 
-char	*start_string(char *string, int n, int char_amount)
+static char	*start_string(char *string, int n, int char_amount)
 {
 	long	num;
 

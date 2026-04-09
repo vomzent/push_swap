@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/09 08:26:49 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/09 11:57:04 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@ typedef struct s_stack
 	int				value;
 	struct s_stack	*next;
 	struct s_stack	*previous;
+	int				rank;
 	// struct t_stack	*current;
 }	t_stack;
 
 
 typedef struct	s_data
 {
-	struct s_stack	*A;
-	struct s_stack	*B;
+	struct s_stack	*a;
+	struct s_stack	*b;
 	int				*args;
 	double			disorder;
 	int				strategy;
 	int				total_ops;
 	int				benchmark;
 	int				length;
-	int				ops[11];			
+	int				ops[11];
 }	t_data;
 
 // t_stack operations
@@ -66,7 +67,7 @@ void	rrr(t_stack **A, t_stack **B, t_data *data);
 
 // Algorithm operations
 double	compute_disorder(t_stack *A);
-int		*find_min(t_stack *A);
+int		*find_min_pos(t_stack *A);
 void	selection_sort(t_stack **A, t_stack **B, t_data *data);
 
 void	chunk_sort(t_stack **A, t_stack **B, t_data *data);
@@ -97,7 +98,6 @@ int		validate_strings(char **array);
 int		invalid_string(char *string);
 char	**parse_flags(char **argv);
 int		count_args(char **argv);
-void	error(void);
 int		check_strategy(char *argv);
 void	sort_stack(t_data *data, int strategy);
 int		array_size(char	**arg);
@@ -107,6 +107,18 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	benchmark_mode(t_data *data);
 char	*set_strategy(t_data *data);
 char	*adaptive_strategy(double disorder);
+
+// free and error
+void	free_array(char **array);
+void	free_data(t_data *data);
+void	error(void);
+
+// Chunk sort attempt 2
+int		normalize_stack(t_stack **stack);
+int		find_min(t_stack *stack);
+void	print_stack_rank(t_stack *target);
+void	print_stack_2(t_stack *target);
+
 
 /*
 
