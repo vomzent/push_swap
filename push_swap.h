@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 12:03:41 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/09 08:26:49 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,15 @@ int		check_strategy(char *argv);
 void	sort_stack(t_data *data, int strategy);
 int		array_size(char	**arg);
 int		ft_strcmp(const char *s1, const char *s2);
+
+// Benchmark
+void	benchmark_mode(t_data *data);
+char	*set_strategy(t_data *data);
+char	*adaptive_strategy(double disorder);
+
 /*
+
+
 --simple
 --medium
 --complex

@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 11:50:50 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 14:13:22 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/09 08:29:07 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int	main(int argc, char** argv)
 		return(error(), 1);
 	ft_printf(1, "\nData loaded successfully:\n");
 	print_stack(data.A);
-	// sort_stack(&data, data.strategy);
-	// benchmark_mode(&data);
+	sort_stack(&data, data.strategy);
+	if (data.benchmark)
+		benchmark_mode(&data);
+	ft_printf(1, "\nData sorted successfully:\n");
+	print_stack(data.A);
 	return (0);
 }

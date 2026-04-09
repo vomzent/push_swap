@@ -17,6 +17,7 @@ SRC = \
 		ft_atol.c \
 		algo_selection.c \
 		selection_sort.c \
+		benchmark.c \
 		input_test.c
 		# doubletest.c
 

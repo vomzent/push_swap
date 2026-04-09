@@ -1,5 +1,5 @@
-disorder: 0-100.00%
-strategy: Adaptive / O(nlogn)
-total_ops: number
-sa: n sb: n ss: n pa: n pb: n
-ra: n rb: n rr: n rra: n rrb: n rrr: n
+[bench] disorder: 100%
+[bench] strategy: Simple / O(n^2)
+[bench] total_ops: 25
+[bench] sa: 0 sb: 0 ss: 0 pa: 12 pb: 12
+[bench] ra: 1 rb: 0 rr: 0 rra: 10 rrb: 0 rrr: 0

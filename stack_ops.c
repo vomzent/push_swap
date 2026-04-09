@@ -31,6 +31,7 @@ void	sa(t_stack **A, t_data *data)
 {
 	np_sa(A);
 	data->ops[0]++;
+	data->total_ops++;
 	ft_printf(1, "sa\n");
 }
 
@@ -50,6 +51,7 @@ void	sb(t_stack **B, t_data *data)
 {
 	np_sb(B);
 	data->ops[1]++;
+	data->total_ops++;
 	ft_printf(1, "sb\n");
 }
 
@@ -58,6 +60,7 @@ void	ss(t_stack **A, t_stack **B, t_data *data)
 	np_sa(A);
 	np_sb(B);
 	data->ops[2]++;
+	data->total_ops++;
 	ft_printf(1, "ss\n");
 }
 
@@ -70,6 +73,7 @@ void	pa(t_stack **A, t_stack **B, t_data *data)
 	popped = pop(B);
 	push(A, popped);
 	data->ops[3]++;
+	data->total_ops++;
 	ft_printf(1, "pa\n");
 }
 
@@ -82,6 +86,7 @@ void	pb(t_stack **A, t_stack **B, t_data *data)
 	popped = pop(A);
 	push(B, popped);
 	data->ops[4]++;
+	data->total_ops++;
 	ft_printf(1, "pb\n");
 }
 

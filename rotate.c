@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 08:50:49 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 11:46:55 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/09 08:31:31 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ra(t_stack **A, t_data *data)
 {
 	np_ra(A);
 	data->ops[5]++;
+	data->total_ops++;
 	ft_printf(1, "ra\n");
 }
 
@@ -49,6 +50,7 @@ void	rb(t_stack **B, t_data *data)
 {
 	np_rb(B);
 	data->ops[6]++;
+	data->total_ops++;
 	ft_printf(1, "rb\n");
 }
 
@@ -57,5 +59,6 @@ void	rr(t_stack **A, t_stack **B, t_data *data)
 	np_ra(A);
 	np_rb(B);
 	data->ops[7]++;
+	data->total_ops++;
 	ft_printf(1, "rr\n");
 }
