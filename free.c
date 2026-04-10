@@ -31,7 +31,7 @@ void	error(void)
 	return ;
 }
 
-void	free_arrays(char **array)
+void	free_array(char **array)
 {
 	int	i;
 

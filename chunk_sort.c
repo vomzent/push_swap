@@ -205,7 +205,7 @@ int	**create_chunk(t_stack **A, int amount)
 	int	i;
 
 	range = find_range(A);
-	size = range[1] - range[0];
+	size = stack_size(A);
 	chunk_size = size / amount;
 	chunks = malloc(sizeof(int *) * amount);
 	i = 0;

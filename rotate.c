@@ -14,50 +14,50 @@
 #include "ft_printf/ft_printf.h"
 #include <stddef.h>
 
-void	np_ra(t_stack **A)
+void	rotate(t_stack **a)
 {
 	t_stack	*head;
 
-	head = *A;
+	head = *a;
 	while (head->next != 0)
 		head = head->next;
-	head->next = *A;
-	*A = (*A)->next;
+	head->next = *a;
+	*a = (*a)->next;
 	head->next->next = NULL;
 }
 
-void	np_rb(t_stack **B)
-{
-	t_stack	*head;
+// void	np_rb(t_stack **B)
+// {
+// 	t_stack	*head;
 
-	head = *B;
-	while (head->next != 0)
-		head = head->next;
-	head->next = *B;
-	*B = (*B)->next;
-	head->next->next = NULL;
-}
+// 	head = *B;
+// 	while (head->next != 0)
+// 		head = head->next;
+// 	head->next = *B;
+// 	*B = (*B)->next;
+// 	head->next->next = NULL;
+// }
 
-void	ra(t_stack **A, t_data *data)
+void	ra(t_stack **a, t_data *data)
 {
-	np_ra(A);
+	rotate(a);
 	data->ops[5]++;
 	data->total_ops++;
 	ft_printf(1, "ra\n");
 }
 
-void	rb(t_stack **B, t_data *data)
+void	rb(t_stack **b, t_data *data)
 {
-	np_rb(B);
+	rotate(b);
 	data->ops[6]++;
 	data->total_ops++;
 	ft_printf(1, "rb\n");
 }
 
-void	rr(t_stack **A, t_stack **B, t_data *data)
+void	rr(t_stack **a, t_stack **b, t_data *data)
 {
-	np_ra(A);
-	np_rb(B);
+	rotate(a);
+	rotate(b);
 	data->ops[7]++;
 	data->total_ops++;
 	ft_printf(1, "rr\n");

@@ -45,25 +45,22 @@ void	free_stack(t_stack **target);
 size_t	stack_size(t_stack *target);
 void	print_stack(t_stack *target);
 
-void	np_sa(t_stack **A);
-void	np_sb(t_stack **B);
-void	sa(t_stack **A, t_data *data);
-void	sb(t_stack **B, t_data *data);
-void	ss(t_stack **A, t_stack **B, t_data *data);
-void	pa(t_stack **A, t_stack **B, t_data *data);
-void	pb(t_stack **A, t_stack **B, t_data *data);
+void	swap(t_stack **a);
+void	sa(t_stack **a, t_data *data);
+void	sb(t_stack **b, t_data *data);
+void	ss(t_stack **a, t_stack **b, t_data *data);
+void	pb(t_stack **a, t_stack **b, t_data *data);
+void	pa(t_stack **a, t_stack **b, t_data *data);
 
-void	np_ra(t_stack **A);
-void	np_rb(t_stack **B);
-void	ra(t_stack **A, t_data *data);
-void	rb(t_stack **B, t_data *data);
-void	rr(t_stack **A, t_stack **B, t_data *data);
+void	rotate(t_stack **a);
+void	ra(t_stack **a, t_data *data);
+void	rb(t_stack **b, t_data *data);
+void	rr(t_stack **a, t_stack **b, t_data *data);
 
-void	np_rra(t_stack **A);
-void	np_rrb(t_stack **B);
-void	rra(t_stack **A, t_data *data);
-void	rrb(t_stack **B, t_data *data);
-void	rrr(t_stack **A, t_stack **B, t_data *data);
+void	reverse_rotate(t_stack **a);
+void	rra(t_stack **a, t_data *data);
+void	rrb(t_stack **b, t_data *data);
+void	rrr(t_stack **a, t_stack **b, t_data *data);
 
 // Algorithm operations
 double	compute_disorder(t_stack *A);
@@ -118,6 +115,8 @@ int		normalize_stack(t_stack **stack);
 int		find_min(t_stack *stack);
 void	print_stack_rank(t_stack *target);
 void	print_stack_2(t_stack *target);
+int		**create_chunks(int n);
+
 
 
 /*

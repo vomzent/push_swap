@@ -15,76 +15,76 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	np_sa(t_stack **A)
+void	swap(t_stack **a)
 {
 	t_stack	*tmp;
 	
-	if ((*A)->next == NULL)
+	if ((*a)->next == NULL)
 		return ;
-	tmp = (*A)->next;
-	(*A)->next = tmp->next;
-	tmp->next = *A;
-	*A = tmp;
+	tmp = (*a)->next;
+	(*a)->next = tmp->next;
+	tmp->next = *a;
+	*a = tmp;
 }
 
-void	sa(t_stack **A, t_data *data)
+void	sa(t_stack **a, t_data *data)
 {
-	np_sa(A);
+	swap(a);
 	data->ops[0]++;
 	data->total_ops++;
 	ft_printf(1, "sa\n");
 }
 
-void	np_sb(t_stack **B)
-{
-	t_stack	*tmp;
+// void	np_sb(t_stack **B)
+// {
+// 	t_stack	*tmp;
 	
-	if ((*B)->next == NULL)
-		return ;
-	tmp = (*B)->next;
-	(*B)->next = tmp->next;
-	tmp->next = *B;
-	*B = tmp;
-}
+// 	if ((*B)->next == NULL)
+// 		return ;
+// 	tmp = (*B)->next;
+// 	(*B)->next = tmp->next;
+// 	tmp->next = *B;
+// 	*B = tmp;
+// }
 
-void	sb(t_stack **B, t_data *data)
+void	sb(t_stack **b, t_data *data)
 {
-	np_sb(B);
+	swap(b);
 	data->ops[1]++;
 	data->total_ops++;
 	ft_printf(1, "sb\n");
 }
 
-void	ss(t_stack **A, t_stack **B, t_data *data)
+void	ss(t_stack **a, t_stack **b, t_data *data)
 {
-	np_sa(A);
-	np_sb(B);
+	swap(a);
+	swap(b);
 	data->ops[2]++;
 	data->total_ops++;
 	ft_printf(1, "ss\n");
 }
 
-void	pa(t_stack **A, t_stack **B, t_data *data)
+void	pa(t_stack **a, t_stack **b, t_data *data)
 {
 	int	popped;
 
-	if (!*B)
+	if (!*b)
 		return ;
-	popped = pop(B);
-	push(A, popped);
+	popped = pop(b);
+	push(a, popped);
 	data->ops[3]++;
 	data->total_ops++;
 	ft_printf(1, "pa\n");
 }
 
-void	pb(t_stack **A, t_stack **B, t_data *data)
+void	pb(t_stack **a, t_stack **b, t_data *data)
 {
 	int	popped;
 
-	if (!*A)
+	if (!*a)
 		return ;
-	popped = pop(A);
-	push(B, popped);
+	popped = pop(a);
+	push(b, popped);
 	data->ops[4]++;
 	data->total_ops++;
 	ft_printf(1, "pb\n");

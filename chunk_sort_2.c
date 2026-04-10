@@ -13,6 +13,7 @@
 #include "push_swap.h"
 #include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
+#include <math.h>
 
 int	normalize_stack(t_stack **stack)
 {
@@ -48,11 +49,37 @@ int	find_min(t_stack *stack)
 	return (min);
 }
 
+int	**create_chunks(int n)
+{
+	int	**chunks;
+	int	amount;
+	int	i;
+
+	amount = (int)sqrt(n);
+	chunks = malloc(sizeof(int *) * (amount + 1));
+	i = 0;
+	while (i < amount)
+	{
+		chunks[i] = malloc(sizeof(int) * 2);
+		chunks[i][0] = amount * i;
+		if (i == amount - 1)
+			chunks[i][1] = n - 1;
+		else
+			chunks[i][1] = amount * (i + 1) - 1;
+		i++;
+	}
+	chunks[i] = malloc(sizeof(int) * 2);
+	chunks[i] = NULL;
+	return (chunks);
+}
+
 int	main(void)
 {
-	t_stack *test;
+	t_stack *test = NULL;
+	int		i;
+	int		**chunks = NULL;
 
-	test = NULL;
+	i = 0;
 	push(&test, 5);
 	push(&test, 3);
 	push(&test, 14);
@@ -65,6 +92,13 @@ int	main(void)
 	print_stack_2(test);
 	ft_printf(1, "\n rank:\n");
 	print_stack_rank(test);
+	chunks = create_chunks(stack_size(test));
+	while (chunks[i])
+	{
+		ft_printf(1, "[%d, %d], ", chunks[i][0], chunks[i][1]);
+		i++;
+	}
+	ft_printf(1, "\n");
 	free(test);
 	return (0);
 	
