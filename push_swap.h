@@ -113,7 +113,7 @@ int		find_min_rank(t_stack *stack);
 int		find_min(t_stack *stack);
 void	print_stack_rank(t_stack *target);
 
-// stack_utils.c
+// stack_utils2.c
 int		retrieve_pos(t_stack *a, int found);
 
 
