@@ -38,91 +38,105 @@ typedef struct	s_data
 }	t_data;
 
 // t_stack operations
+// stack_core.c
+void	swap(t_stack **a);
 void	push(t_stack **target, int value);
 int		pop(t_stack **target);
 int		peek(t_stack **target);
+void	rotate(t_stack **a);
+
+// stack_core2.c
+void	reverse_rotate(t_stack **a);
+void	print_stack(t_stack *target);
 void	free_stack(t_stack **target);
 size_t	stack_size(t_stack *target);
-void	print_stack(t_stack *target);
 
-void	swap(t_stack **a);
+// stack_ops.c
 void	sa(t_stack **a, t_data *data);
 void	sb(t_stack **b, t_data *data);
 void	ss(t_stack **a, t_stack **b, t_data *data);
 void	pb(t_stack **a, t_stack **b, t_data *data);
 void	pa(t_stack **a, t_stack **b, t_data *data);
 
-void	rotate(t_stack **a);
+// stack_ops_r.c
 void	ra(t_stack **a, t_data *data);
 void	rb(t_stack **b, t_data *data);
 void	rr(t_stack **a, t_stack **b, t_data *data);
 
-void	reverse_rotate(t_stack **a);
+// stack_ops_rr.c
 void	rra(t_stack **a, t_data *data);
 void	rrb(t_stack **b, t_data *data);
 void	rrr(t_stack **a, t_stack **b, t_data *data);
 
-// Algorithm operations
-double	compute_disorder(t_stack *A);
+// utils.c
+void	free_data(t_data *data);
+void	error(void);
+void	free_array(char **array);
+int		array_size(char	**arg);
+int		ft_strcmp(const char *s1, const char *s2);
+// ft_atol.c
+long	ft_atol(const char *string);
+
+// sort_base.c
+void	sort_two(t_stack **a, t_data *data);
+void	sort_three(t_stack **a, t_data *data);
+void	sort_four(t_stack **a, t_stack **b, t_data *data);
+void	sort_five(t_stack **a, t_stack **b, t_data *data);
+
+// parse_load.c
+int		load_data(t_data *data);
+void	sort_stack(t_data *data, int strategy);
+
+// parse_args.c
+int		check_args(char **argv, t_data *data);
+int		assign_flags(char **argv, t_data *data);
+int		count_flags(char **argv);
+char	**parse_flags(char **argv);
+int		count_args(char **argv);
+
+// parse_validate.c
+int		check_strategy(char *argv);
+int		validate_strings(char **array);
+int		invalid_string(char *string);
+int		convert_str(char **array, t_data *data);
+int		check_duplicates(int *array, int array_len);
+
+// benchmark.c
+void	benchmark_mode(t_data *data);
+char	*set_strategy(t_data *data);
+char	*adaptive_strategy(double disorder);
+
+// stack_utils.c
+double	compute_disorder(t_stack *a);
+int		normalize_stack(t_stack **stack);
+int		find_min_rank(t_stack *stack);
+int		find_min(t_stack *stack);
+void	print_stack_rank(t_stack *target);
+
+// stack_utils.c
+int		retrieve_pos(t_stack *a, int found);
+
+
+// selection_sort.c
 int		*find_min_pos(t_stack *A);
 void	selection_sort(t_stack **A, t_stack **B, t_data *data);
 
+// Chunk sort attempt 2
+void	print_stack_2(t_stack *target);
+int		**create_chunks(int n);
+
+// chunk sort attempt 1
 void	chunk_sort(t_stack **A, t_stack **B, t_data *data);
 int		**create_chunk(t_stack **A, int amount);
 int		*find_range(t_stack **A);
 int		*scan_stack(t_stack *A, int *range);
 void	retrieve_max(t_stack **A, t_stack **B);
-int		retrieve_pos(t_stack *B, int found);
 int		find_max(t_stack *A);
 int		count_chunk(t_stack *A, int *range);
 void	retrieve_chunk(t_stack **A, t_stack **B, int *range);
 int		find_from_bottom(t_stack *A, int *range);
 int		find_from_top(t_stack *A, int *range);
 void	check_pos(t_stack **A, int *pos);
-
-long	ft_atol(const char *string);
-int		isaspace(const char p);
-int		isnumber(const char p);
-
-/// Parse input
-int		check_args(char **argv, t_data *data);
-int		load_data(t_data *data);
-int		assign_flags(char **argv, t_data *data);
-int		count_flags(char **argv);
-int		convert_str(char **array, t_data *data);
-int		check_duplicates(int *array, int array_len);
-int		validate_strings(char **array);
-int		invalid_string(char *string);
-char	**parse_flags(char **argv);
-int		count_args(char **argv);
-int		check_strategy(char *argv);
-void	sort_stack(t_data *data, int strategy);
-int		array_size(char	**arg);
-int		ft_strcmp(const char *s1, const char *s2);
-
-// Benchmark
-void	benchmark_mode(t_data *data);
-char	*set_strategy(t_data *data);
-char	*adaptive_strategy(double disorder);
-
-// free and error
-void	free_array(char **array);
-void	free_data(t_data *data);
-void	error(void);
-
-// Chunk sort attempt 2
-int		normalize_stack(t_stack **stack);
-int		find_min_rank(t_stack *stack);
-void	print_stack_rank(t_stack *target);
-void	print_stack_2(t_stack *target);
-int		**create_chunks(int n);
-
-// Base sort
-void	sort_two(t_stack **a, t_data *data);
-void	sort_three(t_stack **a, t_data *data);
-void	sort_four(t_stack **a, t_stack **b, t_data *data);
-void	sort_five(t_stack **a, t_stack **b, t_data *data);
-int		find_min(t_stack *stack);
 
 /*
 

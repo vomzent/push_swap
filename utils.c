@@ -40,3 +40,23 @@ void	free_array(char **array)
 		free(array[i++]);
 	free(array);
 }
+
+int	array_size(char	**arg)
+{
+	int	i;
+	
+	i = 0;
+	while (arg[i] != NULL)
+		i++;
+	return (i);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+}

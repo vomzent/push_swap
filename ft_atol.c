@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-int	isnumber(const char p)
+static int	isnumber(const char p)
 {
 	return (p >= '0' && p <= '9');
 }
 
-int	isaspace(const char p)
+static int	isaspace(const char p)
 {
 	return ((p >= 9 && p <= 13) || p == ' ');
 }

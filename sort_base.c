@@ -68,39 +68,3 @@ void	sort_five(t_stack **a, t_stack **b, t_data *data)
 	pa(a, b, data);
 }
 
-//from og chunk sort.c
-int	retrieve_pos(t_stack *B, int found)
-{
-	int	pos;
-	int	counter;
-
-	counter = 0;
-	pos = 0;
-	while (B)
-	{
-		if (B->value == found)
-		{
-			pos = counter;
-			break;
-		}
-		counter++;
-		B = B->next;
-	}
-	return (pos);
-}
-
-int	find_min(t_stack *stack)
-{
-	int		min;
-	t_stack	*marker;
-	
-	marker = stack;
-	min = stack->value;
-	while (marker)
-	{
-		if (marker->value < min)
-			min = marker->value;
-		marker = marker->next;
-	}
-	return (min);
-}

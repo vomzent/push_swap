@@ -15,28 +15,28 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	selection_sort(t_stack **A, t_stack **B, t_data *data)
+void	selection_sort(t_stack **a, t_stack **a, t_data *data)
 {
 	int	*arr;
 	
-	while (*A)
+	while (*a)
 	{
-		arr = find_min_pos(*A);
-		while (arr[0] != (*A)->value)
+		arr = find_min_pos(*a);
+		while (arr[0] != (*a)->value)
 		{
-			if (arr[1] > (int)stack_size(*A) / 2)
-				rra(A, data);
+			if (arr[1] > (int)stack_size(*a) / 2)
+				rra(a, data);
 			else
-				ra(A, data);
+				ra(a, data);
 		}
-		pb(A, B, data);
+		pb(a, b, data);
 	}
-	while (*B)
-		pa(A, B, data);
+	while (*b)
+		pa(a, b, data);
 	free(arr);
 }
 
-int	*find_min_pos(t_stack *A)
+int	*find_min_pos(t_stack *a)
 {
 	int		*arr;
 	int		min;
@@ -44,9 +44,9 @@ int	*find_min_pos(t_stack *A)
 	int		counter;
 	t_stack	*marker;
 
-	min = A->value;
+	min = a->value;
 	pos = 0;
-	marker = A;
+	marker = a;
 	arr = malloc(sizeof(int) * 2);
 	counter = 0;
 	while (marker)

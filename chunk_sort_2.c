@@ -15,40 +15,6 @@
 #include "ft_printf/ft_printf.h"
 #include <math.h>
 
-int	normalize_stack(t_stack **stack)
-{
-	size_t	i;
-	t_stack	*ptr;
-
-	i = 0;
-	ptr = *stack;
-	while (i < stack_size(*stack))
-	{
-		while (ptr->value != find_min(*stack))
-			ptr = ptr->next;
-		ptr->rank = i;
-		ptr = *stack;
-		i++;
-	}
-	return (0);
-}
-
-int	find_min_rank(t_stack *stack)
-{
-	int		min;
-	t_stack	*marker;
-	
-	marker = stack;
-	min = stack->value;
-	while (marker)
-	{
-		if (marker->value < min && marker->rank == -1)
-			min = marker->value;
-		marker = marker->next;
-	}
-	return (min);
-}
-
 int	**create_chunks(int n)
 {
 	int	**chunks;

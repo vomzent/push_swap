@@ -12,25 +12,6 @@
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
-#include <stddef.h> //use of null in ra
-#include <stdio.h>
-
-void	reverse_rotate(t_stack **a)
-{
-	t_stack	*head;
-	t_stack	*prev;
-
-	head = *a;
-	prev = NULL;
-	while (head->next != 0)
-	{
-		prev = head;
-		head = head->next;
-	}
-	head->next = *a;
-	*a = head;
-	prev->next = NULL;
-}
 
 void	rra(t_stack **a, t_data *data)
 {
@@ -39,23 +20,6 @@ void	rra(t_stack **a, t_data *data)
 	data->total_ops++;
 	ft_printf(1, "rra\n");
 }
-
-// void	np_rrb(t_stack **b)
-// {
-// 	t_stack	*head;
-// 	t_stack	*prev;
-
-// 	head = *B;
-// 	prev = NULL;
-// 	while (head->next != 0)
-// 	{
-// 		prev = head;
-// 		head = head->next;
-// 	}
-// 	head->next = *B;
-// 	*B = head;
-// 	prev->next = NULL;
-// }
 
 void	rrb(t_stack **b, t_data *data)
 {
