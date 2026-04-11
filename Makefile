@@ -24,7 +24,9 @@ SRC = \
 		stack_utils.c \
 		stack_utils2.c \
 		selection_sort.c \
-		chunk_sort_2.c
+		chunk_utils.c \
+		chunk_utils2.c \
+		chunk_sort.c
 
 OBJ = $(SRC:.c=.o)
 AR = ar rcs

@@ -2,6 +2,7 @@
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
+#include <limits.h>
 
 double	compute_disorder(t_stack *a)
 {
@@ -36,7 +37,7 @@ int	normalize_stack(t_stack **stack)
 	ptr = *stack;
 	while (i < stack_size(*stack))
 	{
-		while (ptr->value != find_min(*stack))
+		while (ptr->value != find_min_rank(*stack))
 			ptr = ptr->next;
 		ptr->rank = i;
 		ptr = *stack;
@@ -51,7 +52,7 @@ int	find_min_rank(t_stack *stack)
 	t_stack	*marker;
 	
 	marker = stack;
-	min = stack->value;
+	min = INT_MAX;
 	while (marker)
 	{
 		if (marker->value < min && marker->rank == -1)

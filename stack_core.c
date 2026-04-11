@@ -2,6 +2,7 @@
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
+#include "libft/libft.h"
 #include <stdlib.h>
 #include <stddef.h>
 

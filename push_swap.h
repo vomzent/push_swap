@@ -121,22 +121,23 @@ int		retrieve_pos(t_stack *a, int found);
 int		*find_min_pos(t_stack *A);
 void	selection_sort(t_stack **A, t_stack **B, t_data *data);
 
+// chunk_utils.c
+int		**create_chunks(int stack_size);
+int		chunk_size(int stack_size);
+int		count_chunk(t_stack *a, int *range);
+void	retrieve_chunk(t_stack **a, t_stack **b, t_data *data, int *range);
+void	retrieve_max(t_stack **a, t_stack **b, t_data *data);
+int		find_max_rank(t_stack *a);
+
+// chunk_utils2.c
+int		find_from_bottom(t_stack *a, int *range);
+int		find_from_top(t_stack *a, int *range);
+int		find_cheapest(t_stack *a, int *range);
+t_stack	*return_node(t_stack *a, int rank);
+
 // Chunk sort attempt 2
 void	print_stack_2(t_stack *target);
-int		**create_chunks(int n);
-
-// chunk sort attempt 1
-void	chunk_sort(t_stack **A, t_stack **B, t_data *data);
-int		**create_chunk(t_stack **A, int amount);
-int		*find_range(t_stack **A);
-int		*scan_stack(t_stack *A, int *range);
-void	retrieve_max(t_stack **A, t_stack **B);
-int		find_max(t_stack *A);
-int		count_chunk(t_stack *A, int *range);
-void	retrieve_chunk(t_stack **A, t_stack **B, int *range);
-int		find_from_bottom(t_stack *A, int *range);
-int		find_from_top(t_stack *A, int *range);
-void	check_pos(t_stack **A, int *pos);
+void	chunk_sort(t_stack **a, t_stack **b, t_data *data);
 
 /*
 

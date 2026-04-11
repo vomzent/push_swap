@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	selection_sort(t_stack **a, t_stack **a, t_data *data)
+void	selection_sort(t_stack **a, t_stack **b, t_data *data)
 {
 	int	*arr;
 	
