@@ -19,6 +19,7 @@ SRC = \
 		selection_sort.c \
 		benchmark.c \
 		free.c \
+		base_sort.c \
 		chunk_sort_2.c
 		# input_test.c
 		# doubletest.c

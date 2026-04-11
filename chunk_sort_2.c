@@ -33,7 +33,7 @@ int	normalize_stack(t_stack **stack)
 	return (0);
 }
 
-int	find_min(t_stack *stack)
+int	find_min_rank(t_stack *stack)
 {
 	int		min;
 	t_stack	*marker;
@@ -76,8 +76,12 @@ int	**create_chunks(int n)
 int	main(void)
 {
 	t_stack *test = NULL;
+	t_stack *test2 = NULL;
 	int		i;
-	int		**chunks = NULL;
+	int		**chunks = NULL;\
+	t_data	*data;
+	data = malloc(sizeof(t_data));
+	ft_bzero(data, sizeof(t_data));
 
 	i = 0;
 	push(&test, 5);
@@ -92,6 +96,11 @@ int	main(void)
 	print_stack_2(test);
 	ft_printf(1, "\n rank:\n");
 	print_stack_rank(test);
+	ft_printf(1, "\nData loaded successfully:\n");
+	print_stack(test);
+	sort_five(&test, &test2, data);
+	ft_printf(1, "\nData sorted successfully:\n");
+	print_stack(test);
 	chunks = create_chunks(stack_size(test));
 	while (chunks[i])
 	{
@@ -100,6 +109,7 @@ int	main(void)
 	}
 	ft_printf(1, "\n");
 	free(test);
+	free_data(data);
 	return (0);
 	
 }

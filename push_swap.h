@@ -112,12 +112,17 @@ void	error(void);
 
 // Chunk sort attempt 2
 int		normalize_stack(t_stack **stack);
-int		find_min(t_stack *stack);
+int		find_min_rank(t_stack *stack);
 void	print_stack_rank(t_stack *target);
 void	print_stack_2(t_stack *target);
 int		**create_chunks(int n);
 
-
+// Base sort
+void	sort_two(t_stack **a, t_data *data);
+void	sort_three(t_stack **a, t_data *data);
+void	sort_four(t_stack **a, t_stack **b, t_data *data);
+void	sort_five(t_stack **a, t_stack **b, t_data *data);
+int		find_min(t_stack *stack);
 
 /*
 

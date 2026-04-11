@@ -160,7 +160,7 @@ void	retrieve_max(t_stack **A, t_stack **B)
 }
 
 
-int	retrieve_pos(t_stack *B, int	found)
+int	retrieve_pos(t_stack *B, int found)
 {
 	int	pos;
 	int	counter;

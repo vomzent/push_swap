@@ -67,8 +67,8 @@ void	rrb(t_stack **b, t_data *data)
 
 void	rrr(t_stack **a, t_stack **b, t_data *data)
 {
-	np_rra(a);
-	np_rrb(b);
+	reverse_rotate(a);
+	reverse_rotate(b);
 	data->ops[10]++;
 	data->total_ops++;
 	ft_printf(1, "rrr\n");
