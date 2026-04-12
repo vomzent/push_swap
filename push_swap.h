@@ -133,7 +133,7 @@ int		find_cheapest(t_stack **a, int *range);
 int		retrieve_pos_rank(t_stack *a, int rank);
 int		find_max_rank(t_stack *a);
 
-// Chunk sort attempt 2
+// chunk_sort.c
 // void	print_stack_2(t_stack *target);
 void	chunk_sort(t_stack **a, t_stack **b, t_data *data);
 
