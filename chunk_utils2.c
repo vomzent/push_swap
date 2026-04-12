@@ -1,65 +1,73 @@
 // header
 
 #include "push_swap.h"
+#include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
 
-int	find_from_bottom(t_stack *a, int *range)
+int	find_cheapest(t_stack **a, int *range)
 {
-	int	counter;
-	
+	int		size;
+	int		counter;
+	int		reverse;
+	int		cheapest;
+	t_stack	*marker;
+
+	size = stack_size(*a);
+	reverse = 1;
+	cheapest = size + 1;
 	counter = 0;
-	while (a->next)
-		a = a->next;
-	while (a)
+	marker = *a;
+	while (marker)
 	{
-		if (a->rank >= range[0] && a->rank <= range[1])
+		if (marker->rank >= range[0] && marker->rank <= range[1])
 		{
-			ft_printf(1, "rank of bottom hold %d\n", a->rank);
-			ft_printf(1, "bottom hold pos %d\n", counter);
-			return (counter);
+			if (counter < cheapest)
+			{
+				cheapest = counter;
+				reverse = 1;
+			}
+			if (size - counter < cheapest)
+			{
+				cheapest = size - counter;
+				reverse = -1;
+			}
 		}
 		counter++;
-		if (!a->previous)
-			break ;
-		a = a->previous;
+		marker = marker->next;
 	}
-	return (-1);
+	return (cheapest * reverse);
 }
 
-int	find_from_top(t_stack *a, int *range)
+int	retrieve_pos_rank(t_stack *a, int rank)
 {
-	int	counter;
-	
+	int		pos;
+	int		counter;
+	t_stack	*marker;
+
+	marker = a;
 	counter = 0;
-	while (a)
+	while (marker)
 	{
-		if (a->rank >= range[0] && a->rank <= range[1])
-		{
-			ft_printf(1, "rank of top hold %d\n", a->rank);
-			ft_printf(1, "top hold pos %d\n", counter);
-			return (counter);
-		}
+		if (marker->rank == rank)
+			pos = counter;
 		counter++;
-		a = a->next;
+		marker = marker->next;
 	}
-	return (-1);
+	return (pos);
 }
 
-int	find_cheapest(t_stack *a, int *range)
+int	find_max_rank(t_stack *a)
 {
-	int	rank_bottom;
-	int	rank_top;
+	int		max;
+	t_stack	*marker;
 
-	rank_bottom = find_from_bottom(a, range);
-	rank_top = find_from_top(a, range);
-	if (rank_bottom > rank_top)
-		return (rank_top);
-	return (rank_bottom);
-}
-
-t_stack	*return_node(t_stack *a, int rank)
-{
-	while (a->rank != rank)
-		a = a->next;
-	return (a);
+	marker = a;
+	max = marker->rank;
+	while (marker)
+	{
+		if (marker->rank > max)
+			max = marker->rank;
+		marker = marker->next;
+	}
+	return (max);
 }

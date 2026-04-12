@@ -42,11 +42,14 @@ void	ss(t_stack **a, t_stack **b, t_data *data)
 void	pa(t_stack **a, t_stack **b, t_data *data)
 {
 	int	popped;
+	int	rank;
 
 	if (!*b)
 		return ;
+	rank = (*b)->rank;
 	popped = pop(b);
 	push(a, popped);
+	(*a)->rank = rank;
 	data->ops[3]++;
 	data->total_ops++;
 	ft_printf(1, "pa\n");
@@ -55,11 +58,14 @@ void	pa(t_stack **a, t_stack **b, t_data *data)
 void	pb(t_stack **a, t_stack **b, t_data *data)
 {
 	int	popped;
+	int	rank;
 
 	if (!*a)
 		return ;
+	rank = (*a)->rank;
 	popped = pop(a);
 	push(b, popped);
+	(*b)->rank = rank;
 	data->ops[4]++;
 	data->total_ops++;
 	ft_printf(1, "pb\n");

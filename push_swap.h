@@ -108,7 +108,7 @@ char	*adaptive_strategy(double disorder);
 
 // stack_utils.c
 double	compute_disorder(t_stack *a);
-int		normalize_stack(t_stack **stack);
+void	normalize_stack(t_stack **stack);
 int		find_min_rank(t_stack *stack);
 int		find_min(t_stack *stack);
 void	print_stack_rank(t_stack *target);
@@ -127,16 +127,14 @@ int		chunk_size(int stack_size);
 int		count_chunk(t_stack *a, int *range);
 void	retrieve_chunk(t_stack **a, t_stack **b, t_data *data, int *range);
 void	retrieve_max(t_stack **a, t_stack **b, t_data *data);
-int		find_max_rank(t_stack *a);
 
 // chunk_utils2.c
-int		find_from_bottom(t_stack *a, int *range);
-int		find_from_top(t_stack *a, int *range);
-int		find_cheapest(t_stack *a, int *range);
-t_stack	*return_node(t_stack *a, int rank);
+int		find_cheapest(t_stack **a, int *range);
+int		retrieve_pos_rank(t_stack *a, int rank);
+int		find_max_rank(t_stack *a);
 
 // Chunk sort attempt 2
-void	print_stack_2(t_stack *target);
+// void	print_stack_2(t_stack *target);
 void	chunk_sort(t_stack **a, t_stack **b, t_data *data);
 
 /*

@@ -28,12 +28,18 @@ double	compute_disorder(t_stack *a)
 	return (ret);
 }
 
-int	normalize_stack(t_stack **stack)
+void	normalize_stack(t_stack **stack)
 {
 	size_t	i;
 	t_stack	*ptr;
 
 	i = 0;
+	ptr = *stack;
+	while (ptr)
+	{
+		ptr->rank = -1;
+		ptr = ptr->next;
+	}
 	ptr = *stack;
 	while (i < stack_size(*stack))
 	{
@@ -43,7 +49,6 @@ int	normalize_stack(t_stack **stack)
 		ptr = *stack;
 		i++;
 	}
-	return (0);
 }
 
 int	find_min_rank(t_stack *stack)

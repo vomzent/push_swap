@@ -29,14 +29,14 @@ void	push(t_stack **target, int value)
 			return ;
 		ft_bzero(*target, sizeof(t_stack));
 		(*target)->value = value;
-		(*target)->rank = -1;
+		// (*target)->rank = -1;
 		return ;
 	}
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return ;
 	ft_bzero(node, sizeof(t_stack));
-	node->rank = -1;
+	// node->rank = -1;
 	node->value = value;
 	node->next = *target;
 	(*target)->previous = node;

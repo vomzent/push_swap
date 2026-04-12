@@ -68,56 +68,51 @@ int	count_chunk(t_stack *a, int *range)
 
 void	retrieve_chunk(t_stack **a, t_stack **b, t_data *data, int *range)
 {
-	int		amount;
-	int		rank;
-	t_stack	*ret;
+	int		retrieval;
+	int		pos;
+	int		reverse;
 
-	amount = count_chunk(*a, range);
-	rank = -1;
-	while (amount > 0)
+	retrieval = count_chunk(*a, range);
+	while (retrieval > 0)
 	{
-		rank = find_cheapest(*a, range);
-		ret = return_node(*a, rank);
-		while (*a != ret)
+		reverse = 0;
+		pos = find_cheapest(a, range);
+		if (pos < 0)
 		{
-			if (rank > (int)stack_size(*a) / 2)
+			pos *= -1;
+			reverse = 1;
+		}
+		while (pos > 0)
+		{
+			if (reverse)
 				rra(a, data);
 			else
 				ra(a, data);
+			pos--;
 		}
-		pa(a, b, data);
-		amount--;
+		pb(a, b, data);
+		retrieval--;
 	}
 }
 
 void	retrieve_max(t_stack **a, t_stack **b, t_data *data)
 {
 	int	rank;
+	int	pos;
+	int	size;
 
 	rank = -1;
-	ft_printf(1, "enter retrievemax, B size: %d\n", stack_size(*b));
 	while (*b)
 	{
 		rank = find_max_rank(*b);
-		ft_printf(1, "new max to be found: %d\n", rank);
-		while (*b && (*b)->rank != rank)
-			rb(b, data);
+		pos = retrieve_pos_rank(*b, rank);
+		size = stack_size(*b);
+		if (pos > size / 2)
+			while (*b && (*b)->rank != rank)
+				rrb(b, data);
+		else
+			while (*b && (*b)->rank != rank)
+				rb(b, data);
 		pa(a, b, data);
 	}
-}
-
-int	find_max_rank(t_stack *a)
-{
-	int		max;
-	t_stack	*marker;
-
-	marker = a;
-	max = marker->rank;
-	while (marker)
-	{
-		if (marker->rank > max)
-			max = marker->rank;
-		marker = marker->next;
-	}
-	return (max);
 }

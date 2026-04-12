@@ -105,7 +105,8 @@ char	**parse_flags(char **argv)
 	while (argv[i])
 	{
 		// make sure to check no segfault for 1 variable
-		if (argv[i][0] == ' ' || ft_isdigit(argv[i][0]))
+		if ((argv[i][0] == ' ' || ft_isdigit(argv[i][0])
+			|| argv[i][0] == '-') && argv[i][1] != '-')
 		{
 			no_flags[j] = ft_strdup(argv[i]);
 			j++;
