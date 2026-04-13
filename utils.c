@@ -31,7 +31,7 @@ void	error(void)
 	return ;
 }
 
-void	free_arrays(char **array)
+void	free_array(char **array)
 {
 	int	i;
 
@@ -39,4 +39,24 @@ void	free_arrays(char **array)
 	while (array[i])
 		free(array[i++]);
 	free(array);
+}
+
+int	array_size(char	**arg)
+{
+	int	i;
+	
+	i = 0;
+	while (arg[i] != NULL)
+		i++;
+	return (i);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }

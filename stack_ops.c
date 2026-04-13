@@ -13,88 +13,60 @@
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 #include <stdlib.h>
-#include <stdio.h>
 
-void	np_sa(t_stack **A)
+void	sa(t_stack **a, t_data *data)
 {
-	t_stack	*tmp;
-	
-	if ((*A)->next == NULL)
-		return ;
-	tmp = (*A)->next;
-	(*A)->next = tmp->next;
-	tmp->next = *A;
-	*A = tmp;
-}
-
-void	sa(t_stack **A, t_data *data)
-{
-	np_sa(A);
+	swap(a);
 	data->ops[0]++;
 	data->total_ops++;
 	ft_printf(1, "sa\n");
 }
 
-void	np_sb(t_stack **B)
+void	sb(t_stack **b, t_data *data)
 {
-	t_stack	*tmp;
-	
-	if ((*B)->next == NULL)
-		return ;
-	tmp = (*B)->next;
-	(*B)->next = tmp->next;
-	tmp->next = *B;
-	*B = tmp;
-}
-
-void	sb(t_stack **B, t_data *data)
-{
-	np_sb(B);
+	swap(b);
 	data->ops[1]++;
 	data->total_ops++;
 	ft_printf(1, "sb\n");
 }
 
-void	ss(t_stack **A, t_stack **B, t_data *data)
+void	ss(t_stack **a, t_stack **b, t_data *data)
 {
-	np_sa(A);
-	np_sb(B);
+	swap(a);
+	swap(b);
 	data->ops[2]++;
 	data->total_ops++;
 	ft_printf(1, "ss\n");
 }
 
-void	pa(t_stack **A, t_stack **B, t_data *data)
+void	pa(t_stack **a, t_stack **b, t_data *data)
 {
 	int	popped;
+	int	rank;
 
-	if (!*B)
+	if (!*b)
 		return ;
-	popped = pop(B);
-	push(A, popped);
+	rank = (*b)->rank;
+	popped = pop(b);
+	push(a, popped);
+	(*a)->rank = rank;
 	data->ops[3]++;
 	data->total_ops++;
 	ft_printf(1, "pa\n");
 }
 
-void	pb(t_stack **A, t_stack **B, t_data *data)
+void	pb(t_stack **a, t_stack **b, t_data *data)
 {
 	int	popped;
+	int	rank;
 
-	if (!*A)
+	if (!*a)
 		return ;
-	popped = pop(A);
-	push(B, popped);
+	rank = (*a)->rank;
+	popped = pop(a);
+	push(b, popped);
+	(*b)->rank = rank;
 	data->ops[4]++;
 	data->total_ops++;
 	ft_printf(1, "pb\n");
-}
-
-void	print_stack(t_stack *target)
-{
-	while (target != NULL)
-	{
-		ft_printf(1, "%d ", target->value);
-		target = (target)->next;
-	}
 }

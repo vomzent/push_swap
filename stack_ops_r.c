@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_selection.c                                   :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/04 08:51:11 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/09 08:28:28 by odschreu         ###   ########.fr       */
+/*   Created: 2026/04/04 08:50:49 by odschreu          #+#    #+#             */
+/*   Updated: 2026/04/09 08:31:31 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
 #include "push_swap.h"
+#include "ft_printf/ft_printf.h"
 
-double	compute_disorder(t_stack *A)
+void	ra(t_stack **a, t_data *data)
 {
-	int	mistakes;
-	int	total_pairs;
-	float	ret;
-	t_stack	*i;
-	t_stack	*j;
+	rotate(a);
+	data->ops[5]++;
+	data->total_ops++;
+	ft_printf(1, "ra\n");
+}
 
-	mistakes = 0;
-	total_pairs = 0;
-	i = A;
-	j = A->next;
-	while (j)
-	{
-		total_pairs++;
-		if (i->value > j->value)
-			mistakes++;
-		i = i->next;
-		j = j->next;
-	}
-	ret = (double)mistakes / (double)total_pairs;
-	return (ret);
+void	rb(t_stack **b, t_data *data)
+{
+	rotate(b);
+	data->ops[6]++;
+	data->total_ops++;
+	ft_printf(1, "rb\n");
+}
+
+void	rr(t_stack **a, t_stack **b, t_data *data)
+{
+	rotate(a);
+	rotate(b);
+	data->ops[7]++;
+	data->total_ops++;
+	ft_printf(1, "rr\n");
 }

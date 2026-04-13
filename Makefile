@@ -9,19 +9,25 @@ LIB = libftprintf.a
 LIB2 = libft.a
 
 SRC = \
+		stack_core.c \
+		stack_core2.c \
 		stack_ops.c \
-		reverse_rotate.c \
-		rotate.c \
-		stack_behavior.c \
-		parse_input.c \
+		stack_ops_r.c \
+		stack_ops_rr.c \
+		utils.c \
 		ft_atol.c \
-		algo_selection.c \
-		selection_sort.c \
+		sort_base.c \
+		parse_load.c \
+		parse_args.c \
+		parse_validate.c \
 		benchmark.c \
-		free.c \
-		chunk_sort_2.c
-		# input_test.c
-		# doubletest.c
+		stack_utils.c \
+		stack_utils2.c \
+		selection_sort.c \
+		chunk_utils.c \
+		chunk_utils2.c \
+		chunk_sort.c \
+		input_test.c
 
 OBJ = $(SRC:.c=.o)
 AR = ar rcs
