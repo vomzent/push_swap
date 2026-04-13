@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:39:35 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 17:39:44 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:55:09 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	retrieve_pos(t_stack *a, int found)
 		if (a->value == found)
 		{
 			pos = counter;
-			break;
+			break ;
 		}
 		counter++;
 		a = a->next;
@@ -51,7 +51,7 @@ int	*find_min_pos(t_stack *a)
 		if (marker->value < min)
 		{
 			min = marker->value;
-			pos = counter;			
+			pos = counter;
 		}
 		counter++;
 		marker = marker->next;

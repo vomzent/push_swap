@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 18:49:34 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 19:00:28 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,27 +72,27 @@ void	error(void);
 void	free_array(char **array);
 int		array_size(char	**arg);
 int		ft_strcmp(const char *s1, const char *s2);
-// ft_atol.c
+// ft_atol.c (norm)
 long	ft_atol(const char *string);
 
-// sort_base.c
+// sort_base.c (norm)
 void	sort_two(t_stack **a, t_data *data);
 void	sort_three(t_stack **a, t_data *data);
 void	sort_four(t_stack **a, t_stack **b, t_data *data);
 void	sort_five(t_stack **a, t_stack **b, t_data *data);
 
-// parse_load.c
+// parse_load.c (norm)
 int		load_data(t_data *data);
 void	sort_stack(t_data *data);
 
-// parse_args.c
+// parse_args.c (norm)
 int		check_args(char **argv, t_data *data);
 int		assign_flags(char **argv, t_data *data);
 int		count_flags(char **argv);
 char	**parse_flags(char **argv);
 int		count_args(char **argv);
 
-// parse_validate.c
+// parse_validate.c (norm)
 int		check_strategy(char *argv);
 int		validate_strings(char **array);
 int		invalid_string(char *string);
@@ -104,36 +104,36 @@ void	benchmark_mode(t_data *data);
 char	*set_strategy(t_data *data);
 char	*adaptive_strategy(double disorder);
 
-// stack_utils.c
+// stack_utils.c (norm)
 double	compute_disorder(t_stack *a);
 void	normalize_stack(t_stack **stack);
 int		find_min_rank(t_stack *stack);
 int		find_min(t_stack *stack);
 void	print_stack_rank(t_stack *target);
 
-// stack_utils2.c
+// stack_utils2.c (norm)
 int		retrieve_pos(t_stack *a, int found);
 int		*find_min_pos(t_stack *a);
 int		check_sort(t_stack *a);
 
-// chunk_utils.c
+// chunk_utils.c (norm)
 int		**create_chunks(int stack_size);
 int		chunk_size(int stack_size);
 int		count_chunk(t_stack *a, int *range);
 void	retrieve_chunk(t_stack **a, t_stack **b, t_data *data, int *range);
 void	retrieve_max(t_stack **a, t_stack **b, t_data *data);
 
-// chunk_utils2.c
+// chunk_utils2.c (not norm, findcheapest too long func)
 int		find_cheapest(t_stack **a, int *range);
 int		retrieve_pos_rank(t_stack *a, int rank);
 int		find_max_rank(t_stack *a);
 
-// sort.c
+// sort.c (norm)
 void	selection_sort(t_stack **A, t_stack **B, t_data *data);
 void	chunk_sort(t_data *data);
 void	radix_sort(t_data *data);
 
-// radix_utils.c
+// radix_utils.c (norm)
 int		get_max_bits(int stack_size);
 
 #endif

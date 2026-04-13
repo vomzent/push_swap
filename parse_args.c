@@ -6,23 +6,13 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 18:35:00 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:53:28 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
-
-/*
-1. parse flags (-- bench -- adaptive), strip them from argv -> create/malloc new array (parse_flags)
-2. validate strings (validatestrings)
-3. convert to long check range 
-4. check duplicates (in int array) (check_duplicates)
-5. load into stack (load_data -> both to push int array)
-6. run sorting algo based on data->stratey
-7. run benchmark mode always(?), print benchmark mode if data->benchmark == 1
-*/
 
 int	check_args(char **argv, t_data *data)
 {
@@ -48,7 +38,7 @@ int	check_args(char **argv, t_data *data)
 	return (0);
 }
 
-// need to fix check strateyg to handle the edge case of double strategy (--simple --complex)
+// handle the edge case of double strategy (--simple --complex)
 int	assign_flags(char **argv, t_data *data)
 {
 	int	i;
@@ -102,7 +92,7 @@ char	**parse_flags(char **argv)
 	while (argv[i])
 	{
 		if ((argv[i][0] == ' ' || ft_isdigit(argv[i][0])
-			|| argv[i][0] == '-' || argv[i][0] == '+') 
+			|| argv[i][0] == '-' || argv[i][0] == '+')
 			&& argv[i][1] != '-')
 		{
 			no_flags[j] = ft_strdup(argv[i]);
@@ -121,8 +111,8 @@ char	**parse_flags(char **argv)
 int	count_args(char **argv)
 {
 	int	count;
-	int i;
-	
+	int	i;
+
 	count = 0;
 	i = 1;
 	while (argv[i])
@@ -134,4 +124,3 @@ int	count_args(char **argv)
 	}
 	return (count);
 }
-

@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:39:31 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 15:39:33 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:54:38 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 double	compute_disorder(t_stack *a)
 {
-	int	mistakes;
-	int	total_pairs;
+	int		mistakes;
+	int		total_pairs;
 	float	ret;
 	t_stack	*i;
 	t_stack	*j;
@@ -65,7 +65,7 @@ int	find_min_rank(t_stack *stack)
 {
 	int		min;
 	t_stack	*marker;
-	
+
 	marker = stack;
 	min = INT_MAX;
 	while (marker)
@@ -81,7 +81,7 @@ int	find_min(t_stack *stack)
 {
 	int		min;
 	t_stack	*marker;
-	
+
 	marker = stack;
 	min = stack->value;
 	while (marker)

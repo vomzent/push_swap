@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:39:08 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 15:39:10 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:50:52 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	sort_four(t_stack **a, t_stack **b, t_data *data)
 	{
 		if (pos >= 2)
 			rra(a, data);
-		else	
+		else
 			ra(a, data);
 	}
 	pb(a, b, data);
@@ -67,7 +67,7 @@ void	sort_five(t_stack **a, t_stack **b, t_data *data)
 		{
 			if (pos >= 2)
 				rra(a, data);
-			else	
+			else
 				ra(a, data);
 		}
 		pb(a, b, data);
@@ -77,4 +77,3 @@ void	sort_five(t_stack **a, t_stack **b, t_data *data)
 	pa(a, b, data);
 	pa(a, b, data);
 }
-

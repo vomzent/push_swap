@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:37:54 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 18:02:24 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:59:41 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	selection_sort(t_stack **a, t_stack **b, t_data *data)
 {
 	int	*arr;
-	
+
 	while (*a)
 	{
 		arr = find_min_pos(*a);
@@ -72,7 +72,7 @@ void	radix_sort(t_data *data)
 		{
 			if ((data->a->rank >> j) & 1)
 				ra(&data->a, data);
-			else 
+			else
 				pb(&data->a, &data->b, data);
 			i++;
 		}

@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:38:23 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 15:38:28 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:54:00 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	convert_str(char **array, t_data *data)
 	int		*ret;
 	int		array_len;
 	int		i;
-	
+
 	n = 0;
 	i = 0;
 	array_len = array_size(array);
@@ -90,7 +90,7 @@ int	check_duplicates(int *array, int array_len)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (i + 1 < array_len)
 	{

@@ -79,3 +79,27 @@ https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
 ### Our program
 
 - default strategy (int = 0) is adaptive, simple = 1, medium = 2, complex = 3
+
+
+parse args workflow
+
+/*
+1. parse flags (-- bench -- adaptive), strip them from argv -> create/malloc new array (parse_flags)
+2. validate strings (validatestrings)
+3. convert to long check range 
+4. check duplicates (in int array) (check_duplicates)
+5. load into stack (load_data -> both to push int array)
+6. run sorting algo based on data->stratey
+7. run benchmark mode always(?), print benchmark mode if data->benchmark == 1
+*/
+
+radix sort workflow
+// retrieve i-th bit 
+// (rotate in a, push to b, then once all 0 bits of that index are retrieved, push back to a)
+
+// 1. retrieve all 0s from the right most position, push to b, then push back to a
+// 2. repeat loop / function for all positions / indexes -- how to know how many bits to scan / push?
+// 3. after last loop the stack in a is sorted (so after pushing it back from b to a after retrieving the bits where 0 is hte left most bit)
+
+// int retrieve max bits function
+// 
