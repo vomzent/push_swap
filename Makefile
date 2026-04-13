@@ -23,10 +23,9 @@ SRC = \
 		benchmark.c \
 		stack_utils.c \
 		stack_utils2.c \
-		selection_sort.c \
 		chunk_utils.c \
 		chunk_utils2.c \
-		chunk_sort.c \
+		sort.c \
 		input_test.c
 
 OBJ = $(SRC:.c=.o)
