@@ -1,4 +1,4 @@
-.PHONY: all clean fclean re printf
+.PHONY: all clean fclean re printf libft
 .DEFAULT_GOAL: re
 
 CC = cc
@@ -65,5 +65,5 @@ fclean: clean
 
 re: fclean all
 
-vincenttest: $(LIB) $(LIB2) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -g -L. -lftprintf -lft -lm vincent_basic_stackopstest.c
+debug:
+	$(CC) $(CFLAGS) -g $(OBJ) -L. -lftprintf -lft -lm -o $(NAME)
