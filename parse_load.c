@@ -17,18 +17,25 @@ int	load_data(t_data *data)
 	return (0);
 }
 
-void	sort_stack(t_data *data, int strategy)
+void	sort_stack(t_data *data)
 {
 	double	disorder;
 
 	disorder = compute_disorder(data->a);
 	data->disorder = disorder;
-	if (strategy == 1)
+	if (data->strategy == 0)
+	{
+		if (data->disorder < 0.2)
+			selection_sort(&data->a, &data->b, data);
+		if (data->disorder >= 0.2 && data->disorder < 0.5)
+			chunk_sort(data);
+		// if (data->disorder >= 0.5)
+		// 	radix_sort(data);
+	}
+	else if (data->strategy == 1)
 		selection_sort(&data->a, &data->b, data);
-	// else if (strategy == 2)
-	// 	chunk_sort(&data->A, &data->B, data);
-	// else if (strategy == 3)
-	// 	quick_sort(&data->A, &data->B, data);
-	// else
-	// 	adaptive_sort(&data->A, &data->B, disorder);
+	else if (data->strategy == 2)
+		chunk_sort(data);
+	// else if (data->strategy == 3)
+	// 	radix_sort(data);
 }

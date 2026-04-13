@@ -52,7 +52,7 @@ int	main(int argc, char** argv)
 	ft_printf(1, "\nData loaded successfully:\n");
 	print_stack(data->a);
 	data->disorder = compute_disorder(data->a);
-	chunk_sort(&data->a, &data->b, data);
+	sort_stack(data);
 	if (data->benchmark)
 		benchmark_mode(data);
 	ft_printf(1, "\nData sorted successfully:\n");

@@ -85,7 +85,7 @@ void	sort_five(t_stack **a, t_stack **b, t_data *data);
 
 // parse_load.c
 int		load_data(t_data *data);
-void	sort_stack(t_data *data, int strategy);
+void	sort_stack(t_data *data);
 
 // parse_args.c
 int		check_args(char **argv, t_data *data);
@@ -134,8 +134,8 @@ int		retrieve_pos_rank(t_stack *a, int rank);
 int		find_max_rank(t_stack *a);
 
 // chunk_sort.c
-// void	print_stack_2(t_stack *target);
-void	chunk_sort(t_stack **a, t_stack **b, t_data *data);
+void	chunk_sort(t_data *data);
+void	radix_sort(t_data *data);
 
 /*
 

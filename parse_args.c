@@ -30,10 +30,8 @@ int	check_args(char **argv, t_data *data)
 	char	**tmp;
 
 	no_flags = NULL;
-	ft_printf(1, "\n entering assign flags\n");
 	if (assign_flags(argv, data))
 		return (1);
-	ft_printf(1, "\n entering parse flags\n");
 	no_flags = parse_flags(argv);
 	if (!no_flags)
 		return (1);
@@ -43,10 +41,8 @@ int	check_args(char **argv, t_data *data)
 		no_flags = ft_split(no_flags[0], ' ');
 		free(tmp);
 	}
-	ft_printf(1, "\n entering valid strings\n");
 	if (validate_strings(no_flags))
 		return (free_data(data), free_array(no_flags), 1);
-	ft_printf(1, "\n entering convert strings\n");
 	if (convert_str(no_flags, data))
 		return (free_data(data), free_array(no_flags), 1);
 	return (0);

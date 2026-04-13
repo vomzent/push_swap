@@ -21,7 +21,7 @@ int	**create_chunks(int stack_size)
 	int	amount;
 	int	i;
 
-	size = chunk_size(stack_size);
+	size = 1.5 * chunk_size(stack_size);
 	amount = stack_size / size;
 	chunks = malloc(sizeof(int *) * (amount + 1));
 	i = 0;
