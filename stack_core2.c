@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:39:20 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 15:39:22 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:47:55 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,19 @@ void	print_stack(t_stack *target)
 void	free_stack(t_stack **target)
 {
 	t_stack	*tmp;
-	
+
 	while (*target != NULL)
 	{
 		tmp = (*target)->next;
 		free(*target);
-		*target = tmp;	
+		*target = tmp;
 	}
 }
 
-size_t stack_size(t_stack *target)
-{	
+size_t	stack_size(t_stack *target)
+{
 	size_t	size;
-	
+
 	size = 0;
 	while (target)
 	{

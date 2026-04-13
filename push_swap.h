@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 17:46:22 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:49:34 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*previous;
 	int				rank;
-	// struct t_stack	*current;
 }	t_stack;
 
-
-typedef struct	s_data
+typedef struct s_data
 {
 	struct s_stack	*a;
 	struct s_stack	*b;
@@ -38,37 +36,37 @@ typedef struct	s_data
 }	t_data;
 
 // t_stack operations
-// stack_core.c
+// stack_core.c (norm)
 void	swap(t_stack **a);
 void	push(t_stack **target, int value);
 int		pop(t_stack **target);
 int		peek(t_stack **target);
 void	rotate(t_stack **a);
 
-// stack_core2.c
+// stack_core2.c (norm)
 void	reverse_rotate(t_stack **a);
 void	print_stack(t_stack *target);
 void	free_stack(t_stack **target);
 size_t	stack_size(t_stack *target);
 
-// stack_ops.c
+// stack_ops.c (norm)
 void	sa(t_stack **a, t_data *data);
 void	sb(t_stack **b, t_data *data);
 void	ss(t_stack **a, t_stack **b, t_data *data);
 void	pb(t_stack **a, t_stack **b, t_data *data);
 void	pa(t_stack **a, t_stack **b, t_data *data);
 
-// stack_ops_r.c
+// stack_ops_r.c (norm)
 void	ra(t_stack **a, t_data *data);
 void	rb(t_stack **b, t_data *data);
 void	rr(t_stack **a, t_stack **b, t_data *data);
 
-// stack_ops_rr.c
+// stack_ops_rr.c (norm)
 void	rra(t_stack **a, t_data *data);
 void	rrb(t_stack **b, t_data *data);
 void	rrr(t_stack **a, t_stack **b, t_data *data);
 
-// utils.c
+// utils.c (norm)
 void	free_data(t_data *data);
 void	error(void);
 void	free_array(char **array);
@@ -101,7 +99,7 @@ int		invalid_string(char *string);
 int		convert_str(char **array, t_data *data);
 int		check_duplicates(int *array, int array_len);
 
-// benchmark.c
+// benchmark.c (norm)
 void	benchmark_mode(t_data *data);
 char	*set_strategy(t_data *data);
 char	*adaptive_strategy(double disorder);
@@ -136,32 +134,6 @@ void	chunk_sort(t_data *data);
 void	radix_sort(t_data *data);
 
 // radix_utils.c
-int	get_max_bits(int stack_size);
-
-/*
-
-
---simple
---medium
---complex
---adaptive
---bench
-	// lines will be prefixed with [bench] to represent messages printed by the optional bm mode
-	// displays the computed disorder, 
-	// name of the straetgy used and its theoretial complexity class,
-	// the total number of operations,
-	// the ocunt of each operation type,
-	// benchmark output must be sent to stderr and only appear when flag is present
-
-*/
-// defining the t_stack structure
-// reading the terminal input
-// determining the state of disorder (bm always gets outputted to a txt file)
-// running the algorithm that has been chosen, adaptive either chooses one algorithm based on disorder or uses internal strats
-// throw an "Error\n" when there are errors
-// program displays smallest list of push_swap operations possible to sort t_stack a, smallest num at top
-// if argv2 == 0/empty, the program does not display anything and gives the prompt back
-// makefile will compile all source files (it must not relink)
-// push_swap 
+int		get_max_bits(int stack_size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:47:14 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 18:02:29 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:49:29 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	free_array(void **array)
 int	array_size(char	**arg)
 {
 	int	i;
-	
+
 	i = 0;
 	while (arg[i] != NULL)
 		i++;

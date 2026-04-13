@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:39:14 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 15:39:16 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:46:22 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	swap(t_stack **a)
 {
 	t_stack	*tmp;
-	
+
 	if ((*a)->next == NULL)
 		return ;
 	tmp = (*a)->next;
@@ -31,7 +31,7 @@ void	swap(t_stack **a)
 void	push(t_stack **target, int value)
 {
 	t_stack	*node;
-	
+
 	if (*target == NULL)
 	{
 		*target = malloc(sizeof(t_stack));
@@ -39,14 +39,12 @@ void	push(t_stack **target, int value)
 			return ;
 		ft_bzero(*target, sizeof(t_stack));
 		(*target)->value = value;
-		// (*target)->rank = -1;
 		return ;
 	}
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return ;
 	ft_bzero(node, sizeof(t_stack));
-	// node->rank = -1;
 	node->value = value;
 	node->next = *target;
 	(*target)->previous = node;
