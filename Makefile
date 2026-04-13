@@ -26,6 +26,7 @@ SRC = \
 		chunk_utils.c \
 		chunk_utils2.c \
 		sort.c \
+		radix_utils.c \
 		input_test.c
 
 OBJ = $(SRC:.c=.o)

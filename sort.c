@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:37:54 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 15:42:45 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:02:24 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,34 @@ void	chunk_sort(t_data *data)
 		i++;
 	}
 	retrieve_max(&data->a, &data->b, data);
-	free(chunks);
+	free_array(chunks);
 }
 
 void	radix_sort(t_data *data)
 {
-	data->disorder = 1;
-	return ;
+	int	size;
+	int	i;
+	int	j;
+	int	bits;
+
+	normalize_stack(&data->a);
+	size = stack_size(data->a);
+	j = 0;
+	bits = get_max_bits(size);
+	ft_printf(1, "bits %d\n", bits);
+	while (j < bits)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if ((data->a->rank >> j) & 1)
+				ra(&data->a, data);
+			else 
+				pb(&data->a, &data->b, data);
+			i++;
+		}
+		while (data->b)
+			pa(&data->a, &data->b, data);
+		j++;
+	}
 }

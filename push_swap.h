@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 15:41:52 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 17:46:22 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,11 +116,7 @@ void	print_stack_rank(t_stack *target);
 // stack_utils2.c
 int		retrieve_pos(t_stack *a, int found);
 int		*find_min_pos(t_stack *a);
-
-
-// selection_sort.c
-int		*find_min_pos(t_stack *A);
-void	selection_sort(t_stack **A, t_stack **B, t_data *data);
+int		check_sort(t_stack *a);
 
 // chunk_utils.c
 int		**create_chunks(int stack_size);
@@ -134,9 +130,13 @@ int		find_cheapest(t_stack **a, int *range);
 int		retrieve_pos_rank(t_stack *a, int rank);
 int		find_max_rank(t_stack *a);
 
-// chunk_sort.c
+// sort.c
+void	selection_sort(t_stack **A, t_stack **B, t_data *data);
 void	chunk_sort(t_data *data);
 void	radix_sort(t_data *data);
+
+// radix_utils.c
+int	get_max_bits(int stack_size);
 
 /*
 

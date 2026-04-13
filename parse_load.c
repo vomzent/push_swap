@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:38:17 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 15:38:20 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 17:37:09 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	sort_stack(t_data *data)
 			selection_sort(&data->a, &data->b, data);
 		if (data->disorder >= 0.2 && data->disorder < 0.5)
 			chunk_sort(data);
-		// if (data->disorder >= 0.5)
-		// 	radix_sort(data);
+		if (data->disorder >= 0.5)
+			radix_sort(data);
 	}
 	else if (data->strategy == 1)
 		selection_sort(&data->a, &data->b, data);
 	else if (data->strategy == 2)
 		chunk_sort(data);
-	// else if (data->strategy == 3)
-	// 	radix_sort(data);
+	else if (data->strategy == 3)
+		radix_sort(data);
 }

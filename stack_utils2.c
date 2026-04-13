@@ -6,11 +6,12 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:39:35 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 15:41:57 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 17:39:44 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
 int	retrieve_pos(t_stack *a, int found)
 {
@@ -58,4 +59,20 @@ int	*find_min_pos(t_stack *a)
 	arr[0] = min;
 	arr[1] = pos;
 	return (arr);
+}
+
+int	check_sort(t_stack *a)
+{
+	t_stack	*next;
+
+	while (a)
+	{
+		if (!a->next)
+			return (0);
+		next = a->next;
+		if (next->value < a->value)
+			return (1);
+		a = next;
+	}
+	return (0);
 }
