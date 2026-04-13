@@ -1,12 +1,9 @@
 To do
 
-- write function for ft_printf to print double (because benchmark will have to show the level of disorder)
-- learn more about the "-- simple / -- bench etc"
-- write out the algorithms based on the operations
-	- chunk based sorting
-	- quick sort?
-- write out function to select algorithm based on disorder value
-- should probably standardize all functions outside of stack operations to use just a "target" stack name rather than using A and B interchangably, because these functions can be used on both stacks
+- fix check strategy double strategy edge case
+- findcheapest in chunkutils is still 28 lines
+- tuesday going through the code together
+
 
 ### Stack operations
 
