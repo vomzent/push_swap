@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_input.c                                      :+:      :+:    :+:   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/09 11:25:49 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:35:00 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	check_args(char **argv, t_data *data)
 	return (0);
 }
 
+// need to fix check strateyg to handle the edge case of double strategy (--simple --complex)
 int	assign_flags(char **argv, t_data *data)
 {
 	int	i;

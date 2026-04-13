@@ -6,11 +6,11 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:37:28 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 17:46:38 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:34:03 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-///
+#include "push_swap.h"
 
 // retrieve i-th bit 
 // (rotate in a, push to b, then once all 0 bits of that index are retrieved, push back to a)
