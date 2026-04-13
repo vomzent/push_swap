@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/09 11:57:04 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/13 15:41:52 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	print_stack_rank(t_stack *target);
 
 // stack_utils2.c
 int		retrieve_pos(t_stack *a, int found);
+int		*find_min_pos(t_stack *a);
 
 
 // selection_sort.c

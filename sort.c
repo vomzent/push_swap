@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selection_sort.c                                   :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/04 08:50:39 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/09 11:56:56 by odschreu         ###   ########.fr       */
+/*   Created: 2026/04/13 15:37:54 by odschreu          #+#    #+#             */
+/*   Updated: 2026/04/13 15:42:45 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
-#include <stddef.h>
+#include "libft/libft.h"
 #include <stdlib.h>
 
 void	selection_sort(t_stack **a, t_stack **b, t_data *data)
@@ -36,30 +36,25 @@ void	selection_sort(t_stack **a, t_stack **b, t_data *data)
 	free(arr);
 }
 
-int	*find_min_pos(t_stack *a)
+void	chunk_sort(t_data *data)
 {
-	int		*arr;
-	int		min;
-	int		pos;
-	int		counter;
-	t_stack	*marker;
+	int	i;
+	int	**chunks;
 
-	min = a->value;
-	pos = 0;
-	marker = a;
-	arr = malloc(sizeof(int) * 2);
-	counter = 0;
-	while (marker)
+	normalize_stack(&data->a);
+	i = 0;
+	chunks = create_chunks(stack_size(data->a));
+	while (chunks[i])
 	{
-		if (marker->value < min)
-		{
-			min = marker->value;
-			pos = counter;			
-		}
-		counter++;
-		marker = marker->next;
+		retrieve_chunk(&data->a, &data->b, data, chunks[i]);
+		i++;
 	}
-	arr[0] = min;
-	arr[1] = pos;
-	return (arr);
+	retrieve_max(&data->a, &data->b, data);
+	free(chunks);
+}
+
+void	radix_sort(t_data *data)
+{
+	data->disorder = 1;
+	return ;
 }
