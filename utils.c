@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:47:14 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 18:49:29 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:40:33 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	free_data(t_data *data)
 {
 	if (!data)
 		return ;
-	free_stack(&data->a);
-	free_stack(&data->b);
+	if (data->a)
+		free_stack(&data->a);
+	if (data->b)
+		free_stack(&data->b);
 	if (data->args)
 		free(data->args);
 	free(data);

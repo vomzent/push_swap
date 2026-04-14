@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:38:17 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 17:37:09 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:36:51 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	load_data(t_data *data)
 {
 	int	i;
 
+	if (data->length == 0)
+		return (1);
 	i = data->length - 1;
 	while (i >= 0)
 	{

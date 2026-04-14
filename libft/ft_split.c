@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 15:14:50 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/09 11:09:39 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:32:33 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	count_token(const char *s, int c)
 
 	token = 0;
 	j = 0;
+	if (!s)
+		return (0);
 	while (s[j])
 	{
 		if (j == 0 && s[j] != c)

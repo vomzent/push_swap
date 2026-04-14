@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:37:54 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 11:52:44 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:30:15 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	selection_sort(t_stack **a, t_stack **b, t_data *data)
 				ra(a, data);
 		}
 		pb(a, b, data);
+		free(arr);
 	}
 	while (*b)
 		pa(a, b, data);
-	free(arr);
 }
 
 void	chunk_sort(t_data *data)
@@ -64,7 +64,6 @@ void	radix_sort(t_data *data)
 	size = stack_size(data->a);
 	j = 0;
 	bits = get_max_bits(size);
-	ft_printf(1, "bits %d\n", bits);
 	while (j < bits)
 	{
 		i = 0;

@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 11:52:32 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:44:44 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	check_args(char **argv, t_data *data)
 {
 	char	**no_flags;
 	char	**tmp;
+	int		i;
 
+	i = 0;
 	no_flags = NULL;
 	if (assign_flags(argv, data))
 		return (1);
@@ -29,13 +31,15 @@ int	check_args(char **argv, t_data *data)
 	{
 		tmp = no_flags;
 		no_flags = ft_split(no_flags[0], ' ');
-		free(tmp);
+		free_array((void **)tmp);
 	}
+	// while (no_flags[i])
+	// 	ft_printf(1, "%s\n", no_flags[i++]);
 	if (validate_strings(no_flags))
-		return (free_data(data), free_array((void **)no_flags), 1);
+		return (free_array((void **)no_flags), 1);
 	if (convert_str(no_flags, data))
-		return (free_data(data), free_array((void **)no_flags), 1);
-	return (0);
+		return (free_array((void **)no_flags), 1);
+	return (free_array((void **)no_flags), 0);
 }
 
 int	assign_flags(char **argv, t_data *data)
@@ -95,9 +99,7 @@ char	**parse_flags(char **argv)
 	j = 0;
 	while (argv[i])
 	{
-		if ((argv[i][0] == ' ' || ft_isdigit(argv[i][0])
-			|| argv[i][0] == '-' || argv[i][0] == '+')
-			&& argv[i][1] != '-')
+		if (argv[i][1] != '-')
 		{
 			no_flags[j] = ft_strdup(argv[i]);
 			j++;
@@ -111,6 +113,12 @@ char	**parse_flags(char **argv)
 	}
 	return (no_flags);
 }
+		// if ((argv[i][0] == ' ' || ft_isdigit(argv[i][0])
+		// 	|| argv[i][0] == '-' || argv[i][0] == '+')
+		// 	&& argv[i][1] != '-')
+
+
+
 
 int	count_args(char **argv)
 {
