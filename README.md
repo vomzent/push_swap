@@ -1,3 +1,41 @@
+*This project has been created as part of the 42 curriculum by odschreu, vcoevert.*
+
+
+# push_swap
+
+### Description
+
+### Instructions
+
+### Resources
+
+radix sort source
+https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
+learning about bitwise operators 
+
+
+### Sorting algorithms
+
+#### Simple / O(n^2)
+Selection sort
+
+
+#### Medium / O(n√n)
+Chunk sort
+
+
+#### Complex / O(n log n)
+Radix sort
+
+
+#### "Adaptive"
+If no flag specifying the type of algorithm is used, adaptive will select one of the three algorithms based on the level of disorder (0-1) of the stack. Disorder is computed by calculating the amount of "mistakes" in the stack, where a mistake is an occasion where an element on the stack is greater than the element below it. As an example, if a stack would be going from high to low values (in order) this would then give a disorder of 1, as all the placements are 'mistakes' (a sorted stack has all values going frow low at the top to high at the bottom).
+
+	for low disorder (disorder < 0.2): must run in O n^2
+	for medium disorder (0.2 <= disorder < 0.5): must run in n * n^0.5
+	for high disorder (>= 0.5): must run in n log n
+
+
 To do
 
 - fix check strategy double strategy edge case
@@ -70,8 +108,7 @@ https://leetcode.fandom.com/wiki/Sort_with_two_stacks
 https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
 https://medium.com/@ulysse.gks/push-swap-in-less-than-4200-operations-c292f034f6c0
 
-radix sort source
-https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
+
 
 ### Our program
 
