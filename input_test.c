@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 11:50:50 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 11:45:17 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 11:58:30 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	main(int argc, char** argv)
 	if (argc < 2)
 		return (-1);
 	ft_bzero(data, sizeof(t_data));
-	data->strategy = -2;
 	if (check_args(argv, data))
 		return(error(), 1);
 	print_data(data);

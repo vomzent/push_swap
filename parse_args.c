@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 11:49:44 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 11:52:32 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	check_args(char **argv, t_data *data)
 		free(tmp);
 	}
 	if (validate_strings(no_flags))
-		return (free_data(data), free_array(no_flags), 1);
+		return (free_data(data), free_array((void **)no_flags), 1);
 	if (convert_str(no_flags, data))
-		return (free_data(data), free_array(no_flags), 1);
+		return (free_data(data), free_array((void **)no_flags), 1);
 	return (0);
 }
 
@@ -106,7 +106,7 @@ char	**parse_flags(char **argv)
 	}
 	if (i - j > 3)
 	{
-		free_array(no_flags);
+		free_array((void **)no_flags);
 		return (NULL);
 	}
 	return (no_flags);

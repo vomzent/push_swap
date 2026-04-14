@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:40:06 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 19:00:28 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 11:51:12 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	rrr(t_stack **a, t_stack **b, t_data *data);
 // utils.c (norm)
 void	free_data(t_data *data);
 void	error(void);
-void	free_array(char **array);
+void	free_array(void **array);
 int		array_size(char	**arg);
 int		ft_strcmp(const char *s1, const char *s2);
 // ft_atol.c (norm)

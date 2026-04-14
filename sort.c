@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:37:54 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 18:59:41 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 11:52:44 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	chunk_sort(t_data *data)
 		i++;
 	}
 	retrieve_max(&data->a, &data->b, data);
-	free_array(chunks);
+	free_array((void **)chunks);
 }
 
 void	radix_sort(t_data *data)
