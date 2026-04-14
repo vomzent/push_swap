@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 11:50:50 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 12:40:24 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 14:27:01 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ int	main(int argc, char** argv)
 	// print_data(data);
 	if (load_data(data))
 		return(error(), free_data(data), 1);
-	// ft_printf(1, "\nData loaded successfully:\n");
-	// print_stack(data->a);
+	ft_printf(1, "\nData loaded successfully:\n");
+	print_stack(data->a);
 	data->disorder = compute_disorder(data->a);
 	sort_stack(data);
 	if (data->benchmark)
 		benchmark_mode(data);
-	// ft_printf(1, "\nData sorted successfully:\n");
-	// print_stack(data->a);
+	ft_printf(1, "\nData sorted successfully:\n");
+	print_stack(data->a);
 	free_data(data);
 	return (0);
 }

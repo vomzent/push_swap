@@ -15,7 +15,7 @@ SRC = \
 		stack_ops_r.c \
 		stack_ops_rr.c \
 		utils.c \
-		ft_atol.c \
+		ft_atoll.c \
 		sort_base.c \
 		parse_load.c \
 		parse_args.c \

@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:38:23 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 12:16:15 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 15:01:13 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ int	invalid_string(char *string)
 
 int	convert_str(char **array, t_data *data)
 {
-	long	n;
-	int		*ret;
-	int		array_len;
-	int		i;
+	long long	n;
+	int			*ret;
+	int			array_len;
+	int			i;
 
 	n = 0;
 	i = 0;
@@ -73,7 +73,7 @@ int	convert_str(char **array, t_data *data)
 	ret = (int *)malloc(sizeof(int) * array_len);
 	while (array[i])
 	{
-		n = ft_atol(array[i]);
+		n = ft_atoll(array[i]);
 		if (n > INT_MAX || n < INT_MIN)
 			return (free(ret), 1);
 		ret[i] = (int)n;

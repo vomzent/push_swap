@@ -1,44 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putdouble.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/04 11:48:16 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/04 12:36:43 by odschreu         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_putdouble.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: odschreu <odschreu@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/14 15:49:02 by odschreu      #+#    #+#                 */
+/*   Updated: 2026/04/14 16:17:07 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/libft.h"
+#include <stdio.h>
 #include <unistd.h>
-#include "math.h"
+
+static int	get_zero_count(double n)
+{
+	int	count;
+
+	count = 0;
+	if (n == 0)
+		return (count);
+	while ((int)n == 0)
+	{
+		n *= 10;
+		count++;
+	}
+	return (count);
+}
 
 int	ft_putdouble(int fd, double n)
 {
-	int		i;
-	int		len;
-	char	*num;
-	
-	n *= 10000;
-	num = ft_itoa((int)round(n));
-	len = 0;
+	int	len;
+	int	i;
+	int	zero;
+
 	i = 0;
-	if (num[i] == '1')
+	len = 0;
+	zero = get_zero_count(n);
+	if (zero > 1)
+		i = 1;
+	while (zero > 1)
 	{
-		len += ft_putstr(fd, "100");
-		return (len);
+		n *= 10;
+		zero--;
 	}
+	n *= 10;
 	while (i < 4)
 	{
 		if (i == 2)
-		{
 			len += ft_putchar(fd, '.');
-			len += ft_putchar(fd, num[i]);
-		}
-		else
-			len += ft_putchar(fd, num[i]);
+		len += ft_putnbr(fd, (int)n);
+		n -= (int)n;
+		n *= 10;
 		i++;
 	}
 	return (len);
