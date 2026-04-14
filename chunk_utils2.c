@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 15:38:04 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 12:05:13 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:06:41 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	find_cheapest(t_stack **a, int *range)
 	counter = 0;
 	while (marker)
 	{
-		if ((marker)->rank >= range[0] && (marker)->rank <= range[1])
+		if (marker->rank >= range[0] && marker->rank <= range[1])
 		{
 			if (counter < cheapest)
 				cheapest = counter;
@@ -38,7 +38,7 @@ int	find_cheapest(t_stack **a, int *range)
 			}
 		}
 		counter++;
-		marker = (marker)->next;
+		marker = marker->next;
 	}
 	return (cheapest * reverse);
 }
