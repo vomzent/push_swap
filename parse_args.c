@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 11:44:18 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 11:49:44 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,12 @@ int	check_args(char **argv, t_data *data)
 	return (0);
 }
 
-// handle the edge case of double strategy (--simple --complex)
 int	assign_flags(char **argv, t_data *data)
 {
 	int	i;
 	int	strategy;
 
-	strategy = -2;
+	strategy = 0;
 	i = count_flags(argv);
 	if (i == -1)
 		return (1);
@@ -52,6 +51,9 @@ int	assign_flags(char **argv, t_data *data)
 	{
 		if (ft_strcmp(argv[i], "--bench"))
 		{
+			strategy++;
+			if (strategy > 1)
+				return (1);
 			data->strategy = check_strategy(argv[i]);
 			if (data->strategy == -1)
 				return (1);
