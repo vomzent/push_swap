@@ -65,5 +65,5 @@ fclean: clean
 
 re: fclean all
 
-debug:
+debug: $(LIB) $(LIB2) $(OBJ)
 	$(CC) $(CFLAGS) -g $(OBJ) -L. -lftprintf -lft -lm -o $(NAME)
