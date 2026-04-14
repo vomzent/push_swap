@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:25:09 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/13 18:53:28 by odschreu         ###   ########.fr       */
+/*   Updated: 2026/04/14 11:44:18 by odschreu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ int	check_args(char **argv, t_data *data)
 int	assign_flags(char **argv, t_data *data)
 {
 	int	i;
+	int	strategy;
 
+	strategy = -2;
 	i = count_flags(argv);
 	if (i == -1)
 		return (1);
