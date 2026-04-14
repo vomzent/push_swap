@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 09:22:00 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/08 12:10:54 by odschreu         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_atoll.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: odschreu <odschreu@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/07 09:22:00 by odschreu      #+#    #+#                 */
+/*   Updated: 2026/04/14 16:14:14 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static int	isaspace(const char p)
 	return ((p >= 9 && p <= 13) || p == ' ');
 }
 
-long	ft_atol(const char *string)
+long long	ft_atoll(const char *string)
 {
-	int		sign;
-	int		i;
-	long	ret;
+	int			sign;
+	int			i;
+	long long	ret;
 
 	i = 0;
 	sign = 1;
