@@ -1,5 +1,1 @@
-*.o
-libftprintf.a
-push_swap
-ft_printf/*.o
-ft_printf/*.a
+

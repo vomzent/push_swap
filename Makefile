@@ -1,10 +1,11 @@
-.PHONY: all clean fclean re printf libft
+.PHONY: all clean fclean re printf libft bonus
 .DEFAULT_GOAL: re
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 NAME = push_swap
+BONUS_NAME = checker
 LIB = libftprintf.a
 LIB2 = libft.a
 
@@ -27,15 +28,24 @@ SRC = \
 		chunk_utils2.c \
 		sort.c \
 		radix_utils.c
-
+BONUS_SRC = \
+	    stack_core.c \
+	    stack_core2.c \
+	    utils.c \
+	    ft_atoll.c \
+	    parse_validate.c \
+	    checker.c \
+	    checker_utils.c \
+	    get_next_line.c \
+	    get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
 AR = ar rcs
 
 all: $(NAME)
 
 $(NAME): $(LIB) $(LIB2) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -L. -lftprintf -lft -lm -o $(NAME)
-
 
 libft: $(LIB2)
 $(LIB2):
@@ -51,7 +61,7 @@ $(LIB): $(LIB2)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(BONUS_OBJ)
 	$(MAKE) clean -C ft_printf
 	$(MAKE) clean -C libft
 
@@ -63,3 +73,18 @@ fclean: clean
 	$(MAKE) fclean -C libft
 
 re: fclean all
+
+bonus: $(BONUS_NAME)
+$(BONUS_NAME): $(LIB) $(LIB2) $(BONUS_OBJ)
+	$(CC) $(CFLAGS) $(BONUS_OBJ) -L. -lftprintf -lft -o $(BONUS_NAME)
+
+clean_bonus:
+	rm -f $(BONUS_OBJ)
+	$(MAKE) clean -C ft_printf
+	$(MAKE) clean -C libft
+fclean_bonus: clean_bonus
+	rm -f $(BONUS_NAME)
+	rm -f $(LIB)
+	rm -f $(LIB2)
+	$(MAKE) fclean -C ft_printf
+	$(MAKE) fclean -C libft
