@@ -1,5 +1,5 @@
 .PHONY: all clean fclean re printf libft bonus
-.DEFAULT_GOAL: re
+.DEFAULT_GOAL: all
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
@@ -10,24 +10,24 @@ LIB = libftprintf.a
 LIB2 = libft.a
 
 SRC = \
-		stack_core.c \
-		stack_core2.c \
-		stack_ops.c \
-		stack_ops_r.c \
-		stack_ops_rr.c \
-		utils.c \
-		ft_atoll.c \
-		sort_base.c \
-		parse_load.c \
-		parse_args.c \
-		parse_validate.c \
-		benchmark.c \
-		stack_utils.c \
-		stack_utils2.c \
-		chunk_utils.c \
-		chunk_utils2.c \
-		sort.c \
-		radix_utils.c
+      stack_core.c \
+      stack_core2.c \
+      stack_ops.c \
+      stack_ops_r.c \
+      stack_ops_rr.c \
+      utils.c \
+      ft_atoll.c \
+      sort_base.c \
+      parse_load.c \
+      parse_args.c \
+      parse_validate.c \
+      benchmark.c \
+      stack_utils.c \
+      stack_utils2.c \
+      chunk_utils.c \
+      chunk_utils2.c \
+      sort.c \
+      radix_utils.c
 BONUS_SRC = \
 	    stack_core.c \
 	    stack_core2.c \
@@ -61,7 +61,7 @@ $(LIB): $(LIB2)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(BONUS_OBJ)
+	rm -f $(OBJ)
 	$(MAKE) clean -C ft_printf
 	$(MAKE) clean -C libft
 

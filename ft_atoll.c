@@ -6,11 +6,9 @@
 /*   By: odschreu <odschreu@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 09:22:00 by odschreu      #+#    #+#                 */
-/*   Updated: 2026/04/14 16:14:14 by odschreu      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:16:24 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "push_swap.h"
 
 static int	isnumber(const char p)
 {

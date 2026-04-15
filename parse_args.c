@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
 
 int	check_args(char **argv, t_data *data)
@@ -45,7 +44,7 @@ int	assign_flags(char **argv, t_data *data)
 
 	strategy = 0;
 	i = count_flags(argv);
-	if (i == -1)
+	if (i > 2)
 		return (1);
 	while (i > 0)
 	{
@@ -78,8 +77,6 @@ int	count_flags(char **argv)
 			count++;
 		i++;
 	}
-	if (count > 2)
-		return (-1);
 	return (count);
 }
 
@@ -109,12 +106,6 @@ char	**parse_flags(char **argv)
 	}
 	return (no_flags);
 }
-		// if ((argv[i][0] == ' ' || ft_isdigit(argv[i][0])
-		// 	|| argv[i][0] == '-' || argv[i][0] == '+')
-		// 	&& argv[i][1] != '-')
-
-
-
 
 int	count_args(char **argv)
 {
