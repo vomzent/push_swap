@@ -22,7 +22,7 @@ void	selection_sort(t_stack **a, t_stack **b, t_data *data)
 		arr = find_min_pos(*a);
 		while (arr[0] != (*a)->value)
 		{
-			if (arr[1] > (int)stack_size(*a) / 2)
+			if (arr[1] > stack_size(*a) / 2)
 				rra(a, data);
 			else
 				ra(a, data);

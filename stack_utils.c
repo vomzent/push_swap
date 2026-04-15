@@ -43,7 +43,7 @@ double	compute_disorder(t_stack *a)
 
 void	normalize_stack(t_stack **stack)
 {
-	size_t	i;
+	int	i;
 	t_stack	*ptr;
 
 	i = 0;

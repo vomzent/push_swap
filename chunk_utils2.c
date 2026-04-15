@@ -29,9 +29,9 @@ int	find_cheapest(t_stack **a, int *range)
 		{
 			if (counter < cheapest)
 				cheapest = counter;
-			if ((int)stack_size(*a) - counter < cheapest)
+			if (stack_size(*a) - counter < cheapest)
 			{
-				cheapest = (int)stack_size(*a) - counter;
+				cheapest = stack_size(*a) - counter;
 				reverse = -1;
 			}
 		}

@@ -47,7 +47,7 @@ void		rotate(t_stack **a);
 void		reverse_rotate(t_stack **a);
 void		print_stack(t_stack *target);
 void		free_stack(t_stack **target);
-size_t		stack_size(t_stack *target);
+int			stack_size(t_stack *target);
 
 // stack_ops.c (norm)
 void		sa(t_stack **a, t_data *data);
