@@ -6,14 +6,14 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>          +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/04/15 11:34:19 by vcoevert       #+#    #+#                */
-/*   Updated: 2026/04/15 14:15:41 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/15 15:23:37 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 # include <stdlib.h>
-# include "../push_swap.h"
+# include "push_swap.h"
 
 char	*get_next_line(int fd);
 void	*ft_memset(void *s, int c, size_t n);

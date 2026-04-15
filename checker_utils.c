@@ -6,11 +6,11 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/14 19:50:35 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/15 14:22:45 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/15 15:25:36 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	is_stack_sorted(t_stack *a)
 {

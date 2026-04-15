@@ -6,13 +6,13 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/13 17:29:10 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/15 14:36:34 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/15 15:23:58 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
+#include "ft_printf/ft_printf.h"
+#include "libft/libft.h"
 #include "checker.h"
 #include <stdlib.h>
 
