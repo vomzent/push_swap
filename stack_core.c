@@ -47,7 +47,6 @@ void	push(t_stack **target, int value)
 	ft_bzero(node, sizeof(t_stack));
 	node->value = value;
 	node->next = *target;
-	(*target)->previous = node;
 	*target = node;
 }
 
@@ -62,8 +61,6 @@ int	pop(t_stack **target)
 	tmp = (*target)->next;
 	free(*target);
 	*target = tmp;
-	if (*target)
-		(*target)->previous = NULL;
 	return (popped);
 }
 
