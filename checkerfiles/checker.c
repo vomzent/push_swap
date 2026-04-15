@@ -6,7 +6,7 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/13 17:29:10 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/15 14:15:25 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/15 14:23:24 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	go_through_stdin(t_data *data)
 	str = get_next_line(0);
 	while (str)
 	{
-		if (!perform_operation(data, str))
+		if (!perform_operation_1(data, str) && !perform_operation_2(data, str))
 			return (1);
 		free(str);
 		str = get_next_line(0);

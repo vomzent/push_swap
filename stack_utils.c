@@ -25,14 +25,17 @@ double	compute_disorder(t_stack *a)
 	mistakes = 0;
 	total_pairs = 0;
 	i = a;
-	j = a->next;
-	while (j)
+	while (i)
 	{
-		total_pairs++;
-		if (i->value > j->value)
-			mistakes++;
+		j = i->next;
+		while (j)
+		{
+			total_pairs++;
+			if (i->value > j->value)
+				mistakes++;
+			j = j->next;
+		}
 		i = i->next;
-		j = j->next;
 	}
 	ret = (double)mistakes / (double)total_pairs;
 	return (ret);

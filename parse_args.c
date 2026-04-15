@@ -18,9 +18,7 @@ int	check_args(char **argv, t_data *data)
 {
 	char	**no_flags;
 	char	**tmp;
-	int		i;
 
-	i = 0;
 	no_flags = NULL;
 	if (assign_flags(argv, data))
 		return (1);
@@ -33,8 +31,6 @@ int	check_args(char **argv, t_data *data)
 		no_flags = ft_split(no_flags[0], ' ');
 		free_array((void **)tmp);
 	}
-	// while (no_flags[i])
-	// 	ft_printf(1, "%s\n", no_flags[i++]);
 	if (validate_strings(no_flags))
 		return (free_array((void **)no_flags), 1);
 	if (convert_str(no_flags, data))
