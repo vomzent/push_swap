@@ -1,139 +1,164 @@
 *This project has been created as part of the 42 curriculum by odschreu, vcoevert.*
 
-
 # push_swap
 
-### Description
+## Description
 
-### Instructions
+`push_swap` sorts a stack of integers using a limited set of operations across two stacks (`a` and `b`). The goal is to produce the shortest possible sequence of operations that leaves stack `a` sorted in ascending order (smallest at top).
 
-### Resources
+The program implements four distinct sorting strategies selected either via a command-line flag or automatically by an adaptive algorithm that measures the disorder of the input.
 
-radix sort source
-https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
-learning about bitwise operators 
-
-
-### Sorting algorithms
-
-#### Simple / O(n^2)
-Selection sort
-
-
-#### Medium / O(n√n)
-Chunk sort
-
-
-#### Complex / O(n log n)
-Radix sort
-
-
-#### "Adaptive"
-If no flag specifying the type of algorithm is used, adaptive will select one of the three algorithms based on the level of disorder (0-1) of the stack. Disorder is computed by calculating the amount of "mistakes" in the stack, where a mistake is an occasion where an element on the stack is greater than the element below it. As an example, if a stack would be going from high to low values (in order) this would then give a disorder of 1, as all the placements are 'mistakes' (a sorted stack has all values going frow low at the top to high at the bottom).
-
-	for low disorder (disorder < 0.2): must run in O n^2
-	for medium disorder (0.2 <= disorder < 0.5): must run in n * n^0.5
-	for high disorder (>= 0.5): must run in n log n
-
-
-To do
-
-- fix check strategy double strategy edge case
-- findcheapest in chunkutils is still 28 lines
-- tuesday going through the code together
-
-
-### Stack operations
-
-> int[0] sa (swap a) = swap the first two elements at the top of stack a. do nothing if there is only one or no elements
-> int[1] sb (swap b) = swap the first two elements at the top of stack b. do nothing if there is only one or no elements
-> int[2] ss = sa and sb at the same time
-
-
-> int[3] pa (push a) = take the first element at the top of b and put it at the top of a. do nothing if b is empty
-> int[4] pb (push b) = take the first element at the top of a and put it at the top of b. do nothing if a is empty
-
-
-> int[5] ra (rotate a) = shift up all elements of stack a by one. the first element becomes the last one
-> int[6] rb (rotate b) = shift up all elements of stack b by one. the first element becomes the last one.
-> int[7] rr = ra and rb at the same time
-
-> int[8] rra (reverse rotate a) = shift down all elements of stack a by one. the last element becomes the first one
-> int[9] rrb (reverse rotate b) = shift down all elements of stack b by one. the last element becomes the first one.
-> int[10] rrr = rra and rrb at the same time
-
-
-#### Data struct
-
-to pass 'Stack *A' data->A
-to pass 'Stack **A' &data->A
-	(data->&A) would point to a local variable on the stack frame
-
-### sorting strategies
-
-4 distinct sorting strategies:
-1. simple algorithm O^n
-2. medium algorithm n * n^0.5
-3. complex algorithm n * log n
-4. custom adaptive algorithm (personal design)
-	- design an adaptive strategy that selects different internal methods depending on measured disorder. you are not consrained to any specific named algorithm: internal techniques are entirely up to yoi
-
-	for low disorder (disorder < 0.2): must run in O^n
-	for medium disorder (0.2 <= disorder < 0.5): must run in n * n^0.5
-	for high disorder (>= 0.5): must run in n log n
-
-	- document rationale for thresholds in README.md, internal techniques used in each regime and brief complexity argument (upper bounds) for time and space within the push_swap model
-
-Disorder metric (0 - 1)
-If numbers are in order: 0
-If numbers are in worst possible order: 1
-
-Calculated by the following:
-- each time a bigger number appears before a smaller one, that pair counts as a mistake. The more mistakes, the closer the disorder is to 1
-
+## Instructions
+ 
+**Compile:**
+```bash
+make
 ```
-function compute_disorder(stack a):
-	mistakes = 0
-	total_pairs = 0
-	for i from 0 to size(a)-1:
-		for j from i+1 to size(a)-1:
-			total_pairs += 1
-			if a[i] > a[j]:
-				mistakes += 1
-	return mistakes / total_pairs
-
+ 
+**Run:**
+```bash
+./push_swap [--simple | --medium | --complex | --adaptive] <integers...>
+```
+ 
+**Strategy flags:**
+| Flag | Algorithm | Complexity |
+|------|-----------|------------|
+| `--simple` | Selection sort | O(n²) |
+| `--medium` | Chunk sort | O(n√n) |
+| `--complex` | Radix sort (LSD) | O(n log n) |
+| `--adaptive` | Disorder-based selection | varies |
+ 
+If no flag is given, `--adaptive` is used by default.
+ 
+**Benchmark mode** (outputs metrics to stderr):
+```bash
+./push_swap --bench --adaptive 4 67 3 87 23
+```
+ 
+Count operations (requires `shuf`, available on linux):
+```bash
+ARG=$(shuf -i 0-9999 -n 100 | tr '\n' ' ')
+./push_swap $ARG | wc -l
 ```
 
-https://leetcode.fandom.com/wiki/Sort_with_two_stacks
-https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
-https://medium.com/@ulysse.gks/push-swap-in-less-than-4200-operations-c292f034f6c0
+> remove wc -l to see the operations
+ 
+Verify correctness and view benchmark metrics:
+```bash
+ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
+./push_swap --bench $ARG 2> bench.txt
+cat bench.txt
+```
 
+**Error handling:**
+```bash
+./push_swap 1 two 3       # Error
+./push_swap 1 1 2         # Error (duplicate)
+./push_swap               # (no output)
+./push_swap --hello		  # Error (invalid flag)
+./push_swap --simple --medium  # Error (two strategies defined)
+./push_swap --bench --simple --complex # Error (three flags, double definiton of strategy)
+```
 
+## Algorithms
 
-### Our program
+### Disorder metric
 
-- default strategy (int = 0) is adaptive, simple = 1, medium = 2, complex = 3
+Before selecting a strategy, the program computes a disorder value between 0 and 1. Disorder counts all pairs (i, j) where i < j but `a[i] > a[j]` (inversions / 'mistakes'), divided by total pairs. A perfectly sorted stack has disorder 0; a fully reversed stack has disorder 1. 
 
+```
+disorder = inversion_count / (n * (n-1) / 2)
+```
 
-parse args workflow
+This is computed before any moves are made.
 
-/*
-1. parse flags (-- bench -- adaptive), strip them from argv -> create/malloc new array (parse_flags)
-2. validate strings (validatestrings)
-3. convert to long check range 
-4. check duplicates (in int array) (check_duplicates)
-5. load into stack (load_data -> both to push int array)
-6. run sorting algo based on data->stratey
-7. run benchmark mode always(?), print benchmark mode if data->benchmark == 1
-*/
+---
 
-radix sort workflow
-// retrieve i-th bit 
-// (rotate in a, push to b, then once all 0 bits of that index are retrieved, push back to a)
+### Simple — Selection sort O(n²)
 
-// 1. retrieve all 0s from the right most position, push to b, then push back to a
-// 2. repeat loop / function for all positions / indexes -- how to know how many bits to scan / push?
-// 3. after last loop the stack in a is sorted (so after pushing it back from b to a after retrieving the bits where 0 is hte left most bit)
+Finds the minimum of stack `a`, rotates it to the top, pushes it to `b`, repeats. Once all elements are in `b` in descending order, pushes everything back to `a`.
 
-// int retrieve max bits function
-// 
+Each pass requires up to O(n) rotations to find and retrieve the minimum, repeated n times → **O(n²) operations**.
+
+Space: O(1) auxiliary (no extra data structures beyond the two stacks).
+
+---
+
+### Medium — Chunk sort O(n√n)
+
+1. **Normalize:** assign each element a rank from 0 to n−1, converting arbitrary integers to a contiguous range. This ensures even chunk distribution.
+2. **Partition into √n chunks** of size √n each, defined by rank ranges [0, √n−1], [√n, 2√n−1], etc.
+3. **Push phase:** for each chunk (lowest ranks first), scan stack `a` to find the **cheapest element** in that chunk — the one reachable with the fewest rotations, considering both forward (`ra`) and reverse (`rra`) rotation. That element is rotated to the top and pushed to `b`. This greedy cheapest-first selection avoids always rotating to position 0 and instead picks whichever in-range element costs the least to reach. Each chunk pass costs O(n) rotations × √n chunks = **O(n√n) push operations**.
+4. **Retrieve phase:** pull elements back from `b` to `a` in descending rank order, chunk by chunk (highest chunk first). For each element, scan `b` to find its position, rotate it to the top, then `pa`. This phase is O(n) elements × O(n) rotations worst-case = **O(n²) retrieval**, but with a much smaller constant than the naive O(n²) sort.
+
+Overall: O(n√n), dominated by the push phase.
+
+---
+
+### Complex — Radix sort LSD O(n log n)
+
+Radix sort works by sorting elements one bit at a time, from the least significant bit (LSB) to the most significant bit (MSB). Because ranks are assigned in the range [0, n−1], only ⌈log₂n⌉ bits are ever needed — so for 500 elements, that's just 9 passes.
+
+Each pass partitions the stack into two groups based on the current bit:
+- Elements with a **0** bit at position `k` are pushed to `b`.
+- Elements with a **1** bit at position `k` stay in `a` (rotated to the bottom via `ra`).
+- Once all elements have been examined, everything in `b` is pushed back to `a`.
+
+After this, the stack is ordered such that all 0-bit elements (for that bit position) come before all 1-bit elements — exactly like a stable partition. Repeating this for every bit position from LSB to MSB produces a fully sorted stack, because binary numbers sorted digit-by-digit from least to most significant end up in correct order.
+
+Concretely for each pass:
+1. Iterate through all n elements of `a`.
+2. If the current element's rank has a 0 at bit `k` → `pb`.
+3. If it has a 1 → `ra`.
+4. After the full pass, `pa` everything from `b` back to `a`.
+
+Each pass uses exactly n `pb`/`ra` operations plus up to n `pa` operations = O(n) per pass. With ⌈log₂n⌉ passes total → **O(n log n) operations**.
+
+Space: O(1) auxiliary (no arrays, no recursion — just the two stacks).
+
+---
+
+### Adaptive algorithm
+
+Measures disorder before sorting and selects the appropriate strategy:
+
+| Disorder range | Strategy selected | Target complexity |
+|---------------|-------------------|-------------------|
+| < 0.2 | Insertion-based (in-place rotations) | O(n) |
+| 0.2 – 0.5 | Chunk sort | O(n√n) |
+| ≥ 0.5 | Radix sort LSD | O(n log n) |
+
+**Rationale for thresholds:**
+
+- **< 0.2 (low disorder):** The stack has very few inversions. A targeted rotation strategy can fix each out-of-place element with a constant number of moves, yielding O(n) total operations. Chunk sort would overkill a nearly-sorted sequence.
+- **0.2–0.5 (medium disorder):** Enough disorder that O(n) approaches break down, but not so chaotic that full bit-level sorting is necessary. Chunk sort handles this range efficiently and has a smaller constant than radix for mid-range inputs.
+- **≥ 0.5 (high disorder):** The stack is largely scrambled. Radix sort's O(n log n) guarantee with low constants makes it the best choice here.
+
+**Space complexity (all strategies):** O(n) total stack space (unavoidable given the problem model). No additional heap allocations beyond the linked list nodes themselves and the dynamic memory allocated for the amount of arguments (both in parsing and creating an int array of elements that need to be pushed on Stack A for initialization for the sorting).
+
+---
+
+## Performance targets
+
+| Input size | Pass | Good | Excellent |
+|-----------|------|------|-----------|
+| 100 elements | < 2000 ops | < 1500 ops | < 700 ops |
+| 500 elements | < 12000 ops | < 8000 ops | < 5500 ops |
+
+---
+
+## Resources
+A big shoutout to fellow codam students, namely lblonk for guidance with radix sort. Medium articles about the push swap project from other 42 students have also been very helpful to orientate the possible ways to Rome (getting an adequately efficient algorithm). 
+
+As a team, we have also had a lot of support and guidance from each other (discussions about possible implementations, debugging together, asking each other questions). 
+
+Some of the medium articles that have been of great help with understanding how to attack this project / get a feeling for push_swap:
+- [Radix sort for push_swap — Leo Fu (Medium)](https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e)
+- [Turk algorithm — A. Yigit Ogun (Medium)](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
+- [Sort with two stacks — LeetCode wiki](https://leetcode.fandom.com/wiki/Sort_with_two_stacks)
+- [Push_swap in less than 4200 operations](https://medium.com/@ulysse.gks/push-swap-in-less-than-4200-operations-c292f034f6c0)
+- Bitwise operators — C reference / man pages
+- YouTube tutorials on stack data structures
+- Wikipedia pages on sorting algorithms (even array implementations, just to understand the sorting algorithm's approach)
+
+**AI usage:** Claude (Anthropic) was used to understand theory, reasoning through complexity trade-offs between different sorting, and help drafting this README. All decisions and code were written, reviewed, understood, and implemented by both team members.
