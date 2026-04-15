@@ -6,11 +6,56 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/14 19:50:35 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/15 12:29:16 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/15 14:15:56 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int	perform_operation_1(t_data *data, char *op)
+{
+	if (!ft_strcmp(op, "sa\n"))
+		swap(&data->a);
+	else if (!ft_strcmp(op, "sb\n"))
+		swap(&data->b);
+	else if (!ft_strcmp(op, "ss\n"))
+	{
+		swap(&data->a);
+		swap(&data->b);
+	}
+	else if (!ft_strcmp(op, "pa\n"))
+		np_pa(&data->a, &data->b);
+	else if (!ft_strcmp(op, "pb\n"))
+		np_pb(&data->a, &data->b);
+	else if (!ft_strcmp(op, "ra\n"))
+		rotate(&data->a);
+	else
+		return (0);
+	return (1);
+}
+
+int	perform_operation_2(t_data *data, char *op)
+{
+	if (!ft_strcmp(op, "rb\n"))
+		rotate(&data->b);
+	else if (!ft_strcmp(op, "rr\n"))
+	{
+		rotate(&data->a);
+		rotate(&data->b);
+	}
+	else if (!ft_strcmp(op, "rra\n"))
+		reverse_rotate(&data->a);
+	else if (!ft_strcmp(op, "rrb\n"))
+		reverse_rotate(&data->b);
+	else if (!ft_strcmp(op, "rrr\n"))
+	{
+		reverse_rotate(&data->a);
+		reverse_rotate(&data->b);
+	}
+	else
+		return (0);
+	return (1);
+}
 
 int	is_stack_sorted(t_stack *a)
 {

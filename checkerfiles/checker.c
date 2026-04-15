@@ -6,7 +6,7 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/13 17:29:10 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/15 13:35:48 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/15 14:15:25 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,6 @@
 #include "../libft/libft.h"
 #include "checker.h"
 #include <stdlib.h>
-
-int	perform_operation(t_data *data, char *op)
-{
-	if (!ft_strcmp(op, "sa\n"))
-		swap(&data->a);
-	else if (!ft_strcmp(op, "sb\n"))
-		swap(&data->b);
-	else if (!ft_strcmp(op, "ss\n"))
-	{
-		swap(&data->a);
-		swap(&data->b);
-	}
-	else if (!ft_strcmp(op, "pa\n"))
-		np_pa(&data->a, &data->b);
-	else if (!ft_strcmp(op, "pb\n"))
-		np_pb(&data->a, &data->b);
-	else if (!ft_strcmp(op, "ra\n"))
-		rotate(&data->a);
-	else if (!ft_strcmp(op, "rb\n"))
-		rotate(&data->b);
-	else if (!ft_strcmp(op, "rr\n"))
-	{
-		rotate(&data->a);
-		rotate(&data->b);
-	}
-	else if (!ft_strcmp(op, "rra\n"))
-		reverse_rotate(&data->a);
-	else if (!ft_strcmp(op, "rrb\n"))
-		reverse_rotate(&data->b);
-	else if (!ft_strcmp(op, "rrr\n"))
-	{
-		reverse_rotate(&data->a);
-		reverse_rotate(&data->b);
-	}
-	else
-		return (0);
-	return (1);
-}
 
 char	**prepare_arg(int argc, char **argv)
 {
@@ -96,6 +58,23 @@ int	go_through_stdin(t_data *data)
 	return (0);
 }
 
+int	load_data(t_data *data)
+{
+	int	i;
+
+	if (data->length == 0)
+		return (1);
+	i = data->length - 1;
+	while (i >= 0)
+	{
+		push(&data->a, data->args[i]);
+		if (!data->a)
+			return (1);
+		i--;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -111,9 +90,11 @@ int	main(int argc, char **argv)
 	if (!arg)
 		return (free_data(data), ft_printf(1, "Error\n", -1));
 	if (convert_str(arg, data) || load_data(data))
-		return (free_data(data), free_array((void **)arg), ft_printf(1, "Error\n"), -1);
+		return (free_data(data), free_array((void **)arg),
+			ft_printf(1, "Error\n"), -1);
 	if (go_through_stdin(data))
-		return (free_data(data), free_array((void **)arg), ft_printf(1, "Error\n"), -1);
+		return (free_data(data), free_array((void **)arg),
+			ft_printf(1, "Error\n"), -1);
 	if (is_stack_sorted(data->a) && !data->b)
 		ft_printf(1, "OK", 0);
 	else
