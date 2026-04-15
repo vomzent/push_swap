@@ -49,8 +49,10 @@ int	invalid_string(char *string)
 	int	i;
 
 	i = 0;
-	if (string[0] == '-')
+	if (string[i] == '-')
 		i++;
+	if (!string[i])
+		return (1);
 	while (string[i])
 	{
 		if (!ft_isdigit(string[i]))
