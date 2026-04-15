@@ -6,7 +6,7 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/13 17:29:10 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/15 14:23:24 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/15 14:36:34 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (ft_printf(1, "Error\n"), -1);
-	ft_bzero(data, sizeof(data));
+	ft_bzero(data, sizeof(t_data));
 	arg = prepare_arg(argc, argv);
 	if (!arg)
 		return (free_data(data), ft_printf(1, "Error\n", -1));
