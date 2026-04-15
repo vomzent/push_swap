@@ -6,12 +6,36 @@
 /*   By: odschreu <odschreu@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 15:38:17 by odschreu      #+#    #+#                 */
-/*   Updated: 2026/04/14 16:18:45 by odschreu      ########   odam.nl         */
+/*   Updated: 2026/04/15 15:18:33 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
 #include <stdio.h>
+#include <stdlib.h>
+
+int	main(int argc, char **argv)
+{
+	t_data	*data;
+
+	data = malloc(sizeof(t_data));
+	if (!data)
+		return (error(), 1);
+	ft_bzero(data, sizeof(t_data));
+	if (argc < 2)
+		return (free_data(data), -1);
+	if (check_args(argv, data))
+		return (error(), free_data(data), 1);
+	if (load_data(data))
+		return (error(), free_data(data), 1);
+	data->disorder = compute_disorder(data->a);
+	sort_stack(data);
+	if (data->benchmark)
+		benchmark_mode(data);
+	free_data(data);
+	return (0);
+}
 
 int	load_data(t_data *data)
 {
