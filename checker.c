@@ -6,7 +6,7 @@
 /*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2026/04/13 17:29:10 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/15 15:23:58 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/15 20:08:41 by vcoevert     ########   odam.nl          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,21 @@ int	main(int argc, char **argv)
 		return (0);
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return (ft_printf(1, "Error\n"), -1);
+		return (ft_printf(2, "Error\n"), -1);
 	ft_bzero(data, sizeof(t_data));
 	arg = prepare_arg(argc, argv);
 	if (!arg)
-		return (free_data(data), ft_printf(1, "Error\n", -1));
+		return (free_data(data), ft_printf(2, "Error\n", -1));
 	if (convert_str(arg, data) || load_data(data))
 		return (free_data(data), free_array((void **)arg),
-			ft_printf(1, "Error\n"), -1);
+			ft_printf(2, "Error\n"), -1);
 	if (go_through_stdin(data))
 		return (free_data(data), free_array((void **)arg),
-			ft_printf(1, "Error\n"), -1);
+			ft_printf(2, "Error\n"), -1);
 	if (is_stack_sorted(data->a) && !data->b)
-		ft_printf(1, "OK", 0);
+		ft_printf(1, "OK\n", 0);
 	else
-		ft_printf(1, "KO", 0);
+		ft_printf(1, "KO\n", 0);
 	free_data(data);
 	free_array((void **)arg);
 	return (0);
