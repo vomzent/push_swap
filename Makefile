@@ -26,8 +26,7 @@ SRC = \
 		chunk_utils.c \
 		chunk_utils2.c \
 		sort.c \
-		radix_utils.c \
-		input_test.c
+		radix_utils.c
 
 OBJ = $(SRC:.c=.o)
 AR = ar rcs
@@ -64,6 +63,3 @@ fclean: clean
 	$(MAKE) fclean -C libft
 
 re: fclean all
-
-debug: $(LIB) $(LIB2) $(OBJ)
-	$(CC) $(CFLAGS) -g $(OBJ) -L. -lftprintf -lft -lm -o $(NAME)
