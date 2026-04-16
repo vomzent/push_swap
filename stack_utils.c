@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 15:39:31 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 12:33:43 by odschreu         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   stack_utils.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: odschreu <odschreu@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/13 15:39:31 by odschreu      #+#    #+#                 */
+/*   Updated: 2026/04/16 10:15:31 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ double	compute_disorder(t_stack *a)
 
 void	normalize_stack(t_stack **stack)
 {
-	int	i;
+	int		i;
 	t_stack	*ptr;
 
 	i = 0;
