@@ -6,7 +6,7 @@
 /*   By: odschreu <odschreu@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 15:38:17 by odschreu      #+#    #+#                 */
-/*   Updated: 2026/04/15 15:18:33 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/16 10:17:00 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ int	load_data(t_data *data)
 
 void	sort_stack(t_data *data)
 {
-	double	disorder;
-
-	disorder = compute_disorder(data->a);
-	data->disorder = disorder;
 	if (data->strategy == 0)
 	{
 		if (data->disorder < 0.2)

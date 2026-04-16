@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_validate.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: odschreu <odschreu@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 15:38:23 by odschreu          #+#    #+#             */
-/*   Updated: 2026/04/14 15:01:13 by odschreu         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_validate.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: odschreu <odschreu@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/13 15:38:23 by odschreu      #+#    #+#                 */
+/*   Updated: 2026/04/16 10:35:03 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	invalid_string(char *string)
 	int	i;
 
 	i = 0;
-	if (string[i] == '-')
+	if (string[i] == '-' || string[i] == '+')
 		i++;
 	if (!string[i])
 		return (1);
