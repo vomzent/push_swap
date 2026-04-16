@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       ::::::::             */
-/*   checker_utils.c                                   :+:    :+:             */
-/*                                                    +:+                     */
-/*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
-/*                                                  +#+                       */
-/*   Created: 2026/04/14 19:50:35 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/15 15:25:36 by vcoevert     ########   odam.nl          */
+/*                                                        ::::::::            */
+/*   checker_utils.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: vcoevert <vcoevert@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/14 19:50:35 by vcoevert      #+#    #+#                 */
+/*   Updated: 2026/04/16 10:50:29 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	perform_operation_1(t_data *data, char *op)
 		np_pa(&data->a, &data->b);
 	else if (!ft_strcmp(op, "pb\n"))
 		np_pb(&data->a, &data->b);
-	else if (!ft_strcmp(op, "ra\n"))
+	else if (!ft_strcmp(op, "ra\n") && data->a && data->a->next)
 		rotate(&data->a);
 	else
 		return (0);
@@ -75,18 +75,20 @@ int	perform_operation_1(t_data *data, char *op)
 
 int	perform_operation_2(t_data *data, char *op)
 {
-	if (!ft_strcmp(op, "rb\n"))
+	if (!ft_strcmp(op, "rb\n") && data->b && data->b->next)
 		rotate(&data->b);
-	else if (!ft_strcmp(op, "rr\n"))
+	else if (!ft_strcmp(op, "rr\n") && data->a
+		&& data->a->next && data->b && data->b->next)
 	{
 		rotate(&data->a);
 		rotate(&data->b);
 	}
-	else if (!ft_strcmp(op, "rra\n"))
+	else if (!ft_strcmp(op, "rra\n") && data->a && data->a->next)
 		reverse_rotate(&data->a);
-	else if (!ft_strcmp(op, "rrb\n"))
+	else if (!ft_strcmp(op, "rrb\n") && data->b && data->b->next)
 		reverse_rotate(&data->b);
-	else if (!ft_strcmp(op, "rrr\n"))
+	else if (!ft_strcmp(op, "rrr\n") && data->a
+		&& data->a->next && data->b && data->b->next)
 	{
 		reverse_rotate(&data->a);
 		reverse_rotate(&data->b);

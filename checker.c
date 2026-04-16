@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       ::::::::             */
-/*   checker.c                                         :+:    :+:             */
-/*                                                    +:+                     */
-/*   By: vcoevert <vcoevert@student.codam.nl>        +#+                      */
-/*                                                  +#+                       */
-/*   Created: 2026/04/13 17:29:10 by vcoevert     #+#    #+#                  */
-/*   Updated: 2026/04/15 20:08:41 by vcoevert     ########   odam.nl          */
+/*                                                        ::::::::            */
+/*   checker.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: vcoevert <vcoevert@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/13 17:29:10 by vcoevert      #+#    #+#                 */
+/*   Updated: 2026/04/16 10:47:06 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ char	**prepare_arg(int argc, char **argv)
 			}
 		}
 	}
-	if (validate_strings(ret))
-		return (free_array((void **)ret), (char **)0);
+	if (ret)
+		if (validate_strings(ret))
+			return (free_array((void **)ret), (char **)0);
 	return (ret);
 }
 
@@ -51,7 +52,7 @@ int	go_through_stdin(t_data *data)
 	while (str)
 	{
 		if (!perform_operation_1(data, str) && !perform_operation_2(data, str))
-			return (1);
+			return (free(str), 1);
 		free(str);
 		str = get_next_line(0);
 	}
