@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   parse_validate.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: odschreu <odschreu@student.42.fr>            +#+                     */
+/*   By: odschreu <odschreu@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 15:38:23 by odschreu      #+#    #+#                 */
-/*   Updated: 2026/04/16 10:35:03 by odschreu      ########   odam.nl         */
+/*   Updated: 2026/04/16 10:53:16 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

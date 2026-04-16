@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   parse_load.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: odschreu <odschreu@student.42.fr>            +#+                     */
+/*   By: odschreu <odschreu@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 15:38:17 by odschreu      #+#    #+#                 */
-/*   Updated: 2026/04/16 10:17:00 by odschreu      ########   odam.nl         */
+/*   Updated: 2026/04/16 10:53:05 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

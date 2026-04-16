@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   stack_utils.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: odschreu <odschreu@student.42.fr>            +#+                     */
+/*   By: odschreu <odschreu@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 15:39:31 by odschreu      #+#    #+#                 */
-/*   Updated: 2026/04/16 10:15:31 by odschreu      ########   odam.nl         */
+/*   Updated: 2026/04/16 10:55:10 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

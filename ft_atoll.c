@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_atoll.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: odschreu <odschreu@student.42.fr>            +#+                     */
+/*   By: odschreu <odschreu@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 09:22:00 by odschreu      #+#    #+#                 */
-/*   Updated: 2026/04/15 17:16:24 by vcoevert     ########   odam.nl          */
+/*   Updated: 2026/04/16 10:40:57 by odschreu      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
